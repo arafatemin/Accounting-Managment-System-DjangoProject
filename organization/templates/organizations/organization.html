@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load product %}
+
+{% block content %}
+
+
+
+
+
+
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="page-title">{% trans 'Organizations' %}</h3>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}">{% trans 'Dashboard' %}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{% trans 'Organizations' %}</li>
+                    </ol>
+                </nav>
+            </div>
+
+            <div class="col-auto float-right ml-auto">
+                {% if current_user.is_superuser %}
+
+
+                    <a href="{% url 'add_organizations' %}" class="btn add-btn"><i
+                            class="fa fa-plus"></i> {% trans 'Add New Organization' %}</a>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    <table class="table table-bordered mb-0">
+        <thead>
+        <tr>
+            <th>{% trans 'Name' %}</th>
+            <th>{% trans 'City' %}</th>
+            <th>{% trans 'Address' %}</th>
+            <th>{% trans 'Note' %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for p in organizations %}
+
+            {% if p != current_user.organization %}
+                <tr>
+                    <td>
+                        <a href="{% url 'single_organization' p.id %}">
+                            {{ p.name }}
+                        </a>
+                    </td>
+                    <td>
+                        {{ p.city }}
+
+
+                    </td>
+                    <td>
+                        {{ p.address }}
+                    </td>
+                    <td>
+                        {{ p.note }}
+                    </td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

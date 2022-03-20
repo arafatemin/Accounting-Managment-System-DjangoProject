@@ -1,0 +1,196 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load transfer %}
+{% block content %}
+
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="page-title">{% trans 'Income Report' %}</h3>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}">{% trans 'Dashboard' %}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{% trans 'Income Report' %}</li>
+                    </ol>
+                </nav>
+            </div>
+
+
+        </div>
+    </div>
+
+    <form>
+        <div class="row filter-row">
+            <div class="col-sm-6 col-md-4">
+                <div class="form-group form-focus">
+                    <div class="cal-icon">
+                        <input class="form-control floating datetimepicker" value="{{ from }}" name="from" type="text">
+                    </div>
+                    <label class="focus-label">{% trans 'From' %}</label>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="form-group form-focus">
+                    <div class="cal-icon">
+                        <input class="form-control floating datetimepicker" name="to" value="{{ to }}" type="text">
+                    </div>
+                    <label class="focus-label">{% trans 'To' %}</label>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <button type="submit" class="btn btn-success btn-block"> {% trans 'Filter' %} </button>
+            </div>
+        </div>
+    </form>
+    <table class="table table-bordered mb-0">
+        <thead>
+        <tr>
+            <th>{% trans 'ID' %}</th>
+            <th>{% trans 'Customer' %}</th>
+            <th>{% trans 'DateTime' %}</th>
+            <th>{% trans 'Account' %}</th>
+            <th>{% trans 'Amount' %}</th>
+            <th>{% trans 'User' %}</th>
+            <th>{% trans 'Note' %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for p in page_obj.object_list %}
+            <tr>
+                <td>
+                    {% if p.invoice %}
+                        <a href="{% url 'single_invoice' p.invoice.id %}">
+                            #INV 00{{ p.invoice.id }}
+                        </a>
+                    {% elif p.transfer %}
+                        <a href="{% url 'single_transfer' p.transfer.id %}">
+                            #TRA 00{{ p.transfer.id }}
+                        </a>
+                    {% elif p.to_account %}
+                        #MTR 00{{ p.id }}
+                    {% else %}
+
+                        #INC 00{{ p.id }}
+                    {% endif %}
+                </td>
+
+                <td>
+                    {% if p.invoice %}
+                        {% if  p.invoice.customer %}
+                            <a href="{% url 'single_customer' p.invoice.customer.id %}">{{ p.invoice.customer.name }}</a>
+
+                        {% else %}
+                            {% trans 'None' %}
+                        {% endif %}
+                    {% elif  p.transfer.to_org %}
+                        To - {{ p.transfer.to_org }}
+                    {% elif  p.from_account %}
+                        From - {{ p.from_account.name }} - {{ p.from_account.organization.name }}
+                    {% else %}
+                        {% trans 'None' %}
+                    {% endif %}
+                </td>
+                <td>
+                    {% if p.date %}
+                        {{ p.date|date:"Y/m/d H:i" }}
+                    {% else %}
+                        {{ p.datetime|date:"Y/m/d H:i" }}
+                    {% endif %}
+                </td>
+
+                <td>
+                    {{ p.bank.name }}
+                    {% if p.from_account %}
+                        To - {{ p.to_account.name }} - {{ p.to_account.organization.name }}
+                    {% endif %}
+                </td>
+                <td>
+                    {{ p.amount }} SAR
+                </td>
+                <td>
+                    <a href="{% url 'single_customuser' p.user.id %}">
+                        {{ p.user.username }}
+                    </a>
+                </td>
+                <td>
+                    {% if p.note %}
+                        {{ p.note }}
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+    <div class="row">
+        <div class="col-sm-4 col-md-4">
+        </div>
+        <div class="col-sm-8 col-md-8">
+            <div class="dataTables_paginate paging_simple_numbers">
+
+                <ul class="pagination">
+                    <div class="row">
+
+                        <li class="paginate_button page-item"><a class="page-link text-danger"
+                                                                 href="?page=1">1</a>
+                            {% for i in page_range %}
+
+
+                                {% if page_obj.number == i %}
+                                    <li class="paginate_button page-item active"><span
+                                            class="page-link">{{ i }} <span class="sr-only">(current)</span></span>
+                                    </li>
+                                {% else %}
+                                    <li class="paginate_button page-item"><a class="page-link"
+                                                                             href="?page={{ i }}">{{ i }}</a>
+                                    </li>
+                                {% endif %}
+
+
+                            {% endfor %}
+                        <li class="paginate_button page-item"><a class="page-link text-danger"
+                                                                 href="?page={{ total_pages }}">{{ total_pages }}</a>
+
+                            {% if page_obj.has_next %} {# whether the next page exists #}
+
+                                <li class="paginate_button page-item next active"><a
+                                        href="?page={{ page_obj.next_page_number }}"
+                                        class="page-link">Next</a>
+                                </li>
+                            {% endif %}
+
+                    </div>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row invoice-payment">
+        <div class="col-sm-7">
+        </div>
+        <div class="col-sm-5">
+            <div class="m-b-20">
+                <div class="table-responsive no-border">
+                    <table class="table mb-0">
+                        <tbody>
+
+                        <tr>
+                            <th>Total:</th>
+                            <td class="text-right text-primary">
+                                <h3>{{ total|floatformat:"2" }} SAR</h3>
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

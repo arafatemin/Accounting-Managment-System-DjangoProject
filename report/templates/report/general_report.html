@@ -1,0 +1,368 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% load i18n %}
+{% load report %}
+{% block content %}
+
+
+    <div class="content container-fluid">
+
+        <div class="page-header">
+            <div class="row">
+                <div class="col">
+                    <h3 class="page-title">General Report</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}">Dashboard</a></li>
+                        <li class="breadcrumb-item active">General Report</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <form>
+            <div class="row filter-row">
+
+
+                <div class="col-sm-6 col-md-3">
+
+                    <div class="form-group form-focus select-focus">
+
+                        <select class="select floating" name="account">
+                            <option value="-1">--------------------</option>
+
+                            {% for a in accounts %}
+                                <option value="{{ a.id }}">{{ a.name }}</option>
+                            {% endfor %}
+                        </select>
+                        <label class="focus-label">{% trans 'Account' %}</label>
+
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-3">
+
+                    <div class="form-group form-focus select-focus">
+
+                        <select id="select_type" onchange="select_change()" class="select floating" name="type">
+                            <option value="-1">--------------------</option>
+                            <option value="customer">{% trans 'Customer' %}</option>
+                            <option value="vendor">{% trans 'Vendor' %}</option>
+                            <option value="outcome">{% trans 'Outcome' %}</option>
+                            <option value="organization">{% trans 'Organization' %}</option>
+
+
+                        </select>
+                        <label class="focus-label">{% trans 'Type' %}</label>
+
+                    </div>
+                </div>
+
+
+                <div class="col-sm-6 col-md-6">
+
+                    <div class="form-group form-focus select-focus">
+
+
+                        <select id="filter_query" class="select2 select floating"
+                                name="filter_query" multiple
+                                data-live-search="true">
+
+                            <option value="-1">--------------------</option>
+
+                        </select>
+
+                        <span class="select2-selection__arrow" role="presentation"><b
+                                role="presentation"></b></span>
+
+                        <label id="select_label" class="focus-label">{% trans 'Filter Query' %}</label>
+
+                    </div>
+                </div>
+
+
+                <div class="col-sm-6 col-md-12">
+                    <div class="form-group form-focus">
+                        <div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="form-group form-focus">
+                        <div class="cal-icon">
+                            <input class="form-control floating datetimepicker" value="{{ from }}" name="from"
+                                   type="text">
+                        </div>
+                        <label class="focus-label">{% trans 'From' %}</label>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="form-group form-focus">
+                        <div class="cal-icon">
+                            <input class="form-control floating datetimepicker" name="to" value="{{ to }}"
+                                   type="text">
+                        </div>
+                        <label class="focus-label">{% trans 'To' %}</label>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-md-2" style="width: 50%">
+                    <button type="submit" class="btn btn-success btn-block"><i
+                            class="fa fa-filter"></i> {% trans 'Filter' %} </button>
+                </div>
+                <div class="col-sm-4 col-md-2" style="width: 50%">
+                    <a href="{% url 'general_report' %}" class="btn btn-secondary btn-block"><i
+                            class="fa fa-rotate-left"></i> {% trans 'Reset' %} </a>
+                </div>
+            </div>
+            {% if result_list %}
+                <div class="text-center">{{ filter_type }}</div>
+                <div class="row">
+                    <div class="col-2"></div>
+
+                    <div class="col-8 text-center">{% for filter in filter_query %}
+                        {% if filter.name %}
+                            <span>{{ filter.name }}،</span>
+                        {% else %}
+
+                            <span>{{ filter }}،</span>
+                        {% endif %}
+                    {% endfor %} </div>
+
+                    <div class="col-2"></div>
+
+                </div>
+                <div class="text-center">{% if from %}
+                    from {{ from }}
+                {% endif %}   {% if to %} to {{ to }}   {% endif %}</div>
+
+
+            {% endif %}
+
+
+        </form>
+
+        <br>
+        <br>
+
+
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="row">
+                    <div class="col text-left m-l-15 m-t-15" style="border-bottom: 1px solid #dee2e6;">
+                        <h4 class="card-title mb-0">Result</h4>
+
+                        {% if result_list %}
+                            <h6 class="mb-0">total {{ result_list.count }} {{ count }}</h6>
+                        {% endif %}
+
+                    </div>
+
+                    <div class="col text-right m-t-10"
+                         style="border-bottom: 1px solid #dee2e6; margin-right: 30px;">
+
+                        <div class="row">
+                            <div class="col-lg-10 col-sm-8">
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+                {% if filter_type == 'outcome' %}
+
+
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table style="font-size: 0.9rem; .td{padding: 0.3rem}" class="table table-hover mb-0">
+                                <thead>
+                                <tr style="border:5px; border-style: hidden;border-bottom: 0.1rem solid #212529 !important;"
+                                    class="text-left">
+
+                                    <th>Reference</th>
+                                    <th>Amount</th>
+                                    <th>Date</th>
+                                    <th>Category</th>
+                                    <th>Account</th>
+                                    <th>Note</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+
+                                {% for result in result_list %}
+
+
+
+                                    <tr style="padding: 0.3rem" class="text-left">
+                                        <td>#OUT{{ result.id }}</td>
+                                        <td>{{ result.amount }} SAR</td>
+                                        <td>{{ result.datetime|date:"Y/m/d H:i" }}</td>
+                                        <td>{{ result.category.name }}</td>
+                                        <td>{{ result.bank.name }}</td>
+                                        <td>{{ result.note }}</td>
+
+                                    </tr>
+                                {% endfor %}
+                                <br>
+                                <tr class="text-left" style="border-bottom: 0.1rem solid #212529">
+                                    <td><h4>Total</h4></td>
+                                    <td>{{ total|floatformat:'2' }} SAR</td>
+                                    <td></td>
+                                    <td></td>
+
+
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                {% endif %}
+
+
+
+
+                {% if filter_type == 'customer' %}
+
+
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table style="font-size: 0.9rem; .td{padding: 0.3rem}" class="table table-hover mb-0">
+                                <thead>
+                                <tr style="border:5px; border-style: hidden;border-bottom: 0.1rem solid #212529 !important;"
+                                    class="text-left">
+
+                                    <th>Reference</th>
+                                    <th>Amount</th>
+                                    <th>Date</th>
+                                    <th>Customer</th>
+                                    <th>Account</th>
+                                    <th>Note</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+
+                                {% for result in result_list %}
+
+
+                                    <tr style="padding: 0.3rem" class="text-left">
+                                        {% if result.customer %}
+                                            <td><a href="{% url 'single_invoice' result.id %}">#INV {{ result.id }}</a>
+                                            </td>
+                                            <td></td>
+                                            <td>{{ result.datetime|date:"Y/m/d H:i" }}</td>
+                                            <td>{{ result.customer.name }}</td>
+                                            <td></td>
+                                            <td>{{ result.note }}</td>
+                                        {% elif result.invoice %}
+                                            <td>#PYT {{ result.id }} For <a
+                                                    href="{% url 'single_invoice' result.invoice.id %}">#INV {{ result.invoice.id }}</a>
+                                            </td>
+                                            <td>{{ result.amount }}</td>
+                                            <td>{{ result.date|date:"Y/m/d H:i" }}</td>
+                                            <td>{{ result.invoice.customer.name }}</td>
+                                            <td>{{ result.bank.name }}</td>
+                                            <td>{{ result.note }}</td>
+                                        {% endif %}
+
+
+                                    </tr>
+
+
+                                {% endfor %}
+
+                                <br>
+                                <tr class="text-left" style="border-bottom: 0.1rem solid #212529">
+                                    <td><h4>Total</h4></td>
+                                    <td>{{ total|floatformat:'2' }} SAR</td>
+                                    <td></td>
+                                    <td></td>
+
+
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                {% endif %}
+
+
+            </div>
+        </div>
+
+    </div>
+    <script>
+        let vendor_data = [
+            {% for item in vendor_list %}
+                "{{ item.name }}",
+            {% endfor %}
+        ]
+
+        let customer_data = [
+            {% for item in customer_list %}
+                "{{ item.name }}",
+            {% endfor %}
+        ]
+
+        let outcome_data = [
+            {% for item in outcome_list %}
+                "{{ item.name }}",
+            {% endfor %}
+        ]
+
+        let organization_data = [
+            {% for item in organization_list %}
+                "{{ item.name }}",
+            {% endfor %}
+        ]
+
+
+        function select_change() {
+            let selected_type = document.getElementById('select_type').value;
+            let filter_select = document.getElementById('filter_query');
+
+            document.getElementById('select_label').innerHTML = selected_type
+            if (selected_type === '-1') {
+                document.getElementById('select_label').innerHTML = 'Filter Query'
+
+            }
+            console.log(vendor_data)
+
+            function add_option(name) {
+                let option = document.createElement("option");
+                option.text = name;
+                filter_select.add(option)
+                console.log(name)
+            }
+
+            if (selected_type === 'vendor') {
+                filter_select.innerHTML = "";
+                vendor_data.map(x => add_option(x))
+            } else if (selected_type === 'customer') {
+                filter_select.innerHTML = "";
+                customer_data.map(x => add_option(x))
+            } else if (selected_type === 'outcome') {
+                filter_select.innerHTML = "";
+                outcome_data.map(x => add_option(x))
+            } else if (selected_type === 'organization') {
+                filter_select.innerHTML = "";
+                organization_data.map(x => add_option(x))
+            }
+        }
+
+    </script>
+
+{% endblock %}

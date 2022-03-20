@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load invoice %}
+{% block content %}
+
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="page-title">{% trans 'Stock' %}</h3>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}">{% trans 'Dashboard' %}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{% trans 'Stock' %}</li>
+                    </ol>
+                </nav>
+            </div>
+
+            <div class="col-auto float-right ml-auto">
+                <div class="btn-group btn-group-sm">
+                    <a href="{% url 'product_pdf' stk.id %}" class="btn btn-white">{% trans 'PDF' %}</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-6 m-b-20">
+                            <img src="{% static 'assets/img/logo.png' %}" class="inv-logo" alt="">
+                        </div>
+                        <div class="col-sm-6 m-b-20">
+                            <div class="invoice-details">
+                                <h3 class="text-uppercase">{% trans 'Stock' %} #STK-00{{ stk.id }}</h3>
+                                <ul class="list-unstyled">
+                                    <li>{% trans 'Date' %}: <span>{{ stk.datetime|date:"Y/m/d H:i" }}</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <h3>{% trans 'Products' %}</h3>
+                        <table class="table table-striped table-hover">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>{% trans 'SKU' %}</th>
+                                <th>{% trans 'Product' %}</th>
+                                <th>{% trans 'Price' %}</th>
+                                <th>{% trans 'Unit' %}</th>
+                                <th>{% trans 'Total Price' %}</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for p in pwus %}
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ p.product.product.sku }}</td>
+                                    <td>{{ p.product.product.name }}</td>
+                                    <td>{{ p.price }} SAR</td>
+                                    <td>{{ p.unit }} {{ p.product.product.type }}</td>
+                                    <td>{{ p.price|multiply:p.unit|floatformat:2 }} SAR</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row invoice-payment">
+                        <div class="col-sm-7">
+                        </div>
+                        <div class="col-sm-5">
+                            <div class="m-b-20">
+                                <div class="table-responsive no-border">
+                                    <table class="table mb-0">
+                                        <tbody>
+
+                                        <tr>
+                                            <th>{% translate 'Total' %}:</th>
+                                            <td class="text-right text-primary">
+                                                <h3>{{ total }} SAR</h3>
+                                            </td>
+                                        </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}

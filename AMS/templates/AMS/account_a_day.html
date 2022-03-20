@@ -1,0 +1,394 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load account %}
+{% load dashboard %}
+
+{% block content %}
+
+
+
+    <div class="content container-fluid">
+        <div class="page-header text-center">
+            <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12">
+                <img style="max-height: 5rem" src="{% static 'assets/img/logo.png' %}">
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 class="page-title">{% trans 'Welcome' %} <span
+                            class="text-blue">{{ request.user.username }}</span></h3>
+                    <div class="row">
+
+
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <h3 class="page-title">{{ current_date|date:"Y-m-d  D" }}</h3>
+                    <div class="row">
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <br>
+
+    <div class="page-header">
+        <div class="row">
+            <div class="col">
+
+            </div>
+            <div class="col-auto">
+                <a href="{% url 'pdf' %}" class="btn btn-primary">PDF</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <h3 class="card-title mb-0">&nbsp;&nbsp; {% trans 'Daily Report' %}</h3>
+                    </div>
+                </div>
+
+
+                <div class="card-body">
+
+                    <div class="card-header">
+                        <div class="row">
+                            <h3 class="card-title mb-0">&nbsp; {% trans 'Sales' %}</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                            <div class="card dash-widget">
+                                <div class="card-body">
+                                    <span class="dash-widget-icon"><i class="la la-ticket"></i></span>
+                                    <div class="dash-widget-info">
+                                        <h3 style="font-size: 1.6rem">{{ invoices }} <span
+                                                style="font-size: 0.8rem"></span></h3>
+
+                                        <span>{% trans 'Invoices' %}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                            <div class="card dash-widget">
+                                <div class="card-body">
+                                    <span class="dash-widget-icon"><i class="fa fa-money"></i></span>
+                                    <div class="dash-widget-info">
+                                        <h3 style="font-size: 1.6rem">{{ sold_total|floatformat:'2' }} <span
+                                                style="font-size: 0.8rem">SAR</span>
+                                        </h3>
+
+                                        <span>{% trans 'Sales' %}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                            <div class="card dash-widget">
+                                <div class="card-body">
+                                    <span class="dash-widget-icon"><i class="fa fa-minus"></i></span>
+                                    <div class="dash-widget-info">
+                                        <h3 style="font-size: 1.6rem">{{ sold_total|subtract:invoice_payment_total|floatformat:'2' }}<span
+                                                style="font-size: 0.8rem"> SAR</span>
+                                        </h3>
+
+                                        <span>{% trans 'Not Payed' %}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                            <div class="card dash-widget">
+                                <div class="card-body">
+                                    <span class="dash-widget-icon"><i class="la la-comment-dollar"></i></span>
+                                    <div class="dash-widget-info">
+                                        <h3 style="font-size: 1.6rem">{{ sold_total|subtract:buy_price|floatformat:'2' }}
+                                            <span
+                                                    style="font-size: 0.8rem">SAR</span>
+                                        </h3>
+
+                                        <span>{% trans 'Profit' %}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                            <div class="card dash-widget">
+                                <div class="card-body">
+                                    <span class="dash-widget-icon"><i class="la la-send"></i></span>
+                                    <div class="dash-widget-info">
+                                        <h3 style="font-size: 1.6rem">{{ product_transfer_price|floatformat:'2' }} <span
+                                                style="font-size: 0.8rem">SAR</span>
+                                        </h3>
+
+                                        <span>{% trans 'Transfer' %}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                            <div class="card dash-widget">
+                                <div class="card-body">
+                                    <span class="dash-widget-icon"><i class="la la-file-import"></i></span>
+                                    <div class="dash-widget-info">
+                                        <h3 style="font-size: 1.6rem">{{ product_return_price|floatformat:'2' }} <span
+                                                style="font-size: 0.8rem">SAR</span>
+                                        </h3>
+
+                                        <span>{% trans 'Returned' %}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                            <div class="card dash-widget">
+                                <div class="card-body">
+                                    <span class="dash-widget-icon"><i class="la la-shopping-cart"></i></span>
+                                    <div class="dash-widget-info">
+                                        <h3>{{ buy_total|floatformat:'2' }}<span style="font-size: 0.8rem"> SAR</span>
+                                        </h3>
+                                        <span>{% trans 'Purchase' %}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card-body">
+
+                    <div class="card-header">
+                        <div class="row">
+                            <h3 class="card-title mb-0">&nbsp;&nbsp; {% trans 'Expenses' %}</h3>
+                        </div>
+                    </div>
+                    <br>
+                    <section class="review-section information">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-nowrap review-table mb-0">
+                                        <div class="container">
+                                            <div class="row">
+
+
+                                                <div class="col">
+                                                    <div class="container">
+
+                                                        {% for o in outcome_categories|slice:"0:5" %}
+                                                            <div class="row">
+
+                                                                <div class="col text-left">{{ o.name }}</div>
+                                                                <div class="col text-right">
+                                                                    <span>{{ o|outcome:request }} SAR</span>
+                                                                </div>
+                                                            </div>
+                                                        {% endfor %}
+
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="col">
+                                                    <div class="container">
+
+                                                        {% for o in outcome_categories|slice:"5:10" %}
+                                                            <div class="row">
+
+                                                                <div class="col">{{ o.name }}</div>
+                                                                <div class="col text-right">
+                                                                    <span>{{ o|outcome:request }} SAR</span>
+                                                                </div>
+                                                            </div>
+                                                        {% endfor %}
+
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="col">
+                                                    <div class="container">
+
+                                                        {% for o in outcome_categories|slice:"10:15" %}
+                                                            <div class="row">
+
+                                                                <div class="col">{{ o.name }}</div>
+                                                                <div class="col text-right">
+                                                                    <span>{{ o|outcome:request }} SAR</span>
+                                                                </div>
+                                                            </div>
+                                                        {% endfor %}
+
+
+                                                    </div>
+                                                </div>
+
+
+
+
+                                                {% if outcome_categories.count > 15 %}
+                                                    <div class="col">
+                                                        <div class="container">
+
+                                                            {% for o in outcome_categories|slice:"10:15" %}
+                                                                <div class="row">
+
+                                                                    <div class="col">{{ o.name }}</div>
+                                                                    <div class="col text-right">
+                                                                        <span>{{ o|outcome:request }} SAR</span>
+                                                                    </div>
+                                                                </div>
+                                                            {% endfor %}
+
+
+                                                        </div>
+                                                    </div>
+                                                {% endif %}
+
+
+                                            </div>
+
+                                        </div>
+                                    </table>
+
+                                </div>
+                                <br>
+                                <p style="border-bottom: 1px solid #ddd">
+                                    <span class="me-2"></span>{% trans 'Total' %}
+                                    <span class="float-end">{{ outcome_total }} SAR</span>
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+
+                <div class="card-body">
+
+
+                    <div class="card-header">
+                        <div class="row">
+                            <h3 class="card-title mb-0">&nbsp;&nbsp; {% trans 'Money Transfer' %}</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        {% for account in accounts %}
+                            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6">
+                                <div class="card dash-widget">
+                                    <div class="card-header">
+                                        <div class="row">
+                                            <h3 class="card-title mb-0">&nbsp;&nbsp; {{ account.name }}</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 text-success">
+                                            <div class="card dash-widget">
+                                                <div class="card-body">
+                                                    <span class="dash-widget-icon"><i class="las la-plus"></i></span>
+                                                    <div class="dash-widget-info">
+                                                        <h3>{{ in_total }}<span
+                                                                style="font-size: 0.8rem">SAR bak hele</span></h3>
+
+                                                        <span>{% trans 'In' %}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 text-danger">
+                                            <div class="card dash-widget">
+                                                <div class="card-body">
+                                                    <span class="dash-widget-icon text-danger"><i
+                                                            class="las la-minus"></i></span>
+                                                    <div class="dash-widget-info">
+                                                        <h3>{{ out_total }}<span style="font-size: 0.8rem">SAR</span>
+                                                        </h3>
+
+                                                        <span>{% trans 'Out' %}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        {% endfor %}
+
+
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title mb-0">{% trans 'Balance Report' %}</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered mb-0">
+                                <thead>
+                                <tr>
+                                    <th>{% trans 'Account' %}</th>
+                                    <th>{% trans 'Total Income' %}</th>
+                                    <th>{% trans 'Total Outcome' %}</th>
+                                    <th>{% trans 'Balance' %}</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                {% if transfers.dates.latest == transfers.dates.latest %}
+
+                                    {% for bank in accounts %}
+                                        <tr>
+                                            <td><h4 class="text-success">{{ bank.name }}</h4></td>
+                                            <td><h4 class="text-success">{{ bank|accountIncome }} SAR</h4></td>
+                                            <td><h4 class="text-danger">{{ bank|accountOutcome }}</h4></td>
+                                            <td>{% with i=bank|accountIncome %}
+                                                {% with x=bank|accountOutcome %}
+                                                    <h4 class="text-primary">{{ i|subtract:x|floatformat:'2' }}</h4>
+                                                    <!-- result is 4 -->
+                                                {% endwith %}
+                                            {% endwith %}</td>
+                                        </tr>
+                                    {% endfor %}
+                                {% else %}
+                                    <p>herhangi bir islem yapilmadi</p>
+                                {% endif %}
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

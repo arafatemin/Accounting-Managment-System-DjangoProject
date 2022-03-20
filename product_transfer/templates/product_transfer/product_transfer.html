@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load invoice %}
+{% load transfer %}
+{% block content %}
+
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="page-title">{% trans 'Product Transfer' %}</h3>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}">{% trans 'Dashboard' %}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{% trans 'Product Transfer' %}</li>
+                    </ol>
+                </nav>
+            </div>
+
+            <div class="col-auto float-right ml-auto">
+                <a href="{% url 'add_transfer' %}" class="btn add-btn"><i
+                        class="fa fa-plus"></i> {% trans 'Add' %}</a>
+            </div>
+
+        </div>
+    </div>
+
+    <form>
+        <div class="row filter-row">
+            <div class="col-sm-6 col-md-2">
+                <div class="form-group form-focus select-focus">
+                    <select class="select floating" name="from_org">
+                        <option value="-1">--------</option>
+                        {% for v in organization %}
+                            <option value="{{ v.id }}">{{ v.name }}</option>
+                        {% endfor %}
+                    </select>
+                    <label class="focus-label">{% trans 'From' %}</label>
+                </div>
+            </div>
+
+
+            <div class="col-sm-6 col-md-2">
+                <div class="form-group form-focus select-focus">
+                    <select class="select floating" name="to_org">
+                        <option value="-1"> ----------</option>
+                        {% for v in organization %}
+
+                            <option value="{{ v.id }}">{{ v.name }}</option>
+
+                        {% endfor %}
+                    </select>
+
+
+                    <label class="focus-label">{% trans 'To' %}</label>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-2">
+                <div class="form-group form-focus">
+                    <div class="cal-icon">
+                        <input class="form-control floating datetimepicker" value="{{ from }}" name="from" type="text">
+                    </div>
+                    <label class="focus-label">{% trans 'From' %}</label>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-2">
+                <div class="form-group form-focus">
+                    <div class="cal-icon">
+                        <input class="form-control floating datetimepicker" name="to" value="{{ to }}" type="text">
+                    </div>
+                    <label class="focus-label">{% trans 'To' %}</label>
+                </div>
+            </div>
+            <div class="col-sm-4 col-md-2" style="width: 50%">
+                <button type="submit" class="btn btn-success btn-block"><i
+                        class="fa fa-filter"></i> {% trans 'Filter' %} </button>
+            </div>
+            <div class="col-sm-4 col-md-2" style="width: 50%">
+                <a href="{% url 'transfer' %}" class="btn btn-secondary btn-block"><i
+                        class="fa fa-rotate-left"></i> {% trans 'Reset' %} </a>
+            </div>
+        </div>
+    </form>
+    <table class="table table-bordered mb-0">
+        <thead>
+        <tr>
+            <th>{% trans 'ID' %}</th>
+            <th>{% trans 'Transfered From' %}</th>
+            <th>{% trans 'Transfered To' %}</th>
+            <th>{% trans 'DateTime' %}</th>
+            <th>{% trans 'Note' %}</th>
+
+            <th>{% trans 'Status' %}</th>
+            <th>{% trans 'Debt' %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for p in transfers %}
+            <tr>
+                <td>
+                    <a href="{% url 'single_transfer' p.id %}">
+                        #TRA 00{{ p.id }}
+                    </a>
+                </td>
+                <td>
+                    <a href="{% url 'single_organization' p.from_org.id %}">
+                        {{ p.from_org }}
+                    </a>
+                </td>
+                <td>
+                    <a href="{% url 'single_organization' p.to_org.id %}">
+                        {{ p.to_org }}
+                    </a>
+                </td>
+
+                <td>{{ p.datetime|date:"Y/m/d H:i" }}</td>
+                <td>{{ p.note }}</td>
+                {{ p|debt|safe }}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="row invoice-payment">
+        <div class="col-sm-7">
+        </div>
+        <div class="col-sm-5">
+            <div class="m-b-20">
+                <div class="table-responsive no-border">
+                    <table class="table mb-0">
+                        <tbody>
+                        <br><br>
+                        <tr>
+                            <th>Total :</th>
+                            <td class="text-right text-primary">
+                                <h3>{{ tpr_total|floatformat:"2" }} SAR</h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Total Paid :</th>
+                            <td class="text-right text-success">
+                                <h3>{{ tpy_total|floatformat:"2" }} SAR</h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Total Debt:</th>
+                            <td class="text-right text-danger">
+                                <h3>{{ tpr_total|minus:tpy_total|floatformat:"2" }} SAR</h3>
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

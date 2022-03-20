@@ -1,0 +1,374 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% load i18n %}
+{% load i18n_urls %}
+{% load product %}
+
+
+{% block content %}
+
+
+    <div id="import" class="modal custom-modal fade" role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{% translate 'Import Product' %}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+
+                    <form method="post" action="{% url 'import_product' %}">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-form-label">{% trans 'Price' %}<span
+                                            class="text-danger">*</span></label>
+                                    <input required class="form-control" name="price" type="number" step="0.01">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-form-label">{% translate 'Sell price' %}<span
+                                            class="text-danger">*</span></label>
+                                    <input required class="form-control" name="sell_price" type="number"
+                                           step="0.01">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+
+                                    <span class="text-danger">*</span>
+                                    <label class="focus-label">{% translate 'Product' %}</label>
+
+
+                                    <select name="product" class="selectpicker" data-live-search="true">
+                                        <option value="-1">--------------------</option>
+                                        {% for p in products %}
+
+                                            <a>
+                                                <option value="{{ p.id }}">{{ p.sku }}-------{{ p.name }}</option>
+                                            </a>
+                                        {% endfor %}
+                                    </select>
+
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="submit-section">
+                            <button type="submit"
+                                    class="btn btn-primary submit-btn">{% translate 'Submit' %}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div id="add_product" class="modal custom-modal fade" role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{% translate 'Add Product' %}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ from.media }}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-form-label">SKU<span
+                                            class="text-danger">*</span></label>
+                                    <input required class="form-control" name="sku" type="number">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-form-label">{% translate 'Name' %}<span
+                                            class="text-danger">*</span></label>
+                                    <input required class="form-control" name="name" type="text">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+
+
+
+                                    <label class="focus-label">{% translate 'Product Category' %}</label>
+                                <a href="{% url 'product_category' %}"><i
+                                                            class="fa fa-plus"></i></a>
+
+                                    <select name="category" class="form-control floating" required>
+
+
+                                        {% for cat in product_categories %}
+
+                                            <option value="{{ cat.id }}"
+                                                    data-select2-id="select2-data-9-k4lz">{{ cat.title }}</option>
+
+
+                                        {% endfor %}
+
+                                    </select>
+
+
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-form-label">{% translate 'Unit Type' %} <span
+                                            class="text-danger"><a href="{% url 'unit_type' %}"><i
+                                                            class="fa fa-plus"></i></a></span></label>
+                                    <select class="form-control floating" name="type" required>
+                                        {% for u_type in units %}
+                                            <option value="{{ u_type.id }}">{{ u_type.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-form-label">{% translate 'Barcode' %}</label>
+                                    <input class="form-control" name="barcode" type="number">
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">{% translate 'Note' %}</label>
+                            <textarea cols="2" rows="5" class="form-control" name="note"
+                                      type="text"></textarea>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-form-label col-md-2">{% translate 'Image' %}</label>
+                            <div class="col-md-4">
+                                <input name="image" class="form-control" type="file">
+                            </div>
+                        </div>
+
+
+                        <div class="submit-section">
+                            <button type="submit"
+                                    class="btn btn-primary submit-btn">{% translate 'Submit' %}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="page-title">{% trans 'Products' %}</h3>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}">{% trans 'Dashboard' %}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{% trans 'Products' %}</li>
+                    </ol>
+                </nav>
+            </div>
+
+            <div class="col-auto float-right ml-auto">
+                <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_product"><i
+                        class="fa fa-plus"></i> {% trans 'Add a new Product' %}</a>
+
+                <a href="#" class="btn add-btn" data-toggle="modal" data-target="#import"><i
+                        class="fa fa-plus"></i> {% trans 'Import existing product' %}</a>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="row filter-row">
+        <form id="form1">
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group form-focus select-focus">
+                    <select name="_sku" class="selectpicker" data-live-search="true"
+                            onchange='if(this.value != 0) { this.form.submit(); }'>
+                        <option value="-1">--------------------</option>
+                        {% for p in products %}
+
+                            <a href="{% url 'product_detail' p.id %}">
+                                <option value="{{ p.id }}">{{ p.sku }}-------{{ p.name }}</option>
+                            </a>
+                        {% endfor %}
+                    </select>
+                    <label class="focus-label">{% trans 'SKU' %}</label>
+                </div>
+
+
+            </div>
+        </form>
+
+        <form id="form2">
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group form-focus select-focus">
+                    <select name="_category" class="selectpicker" data-live-search="true"
+                            onchange='if(this.value != 0) { this.form.submit(); }'>
+                        <option value="-1">--------------------</option>
+                        {% for c in product_categories %}
+
+
+
+                            <option value="{{ c.id }}">{{ c.title }}</option>
+
+                        {% endfor %}
+                    </select>
+                    <label class="focus-label">{% trans 'Category' %}</label>
+                </div>
+
+
+            </div>
+        </form>
+
+
+        <div class="col-sm-3 col-md-3">
+            <a href="{% url 'products' %}" class="btn btn-outline-primary btn-block"><i
+                    class="fa fa-eraser"></i> {% translate 'clean' %} </a>
+        </div>
+
+
+    </div>
+
+
+    <table class="table table-bordered mb-0">
+        <thead>
+        <tr>
+            <th>{% trans 'SKU' %}</th>
+            <th>{% trans 'Name' %}</th>
+
+            <th>{% trans 'Category' %}</th>
+
+            <th>{% trans 'Buy price' %}</th>
+
+            <th>{% trans 'Sell price' %}</th>
+
+            <th>{% trans 'Qty' %}</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for p in page_obj.object_list %}
+            <tr>
+                <td>
+                    <a href="{% url 'product_detail' p.id %}">
+                        {{ p.sku }}
+                    </a>
+                </td>
+                <td>
+                    <a href="{% url 'product_detail' p.id %}">
+                        {{ p.name }}
+                    </a>
+                </td>
+                <td>
+                    {{ p.category }}
+                </td>
+                {{ p|buy_sell_price:org|safe }}
+                <td>
+                    {{ p|cpu:org|safe|floatformat }} {{ p.type }}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+    <div class="row">
+        <div class="col-sm-4 col-md-4">
+        </div>
+        <div class="col-sm-8 col-md-8">
+            <div class="dataTables_paginate paging_simple_numbers">
+
+                <ul class="pagination">
+                    <div class="row">
+
+                        <li class="paginate_button page-item"><a class="page-link text-danger" href="?page=1">1</a>
+                            {% for i in page_range %}
+
+
+                                {% if page_obj.number == i %}
+                                    <li class="paginate_button page-item active"><span class="page-link">{{ i }} <span
+                                            class="sr-only">(current)</span></span></li>
+                                {% else %}
+                                    <li class="paginate_button page-item"><a class="page-link"
+                                                                             href="?page={{ i }}">{{ i }}</a>
+                                    </li>
+                                {% endif %}
+
+
+                            {% endfor %}
+                        <li class="paginate_button page-item"><a class="page-link text-danger"
+                                                                 href="?page={{ total_pages }}">{{ total_pages }}</a>
+
+                            {% if page_obj.has_next %} {# whether the next page exists #}
+
+                                <li class="paginate_button page-item next active"><a
+                                        href="?page={{ page_obj.next_page_number }}"
+                                        class="page-link">Next</a>
+                                </li>
+                            {% endif %}
+
+                    </div>
+                </ul>
+
+            </div>
+            <div class="row invoice-payment">
+                <div class="col-sm-10">
+                </div>
+                <div class="col-sm-10">
+                    <div class="m-b-20">
+                        <div class="table-responsive no-border">
+                            <table class="table mb-0">
+                                <tbody>
+                                <br><br>
+                                <tr>
+                                    <th>Total Price:</th>
+                                    <td class="text-right text-primary">
+                                        <h3>{{ total_price|floatformat:2 }} SAR</h3>
+                                    </td>
+                                </tr>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

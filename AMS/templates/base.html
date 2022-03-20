@@ -1,0 +1,350 @@
+{% load static %}
+{% load i18n %}
+{% load i18n_urls %}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/line-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/plugins/morris/morris.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/select2.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap-datetimepicker.min.css' %}">
+    <script src="{% static 'vue.js' %}"></script>
+    <style>
+        a {
+            color: #ff9b44;
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-wrapper">
+
+    <div class="header">
+
+
+        <!-- Logo -->
+        <div class="header-left">
+            <a href="{% url 'index' %}" class="logo">
+                <img style="max-height: 3rem" src="{% static 'assets/img/logo.png' %}">
+            </a>
+        </div>
+        <!-- /Logo -->
+
+        <a id="toggle_btn" href="javascript:void(0);">
+					<span class="bar-icon">
+						<span></span>
+						<span></span>
+						<span></span>
+					</span>
+        </a>
+
+
+        <!-- Header Title -->
+        <div class="page-title-box">
+            <h3>{% translate 'Accounting System' %}</h3>
+        </div>
+
+
+        <!-- /Header Title -->
+
+        <a id="mobile_btn" class="mobile_btn" href="#sidebar"><i class="fa fa-bars"></i></a>
+
+        <!-- Header Menu -->
+        <ul class="nav user-menu">
+
+
+            <!-- Flag -->
+            <li class="nav-item dropdown has-arrow flag-nav">
+                <div class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" id="language">
+
+
+                </div>
+                <div class="dropdown-menu dropdown-menu-right">
+
+
+                    <a href="{% change_lang 'en' %}" class="dropdown-item" >
+                        <img style="max-height: 30px" src="{% static 'assets/img/flags/us.png' %}">English
+                    </a>
+
+                    <a href="{% change_lang 'ug' %}" class="dropdown-item">
+                        <img style="max-height: 30px" src="{% static 'assets/img/flags/ug.png' %}">ئۇيغۇرچە
+                    </a>
+
+                    <a href="{% change_lang 'ar' %}" class="dropdown-item">
+                        <img style="max-height: 30px" src="{% static 'assets/img/flags/fr.png' %}">العربية
+                    </a>
+
+
+                </div>
+            </li>
+            <!-- /Flag -->
+
+
+            <li class="nav-item dropdown has-arrow main-drop">
+                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+							<span class="user-img"><img src="{% static 'assets/img/logo.png' %}">
+							<span class="status online"></span></span>
+                    <span>{{ request.user.username }}</span>
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item"
+                       href="{% url 'single_customuser' request.user.id %}">{% translate 'My Profile' %}</a>
+                    <a class="dropdown-item" href="{% url 'logout' %}">{% translate 'Logout' %}</a>
+
+                </div>
+            </li>
+        </ul>
+        <!-- /Header Menu -->
+
+        <!-- Mobile Menu -->
+        <div class="dropdown mobile-user-menu">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i
+                    class="fa fa-ellipsis-v"></i></a>
+            <div class="dropdown-menu dropdown-menu-right">
+
+                <a class="dropdown-item" href="{% url 'logout' %}">{% translate 'Logout' %}</a>
+            </div>
+        </div>
+        <!-- /Mobile Menu -->
+
+    </div>
+
+
+{#    <div class="sidebar" id="sidebar">#}
+{#        <div class="sidebar-inner slimscroll">#}
+{#            <div id="sidebar-menu" class="sidebar-menu">#}
+{#                <ul>#}
+{#                    <li class="menu-title">#}
+{#                        <span>{% translate 'Main' %}</span>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <a href="{% url 'index' %}"><i class="la la-dashboard"></i> <span>{% trans 'Dashboard' %}</span></a>#}
+{#                    </li>#}
+{##}
+{#                    <li class="submenu">#}
+{#                        <a href="#"><i class="la la-cube"></i> <span> {% trans 'Products' %}</span> <span#}
+{#                                class="menu-arrow"></span></a>#}
+{#                        <ul style="display: none;">#}
+{#                            <li><a href="{% url 'products' %}">{% trans 'Products' %} </a></li>#}
+{#                            <li><a href="{% url 'tax' %}">{% trans 'Tax' %}</a></li>#}
+{#                            <li><a href="{% url 'unit_type' %}">{% trans 'Unit type' %}</a></li>#}
+{#                            <li><a href="{% url 'product_category' %}">{% trans 'Product Category' %} </a></li>#}
+{#                        </ul>#}
+{#                    </li>#}
+{##}
+{##}
+{##}
+{#                    {% if request.user.is_staff %}#}
+{#                        <li>#}
+{#                            <a href="{% url 'customusers' %}"><i class="la la-users"></i>#}
+{#                                <span>{% trans 'Employees' %}</span></a>#}
+{#                        </li>#}
+{##}
+{#                        <li>#}
+{#                            <a href="{% url 'banks' %}"><i class="la la-university"></i>#}
+{#                                <span>{% trans 'Accounts' %}</span></a>#}
+{#                        </li>#}
+{#                    {% endif %}#}
+{##}
+{##}
+{#                    <li>#}
+{#                        <a href="{% url 'organizations' %}"><i class="la la-share-alt"></i>#}
+{#                            <span>{% trans 'Organization' %}</span></a>#}
+{#                    </li>#}
+{##}
+{#                    <li class="menu-title">#}
+{#                        <span>{% trans 'Business' %}</span>#}
+{#                    </li>#}
+{##}
+{##}
+{#                    <li class="submenu">#}
+{#                        <a href="#"><i class="la la-dollar"></i> <span> {% trans 'Sales' %}</span> <span#}
+{#                                class="menu-arrow"></span></a>#}
+{#                        <ul style="display: none;">#}
+{#                            <li>#}
+{#                                <a href="{% url 'invoices' %}"><i class="la la-ticket"></i>#}
+{#                                    <span> &nbsp;&nbsp;{% trans 'Invoice' %}</span></a>#}
+{#                            </li>#}
+{##}
+{#                            <li>#}
+{#                                <a href="{% url 'return' %}"><i class="la la-file-import"></i>#}
+{#                                    <span>&nbsp;&nbsp;{% trans 'Return Product' %}</span></a>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                                <a href="{% url 'transfer' %}"><i class="la la-send"></i>#}
+{#                                    <span>&nbsp;&nbsp;{% trans 'Transfer' %}</span></a>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                                <a href="{% url 'customers' %}"><i class="la la-user-shield"></i>#}
+{#                                    <span> &nbsp;&nbsp;{% trans 'Customers' %}</span></a>#}
+{#                            </li>#}
+{##}
+{##}
+{#                        </ul>#}
+{#                    </li>#}
+{##}
+{#                    <li class="submenu">#}
+{#                        <a href="#"><i class="la la-shopping-cart"></i> <span> {% trans 'Purchase' %}</span> <span#}
+{#                                class="menu-arrow"></span></a>#}
+{#                        <ul style="display: none;">#}
+{#                            <li>#}
+{#                                <a href="{% url 'purchase' %}"><i class="la la-shopping-cart"></i>#}
+{#                                    <span>&nbsp;&nbsp;{% trans 'Purchase' %}</span></a>#}
+{#                            </li>#}
+{##}
+{#                            <li>#}
+{#                        <a href="{% url 'stock' %}"><i class="la la-cart-plus"></i>#}
+{#                            <span>{% trans 'From Stock' %}</span></a>#}
+{#                    </li>#}
+{##}
+{#                            <li>#}
+{#                                <a href="{% url 'vendors' %}"><i class="la la-user-lock"></i>#}
+{#                                    <span>&nbsp;&nbsp;{% trans 'Vendors' %}</span></a>#}
+{#                            </li>#}
+{##}
+{#                        </ul>#}
+{#                    </li>#}
+{##}
+{##}
+{##}
+{#                    <li>#}
+{#                        <a href="{% url 'transfer_money' %}"><i class="la la-wallet"></i>#}
+{#                            <span>{% trans 'Money Transfer' %}</span></a>#}
+{#                    </li>#}
+{##}
+{##}
+{#                    <li class="menu-title">#}
+{#                        <span>{% translate 'Extra' %}</span>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <a href="{% url 'outcome_category' %}"><i class="la la-stream"></i>#}
+{#                            <span>{% trans 'Outcome Category' %}</span></a>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <a href="{% url 'outcome' %}"><i class="la la-money-check-alt"></i>#}
+{#                            <span>{% trans 'Outcome' %}</span></a>#}
+{#                    </li>#}
+{##}
+{#                    <li class="menu-title">#}
+{#                        <span>{% translate 'Report' %}</span>#}
+{#                    </li>#}
+{##}
+{#                    <li class="submenu">#}
+{#                        <a href="#"><i class="la la-file-text"></i> <span> {% trans 'Report' %}</span> <span#}
+{#                                class="menu-arrow"></span></a>#}
+{#                        <ul style="display: none;">#}
+{##}
+{#                              <li>#}
+{#                                <a href="{% url 'product_report' %}"><i class="la la-box-open"></i>#}
+{#                                    <span>&nbsp;&nbsp;{% trans 'Product Report' %}</span></a>#}
+{#                            </li>#}
+{##}
+{##}
+{#                            <li>#}
+{#                                <a href="{% url 'general_report' %}"><i class="la la-bar-chart-o"></i>#}
+{#                                    <span>&nbsp;&nbsp;{% trans 'General Report' %}</span></a>#}
+{#                            </li>#}
+{##}
+{#                            <li>#}
+{#                                <a href="{% url 'balance_sheet' %}"><i class="la la-pie-chart"></i>#}
+{#                                    <span>&nbsp;&nbsp;{% trans 'Balance Sheet' %}</span></a>#}
+{#                            </li>#}
+{##}
+{##}
+{#                        </ul>#}
+{#                    </li>#}
+{##}
+{##}
+{##}
+{##}
+{##}
+{##}
+{##}
+{##}
+{#                    <li class="menu-title">#}
+{#                        <span>{% translate 'Settings' %}</span>#}
+{#                    <li>#}
+{#                        <a href="{% url 'cities' %}"><i class="la la-city"></i>#}
+{#                            <span>{% trans 'City' %}</span></a>#}
+{#                    </li>#}
+{#                </ul>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+
+
+    <div class="page-wrapper">
+
+        <div class="content container-fluid">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    {{ message|safe }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+
+            {% endfor %}
+
+
+            {% block content %}
+                {{ content }}
+            {% endblock %}
+        </div>
+
+    </div>    </div>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+        $('select[id=customerSelect]').val(customer);
+        $('select[id=customerSelect]').selectpicker('refresh');
+    });
+
+    function change_language() {
+        if (window.location.href.includes('/ug/')) {
+            document.getElementById('language').innerHTML = '<a > <img src ="{% static 'assets/img/flags/ug.png' %}"><span style="color: white">ئۇيغۇرچە</span></a>'
+        }
+        if (window.location.href.includes('/en/')) {
+            document.getElementById('language').innerHTML = '<a > <img src ="{% static 'assets/img/flags/us.png' %}"><span style="color: white">English</span></a>'
+        }
+        if (window.location.href.includes('/ar/')) {
+            document.getElementById('language').innerHTML = '<a > <img src ="{% static 'assets/img/flags/fr.png' %}"><span style="color: white">العربية</span></a>'
+        }
+    };
+    change_language()
+</script>
+
+<script src="{% static 'assets/js/jquery-3.5.1.min.js' %}"></script>
+
+<script src="{% static 'assets/js/popper.min.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+
+<script src="{% static 'assets/js/jquery.slimscroll.min.js' %}"></script>
+
+<script src="{% static 'assets/plugins/morris/morris.min.js' %}"></script>
+<script src="{% static 'assets/plugins/raphael/raphael.min.js' %}"></script>
+<script src="{% static 'assets/js/chart.js' %}"></script>
+<script src="{% static 'assets/js/moment.min.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap-datetimepicker.min.js' %}"></script>
+<script src="{% static 'assets/js/select2.min.js' %}"></script>
+<script src="{% static 'assets/js/app.js' %}"></script>
+<script src="{% static 'assets/js/barcode.js' %}"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas2image@1.0.5/canvas2image.min.js"></script>
+
+<script>
+    JsBarcode(".barcode").init();
+</script>
+</body>
+</html>

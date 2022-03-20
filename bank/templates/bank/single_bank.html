@@ -1,0 +1,205 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+
+
+
+
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="page-title">{% trans 'Accounts' %}</h3>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">{% trans 'Dashboard' %}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{% trans 'Accounts' %}</li>
+                    </ol>
+                </nav>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title mb-0">{{ account.name }}</h4>
+        </div>
+
+        <br><br>
+        <div class="card-header">
+            <h2 class="mb-0">{% trans 'Incomes' %}</h2>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered mb-0">
+                    <thead>
+                    <tr>
+                        <th>{% trans 'Type' %}</th>
+                        <th>{% trans 'Total' %}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr>
+                        <td><a href="{% url 'invoice_payments' account.id %}">
+                            <h4>{% trans 'Invoice Payment' %}</h4>
+                        </a></td>
+
+                        <td>{{ invoice_payment }} SAR</td>
+                    </tr>
+
+                    <tr>
+                        <td><a href="{% url 'money_transfer_in' account.id %}">
+                            <h4>{% trans 'Mony Transfer In' %}</h4>
+                        </a></td>
+
+                        <td>{{ money_transfer_in }} SAR</td>
+                    </tr>
+                    <tr>
+                        <td><a href="{% url 'org_debt_payment_in' account.id %}">
+                            <h4>{% trans 'Orgnization Debt Payment' %}</h4>
+                        </a></td>
+
+                        <td>{{ org_debt_payment_in }} SAR</td>
+                    </tr>
+
+                    <tr>
+                        <td><a href="{% url 'product_transfer_payment_in' account.id %}">
+                            <h4>{% trans 'Product Transfer Payment' %}</h4>
+                        </a></td>
+
+                        <td>{{ product_transfer_payment }} SAR</td>
+                    </tr>
+
+
+                    <tr>
+                        <td><a href="{% url 'additional_income' account.id %}">
+                            <h4>{% trans 'Additional Income' %}</h4></a></td>
+
+                        <td>{{ additional_income }} SAR</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="row invoice-payment">
+                <div class="col-sm-7">
+                </div>
+                <div class="col-sm-5">
+                    <div class="m-b-20">
+                        <div class="table-responsive no-border">
+                            <table class="table mb-0">
+                                <tbody>
+                                <br><br>
+                                <tr>
+                                    <th>Total :</th>
+                                    <td class="text-right text-primary">
+                                        <h3>{{ product_transfer_payment|add:org_debt_payment_in|add:money_transfer_in|add:invoice_payment|add:additional_income }}
+                                            SAR</h3>
+                                    </td>
+                                </tr>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <br><br>
+        <div class="card-header">
+            <h2 class=" mb-0">{% trans 'Outcomes' %}</h2>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered mb-0">
+                    <thead>
+                    <tr>
+                        <th>{% trans 'Type' %}</th>
+                        <th>{% trans 'Total' %}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr>
+                        <td><a href="{% url 'additional_outcome' account.id %}">
+                            <h4>{% trans 'Additional Outcome' %}</h4></a></td>
+
+                        <td>{{ additional_outcome }} SAR</td>
+                    </tr>
+
+
+                    <tr>
+                        <td>{% trans 'Purchase Payment' %}</td>
+
+                        <td>{{ purchase_payment }} SAR</td>
+                    </tr>
+
+                    <tr>
+                        <td>{% trans 'Mony Transfer Out' %}</td>
+
+                        <td>{{ money_transfer_out }} SAR</td>
+                    </tr>
+                    <tr>
+                        <td>{% trans 'Debt Payment For Organization' %}</td>
+
+                        <td>{{ org_debt_payment_out }} SAR</td>
+                    </tr>
+
+                    <tr>
+                        <td>{% trans 'Product Transfer Payment' %}</td>
+
+                        <td>{{ product_transfer_payment_out }} SAR</td>
+                    </tr>
+
+                    <tr>
+                        <td>{% trans 'Return Product Payment' %}</td>
+
+                        <td>{{ return_payment }} SAR</td>
+                    </tr>
+
+                    <tr>
+                        <td>{% trans 'Vendor Debt Payment' %}</td>
+
+                        <td>{{ vendor_debt_payment }} SAR</td>
+                    </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="row invoice-payment">
+                <div class="col-sm-7">
+                </div>
+                <div class="col-sm-5">
+                    <div class="m-b-20">
+                        <div class="table-responsive no-border">
+                            <table class="table mb-0">
+                                <tbody>
+                                <br><br>
+                                <tr>
+                                    <th>Total :</th>
+                                    <td class="text-right text-primary">
+                                        <h3>{{ vendor_debt_payment|add:product_transfer_payment_out|add:org_debt_payment_out|add:money_transfer_out|add:purchase_payment|add:additional_outcome|add:return_payment }}
+                                            SAR</h3>
+                                    </td>
+                                </tr>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

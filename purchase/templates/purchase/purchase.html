@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load purchase %}
+{% block content %}
+
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="page-title">{% trans 'Purchase' %}</h3>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}">{% trans 'Dashboard' %}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{% trans 'Purchase' %}</li>
+                    </ol>
+                </nav>
+            </div>
+
+            <div class="col-auto float-right ml-auto">
+                <a href="{% url 'add_purchase' %}" class="btn add-btn"><i
+                        class="fa fa-plus"></i> {% trans 'Add' %}</a>
+            </div>
+
+        </div>
+    </div>
+
+    <form>
+        <div class="row filter-row">
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group form-focus select-focus">
+                    <select class="select floating" name="vendor">
+                        <option value="-1">--------------------</option>
+                        {% for v in vendors %}
+                            {% if v.id == vendor_id %}
+                                <option selected value="{{ v.id }}">{{ v.name }}</option>
+                            {% else %}
+                                <option value="{{ v.id }}">{{ v.name }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                    <label class="focus-label">{% trans 'Vendor' %}</label>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group form-focus">
+                    <div class="cal-icon">
+                        <input class="form-control floating datetimepicker" value="{{ from }}" name="from" type="text">
+                    </div>
+                    <label class="focus-label">{% trans 'From' %}</label>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group form-focus">
+                    <div class="cal-icon">
+                        <input class="form-control floating datetimepicker" name="to" value="{{ to }}" type="text">
+                    </div>
+                    <label class="focus-label">{% trans 'To' %}</label>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <button type="submit" class="btn btn-success btn-block"> {% trans 'Filter' %} </button>
+            </div>
+        </div>
+    </form>
+    <table class="table table-bordered mb-0">
+        <thead>
+        <tr>
+            <th>{% trans 'ID' %}</th>
+            <th>{% trans 'Vendor' %}</th>
+            <th>{% trans 'Datetime' %}</th>
+            <th>{% trans 'Status' %}</th>
+            <th>{% trans 'Debt' %}</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for p in purchases %}
+            <tr>
+                <td>
+                    <a href="{% url 'single_purchase' p.id %}">
+                        #PUR 00{{ p.id }}
+                    </a>
+                </td>
+                <td>
+                    <a href="{% url 'single_vendor' p.customer.id %}">
+                        {{ p.customer.name }}
+                    </a>
+                </td>
+                <td>{{ p.datetime|date:"Y/m/d H:i" }}</td>
+                {{ p|debt|safe }}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    <div class="row invoice-payment">
+        <div class="col-sm-7">
+        </div>
+        <div class="col-sm-5">
+            <div class="m-b-20">
+                <div class="table-responsive no-border">
+                    <table class="table mb-0">
+                        <tbody>
+                        <br><br>
+                        <tr>
+                            <th>Total :</th>
+                            <td class="text-right text-primary">
+                                <h3>{{ total|floatformat:2 }} SAR</h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Total Paid :</th>
+                            <td class="text-right text-success">
+                                <h3>{{ total_payment|floatformat:2 }} SAR</h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Total Debt:</th>
+                            <td class="text-right text-danger">
+                                <h3>{{ total|minus:total_payment|floatformat:2 }} SAR</h3>
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

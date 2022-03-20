@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+
+
+
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="page-title">{% translate 'Employees' %}</h3>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'index' %}">{% translate 'Dashboard' %}</a></li>
+                    <li class="breadcrumb-item active">{% translate 'Employees' %}</li>
+                </ul>
+            </div>
+            <div class="col-auto float-right ml-auto">
+                <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_leave"><i
+                        class="fa fa-plus"></i> {% translate 'Add Employees' %}</a>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-bordered mb-0">
+        <thead>
+        <tr>
+            <th>{% trans 'Name' %}</th>
+            <th>{% trans 'Email' %}</th>
+            <th>{% trans 'Organization' %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for v in customusers %}
+            <tr>
+                <td>
+                    <a href="{% url 'single_customuser' v.id %}">
+                        {{ v.username }}
+                    </a>
+                </td>
+                <td>{{ v.email }}</td>
+                <td>
+                    <a href="{% url 'single_organization' v.organization.id %}">
+                        {{ v.organization }}
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

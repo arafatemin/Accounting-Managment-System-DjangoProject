@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load product %}
+
+{% block content %}
+
+
+    <style>
+        .barcode {
+            width: 60%;
+            height: 60%;
+        }
+    </style>
+    <div class="content container-fluid">
+
+        <div class="page-header">
+            <div class="row">
+                <div class="col">
+                    <h3 class="page-title">{% translate 'Edit Product' %}</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}">{% translate 'Dashboard' %}</a></li>
+                        <li class="breadcrumb-item active">{% translate 'product' %}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title mb-0">{{ customer.name }}</h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            {% csrf_token %}
+
+
+                            <div class="form-group">
+                                <label>{% translate 'Name' %}:<span class="text-danger">*</span></label>
+                                <input class="form-control" type="text" name="name" value="{{ customer.name }}"
+                                       required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>{% translate 'Phone Number' %}:<span class="text-danger">*</span></label>
+                                <input class="form-control" type="number" name="phone_number"
+                                       value="{{ customer.phone_number }}">
+                            </div>
+
+                            <div class="form-group">
+                                <label>{% translate 'Email' %}:<span class="text-danger">*</span></label>
+                                <input class="form-control" type="email" name="email" value="{{ customer.email }}">
+                            </div>
+
+                            <div class="form-group">
+                                <label>{% translate 'Note' %}: </label>
+                                <textarea rows="4" class="form-control" name="note">{{ customer.note }}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>{% translate 'Address' %}: </label>
+                                <textarea rows="4" class="form-control" name="address">{{ customer.address }}</textarea>
+                            </div>
+                            <div class="submit-section">
+                                <button class="btn btn-success submit-btn">{% translate 'Update' %}</button>
+                            </div>
+
+
+                        </form>
+
+                                <a href="{% url 'customers' %}" class="btn btn-primary"> <i
+                                        class="fa fa-backward mr-2"></i>{% translate 'Back' %}</a>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

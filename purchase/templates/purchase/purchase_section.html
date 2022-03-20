@@ -1,0 +1,50 @@
+
+{% load purchase %}
+{% load i18n %}
+<div id="bought" class="pro-overview tab-pane fade">
+            <div class="row">
+                <div class="col-md-12 d-flex">
+                    <div class="card profile-box flex-fill">
+                        <div class="card-body">
+                            <h3 class="card-title">{% translate 'Bought' %}</h3>
+                            <div class="table-responsive" style="margin-top: 2rem;">
+                                <table class="table table-striped table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>{% translate 'Purchase' %}</th>
+                                        <th>{% translate 'Date' %}</th>
+                                        <th>{% trans 'Status' %}</th>
+                                        <th>{% trans 'Debt' %}</th>
+                                        <th>{% translate 'Note' %}</th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for invoice in bought %}
+                                        <tr>
+                                            <td>{{ forloop.counter }}</td>
+                                            <td>
+                                                <a href="{% url 'single_purchase' invoice.id %}">
+                                                    #PUR 00{{ invoice }}
+                                                </a>
+                                            </td>
+
+                                            <td>{{ invoice.datetime|date:"Y-m-d H:i" }}</td>
+                                            {{ invoice|purchase_debt|safe }}
+                                            <td data-toggle="tooltip" data-placement="top" title=""
+                                                data-original-title="Tooltip on top">{{ invoice.note }}
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>

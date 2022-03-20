@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load report %}
+{% load i18n %}
+{% load account %}
+
+{% block content %}
+    <div id="add_tax" class="modal custom-modal fade" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{% translate 'Add Account' %}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+
+                    <form method="post" action="{% url 'banks' %}">
+
+                        {% csrf_token %}
+
+
+                        <div class="form-group">
+                            <label>{% translate 'Name' %}<span class="text-danger">*</span></label>
+                            <input class="form-control" type="text" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>{% translate 'IBAN' %}</label>
+                            <input class="form-control" type="text" name="iban" required>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>{% translate 'Note' %}: <span class="text-danger"></span></label>
+                            <textarea rows="4" class="form-control" name="note"></textarea>
+                        </div>
+
+                        <div class="submit-section">
+                            <button class="btn btn-primary submit-btn">{% translate 'Add' %}</button>
+                        </div>
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="page-title">{% trans 'Accounts' %}</h3>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">{% trans 'Dashboard' %}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{% trans 'Accounts' %}</li>
+                    </ol>
+                </nav>
+            </div>
+
+            <div class="col-auto float-right ml-auto">
+                <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_tax"><i
+                        class="fa fa-plus"></i> {% trans 'Add' %}</a>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    <table class="table table-bordered mb-0">
+        <thead>
+        <tr>
+            <th>{% trans 'Name' %}</th>
+            <th>{% trans 'IBAN' %}</th>
+            <th>{% trans 'Note' %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for t in banks %}
+            <tr>
+                <td>{{ t.name }}</td>
+                <td>{{ t.iban }}</td>
+                <td>{{ tax.note }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <br><br>
+    <hr><br>
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title mb-0">{% trans 'Balance Report' %}</h4>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered mb-0">
+                    <thead>
+                    <tr>
+                        <th>{% trans 'Account' %}</th>
+                        <th>{% trans 'Total Income' %}</th>
+                        <th>{% trans 'Total Outcome' %}</th>
+                        <th>{% trans 'Balance' %}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for bank in banks %}
+
+                        <tr>
+                            <td>
+                                <a href="{% url 'single_bank' bank.id %}">
+                                    <div>
+                                        {{ bank.name }}
+                                    </div>
+                                </a></td>
+
+                            <td><h4 class="text-success">{{ bank|accountIncome }} SAR</h4></td>
+                            <td><h4 class="text-danger">{{ bank|accountOutcome }}</h4></td>
+                            <td>{% with i=bank|accountIncome %}
+                                {% with x=bank|accountOutcome %}
+                                    <h4 class="text-primary">{{ i|subtract:x|floatformat:'2' }}</h4> <!-- result is 4 -->
+                                {% endwith %}
+                            {% endwith %}</td>
+                        </tr>
+
+
+                    {% endfor %}
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

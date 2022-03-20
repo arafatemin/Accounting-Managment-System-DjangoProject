@@ -1,0 +1,208 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load report %}
+{% block content %}
+
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="page-title">{% trans 'Balance Sheet' %}</h3>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}">{% trans 'Dashboard' %}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{% trans 'Balance Sheet' %}</li>
+                    </ol>
+                </nav>
+            </div>
+
+
+        </div>
+    </div>
+
+    <form>
+        <div class="row filter-row">
+
+            <div class="col-sm-6 col-md-4">
+                <div class="form-group form-focus">
+                    <div class="cal-icon">
+                        <input class="form-control floating datetimepicker" value="{{ from }}" name="from" type="text">
+                    </div>
+                    <label class="focus-label">{% trans 'From' %}</label>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="form-group form-focus">
+                    <div class="cal-icon">
+                        <input class="form-control floating datetimepicker" name="to" value="{{ to }}" type="text">
+                    </div>
+                    <label class="focus-label">{% trans 'To' %}</label>
+                </div>
+            </div>
+            <div class="col-sm-4 col-md-2" style="width: 50%">
+                <button type="submit" class="btn btn-success btn-block"><i
+                        class="fa fa-filter"></i> {% trans 'Filter' %} </button>
+            </div>
+            <div class="col-sm-4 col-md-2" style="width: 50%">
+                <a href="{% url 'balance_sheet' %}" class="btn btn-secondary btn-block"><i
+                        class="fa fa-rotate-left"></i> {% trans 'Reset' %} </a>
+            </div>
+        </div>
+    </form>
+
+
+
+    <div class="row">
+
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+
+                    <h4 class="card-title mb-0">{% trans 'Invoice Report' %}</h4>
+
+
+                </div>
+
+
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+                            <tbody>
+                            <tr class="text-left">
+                                <td>{% trans 'Invoices' %}</td>
+
+                                <td class="text-right">
+                                    {% if sell_total.price__sum %}
+                                        {{ sell_total.price__sum|floatformat:'2' }} SAR
+                                    {% else %}
+                                        0 SAR
+                                    {% endif %}</td>
+                            </tr>
+
+                            <tr class="text-left">
+                                <td>{% trans 'Paid' %}</td>
+                                <td class="text-right">
+                                    {% if pay_total.amount__sum %}
+                                        {{ pay_total.amount__sum|floatformat:'2' }} SAR
+                                    {% else %}
+                                        0 SAR
+                                    {% endif %}</td>
+                            </tr>
+
+
+                            <tr class="text-left">
+                                <td>{% trans 'Unpaid' %}</td>
+                                <td class="text-right">{% if sell_total.price__sum %}
+                                    {% if pay_total.amount__sum %}
+                                        {{ sell_total.price__sum|minus:pay_total.amount__sum|floatformat:'2' }} SAR
+
+                                    {% else %}
+
+                                        {{ sell_total.price__sum }} SAR
+
+                                    {% endif %}
+
+
+                                {% else %}
+                                    0 SAR
+                                {% endif %}
+                                </td>
+
+                            </tr>
+
+
+                            <tr class="text-left">
+                                <td>{% trans 'Products Buy Price' %}</td>
+
+                                <td class="text-right">{{ buy_total.total_price__sum|floatformat:'2' }} SAR</td>
+
+
+                            </tr>
+
+
+                            <tr class="text-left">
+                                <td class="text-center"><h4>{% trans 'Total Profit' %}</h4></td>
+                                <td class="text-right">{% if sell_total.price__sum %}
+                                    {{ sell_total.price__sum|minus:buy_total.total_price__sum|floatformat:'2' }}
+                                    SAR{% else %}
+                                    0 SAR{% endif %}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+
+        <div class="col-lg-12">
+            <div class="card"> <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+                                 aria-controls="collapseExample">
+                <div class="card-header">
+
+
+                    <div class="row">
+                        <div class="col"> <h4 class="card-title mb-0">{% trans 'Expense Report' %}</h4></div>
+                    </div>
+
+
+                </div>
+            </a>
+
+                <div id="collapseExample" class="collapse card-body">
+                    <div class="table-responsive">
+                        <table style="font-size: 0.9rem" class="table table-hover mb-0">
+
+                            <tbody>
+                            {% for c in outcome_category %}
+
+                                <tr class="text-left event">
+                                    <td style="padding: 0.3rem">{{ c.name }}</td>
+                                    <td style="padding: 0.3rem"
+                                        class="text-right">
+                                        {% if c|outcome_category_total:request %}
+
+                                            {{ c|outcome_category_total:request|floatformat:'2' }}
+                                        {% else %}
+
+                                            0
+                                        {% endif %}
+                                        SAR
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+
+                            <tbody>
+                            <tr style="border:5px; border-style: hidden;border-bottom: 0.1rem solid #212529 !important;"
+                                class="text-left">
+                                <td class="text-center"><h4> {% trans 'Total' %}</h4></td>
+                                <td class="text-right"><h4>{{ out_total.amount__sum|floatformat:'2' }} SAR</h4></td>
+                            </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+{% endblock %}

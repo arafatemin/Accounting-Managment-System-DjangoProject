@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+    <div id="add_tax" class="modal custom-modal fade" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{% translate 'Add Product Category' %}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="{% url 'product_category' %}">
+
+                        {% csrf_token %}
+
+
+                        <div class="form-group">
+                            <label>{% translate 'Product Category' %}<span class="text-danger">*</span></label>
+                            <input class="form-control" type="text" name="title" required>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>{% translate 'Note' %}: <span class="text-danger"></span></label>
+                            <textarea rows="4" class="form-control" name="note"></textarea>
+                        </div>
+
+                        <div class="submit-section">
+                            <button class="btn btn-primary submit-btn">{% translate 'Add' %}</button>
+                        </div>
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="page-title">{% translate 'Product Category' %}</h3>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}">{% trans 'Dashboard' %}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{% trans 'Product Category' %}</li>
+                    </ol>
+                </nav>
+            </div>
+
+            <div class="col-auto float-right ml-auto">
+                <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_tax"><i
+                        class="fa fa-plus"></i>{% translate 'Add' %}</a>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    <table class="table table-bordered mb-0">
+        <thead>
+        <tr>
+            <th>{% trans 'Product Category' %}</th>
+            <th>{% trans 'Note' %}</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for pc in product_categories %}
+                <tr>
+                    <td>{{ pc }}</td>
+                    <td>{{ pc.note }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

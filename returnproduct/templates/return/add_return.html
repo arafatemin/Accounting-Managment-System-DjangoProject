@@ -1,0 +1,423 @@
+{% extends 'base2.html' %}
+
+
+{% load static %}
+{% load i18n %}
+{% load i18n_urls %}
+{% block content %}
+
+
+    <div id="app">
+        <div id="add_tax" class="modal custom-modal fade" role="dialog">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">{% translate 'Make payment' %}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row filter-row">
+                            <div class="form-group form-focus select-focus" style="width: 100%">
+                                <div class="col-12">
+                                    <select id="select_payment" class="select floating" required
+                                            v-model="pending_payment.id">
+                                        {% for b in banks %}
+                                            {% if forloop.counter == 1 %}
+                                                <option selected value="{{ b.id }}">{{ b.name }}</option>
+
+                                            {% else %}
+                                                <option value="{{ b.id }}">{{ b.name }}</option>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <label class="focus-label">{% trans 'Payment method' %}</label>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label class="col-form-label col-lg-2">Amount</label>
+                            <div class="col-lg-10">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+
+                                    </div>
+                                    <input v-model="pending_payment.amount" type="number" class="form-control"
+                                           name="amount"/>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>{% translate 'Note' %}: <span class="text-danger"></span></label>
+                            <textarea v-model="pending_payment.note" rows="4" class="form-control"
+                                      name="note"></textarea>
+                        </div>
+
+                        <div class="submit-section">
+                            <button class="btn btn-primary submit-btn" data-dismiss="modal"
+                                    v-on:click="add_payment();">{% translate 'Add' %}</button>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">{% trans 'Add Returned Product' %}</h3>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'index' %}">{% trans 'Dashboard' %}</a>
+                            </li>
+                            <li class="breadcrumb-item active"
+                                aria-current="page">{% trans 'Add Returned Product' %}</li>
+                        </ol>
+                    </nav>
+                </div>
+
+                <div class="col-auto float-right ml-auto">
+
+                </div>
+
+            </div>
+        </div>
+        <form id="purchase_form" action="{% url 'add_return' %}" method="post">
+            {% csrf_token %}
+            <div class="row filter-row">
+                <div class="col-sm-6 col-md-6">
+                    <div class="form-group form-focus select-focus">
+                        <select class="select floating" required id="vendor_select">
+                            <option value="-1">--------------------</option>
+                            {% for v in customers %}
+                                <option value="{{ v.id }}">{{ v.name }}</option>
+                            {% endfor %}
+                        </select>
+                        <label class="focus-label">{% trans 'Customer' %}</label>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-hover table-white">
+                <tr>
+                    <th class="col-1">#</th>
+                    <th class="col-2">{% trans 'Product' %}</th>
+                    <th class="col-2">{% trans 'Unit' %}</th>
+                    <th class="col-2">{% trans 'Price' %} (SAR)</th>
+                    <th class="col-2">{% trans 'Total Price' %} (SAR)</th>
+                    <th class="col-1"></th>
+                </tr>
+
+
+                <tr v-for="(i,p) in bucket">
+                    <td>[[ p+1 ]]</td>
+                    <td>[[ i.name ]]</td>
+                    <td>[[ i.unit ]]</td>
+                    <td>[[ i.price ]]</td>
+                    <td>[[ i.total_price ]]</td>
+                    <td><a href="javascript:void(0)" v-on:click="removeFromList(p)" class="text-success font-18"
+                           title="Add"><i
+                            class="fa fa-remove"></i></a></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td>
+                        <div class="form-group form-focus">
+                            <select class="selectpicker" data-live-search="true" id="select_product"
+                                    v-on:change="on_select_change($event);">
+                                <option value="-1">-----------</option>
+                                {% for p in products_list %}
+                                    <option value="{{ p.id }}">{{ p.sku }}--{{ p.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </td>
+
+                    <td>
+                        <input class="form-control" type="number" v-on:change="on_unit_change()"
+                               v-on:keyup="on_unit_change()" v-model="pending_product.unit">
+                    </td>
+                    <td>
+                        <input class="form-control" type="number" v-on:change="on_price_change($event)"
+                               v-on:keyup="on_price_change($event)" v-model="pending_product.price">
+                    </td>
+                    <td>
+                        <input class="form-control" v-on:change="on_total_change($event)"
+                               v-on:keyup="on_total_change($event)" type="number"
+                               v-model="pending_product.total_price">
+                    </td>
+                    <td><a href="javascript:void(0)" v-on:click="addNewAddColumn()" class="text-success font-18"
+                           title="Add"><i
+                            class="fa fa-plus"></i></a></td>
+                </tr>
+            </table>
+            <table class="table table-hover table-white">
+                <tr>
+                    <th> #</th>
+                    <th>{% trans 'Payment Method' %}</th>
+                    <th>{% trans 'Amount' %}</th>
+                    <th>{% trans 'Note' %}</th>
+                    <th></th>
+                </tr>
+
+                <tr v-for="(p,i) in payments">
+                    <td>[[i + 1]]</td>
+                    <td>[[ p.name ]]</td>
+                    <td>[[ p.amount|floatformat ]] SAR</td>
+                    <td>[[ p.note ]]</td>
+                    <td><a href="javascript:void(0)" v-on:click="removePayment(i)" class="text-success font-18"
+                           title="Add"><i
+                            class="fa fa-remove"></i></a></td>
+                </tr>
+            </table>
+
+
+            <input id="customer_input" type="hidden" value="" name="customer"/>
+            <input id="note_input" type="hidden" value="" name="note"/>
+            <input id="payments_input" type="hidden" value="" name="payments_input"/>
+            <input id="pwu_input" type="hidden" value="" name="pwu_input"/>
+
+
+        </form>
+
+
+        <div class="table-responsive">
+            <table class="table table-hover table-white">
+
+
+
+
+
+                <tr>
+                    <td colspan="5" style="text-align: right; font-weight: bold">
+                        {% translate 'Total' %}
+                    </td>
+                    <td style="text-align: right; padding-right: 30px; font-weight: bold; font-size: 16px;width: 230px">
+                        [[calculateWithTax(totalAmount()) ]] SAR
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>{% translate 'Note' %}</label>
+                    <textarea class="form-control" name="note" id="purchase_note" maxlength="512">#INV-00</textarea>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="submit-section">
+
+            <a href="#" class="btn btn-primary submit-btn" data-toggle="modal" data-target="#add_tax"><i
+                    class="fa fa-plus"></i> {% trans 'Make payment' %}</a>
+            <br><br>
+            <hr>
+
+            <a class="btn btn-primary submit-btn" href="#" data-toggle="modal" data-target="#delete_employee"><i
+                    class="fa fa-save m-r-5"></i>{% trans 'Save' %}</a>
+            <br>
+            <div class="modal custom-modal fade" id="delete_employee" role="dialog" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div class="form-header">
+                                <h3>{% trans 'Save Returned Product' %}</h3>
+                                <p>{% trans 'Are you sure want to Save?' %}</p>
+                            </div>
+                            <div class="modal-btn delete-action">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <a class="btn btn-primary continue-btn" v-on:click="submit"><i
+                                                class="fa fa-save m-r-5"></i>{% trans 'Save' %}</a>
+                                    </div>
+                                    <div class="col-6">
+                                        <a data-dismiss="modal"
+                                           class="btn btn-secondary cancel-btn active"><i
+                                                class="fa fa-backward m-r-5"></i>{% trans 'Cancel' %}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+    <script>
+        var products = {{ products|safe }};
+        var methods = {{ methods|safe }};
+    </script>
+
+    <script>
+        var app = new Vue({
+            delimiters: ["[[", "]]"],
+            el: "#app",
+            data: {
+                pending_product: {
+                    'id': -1,
+                    'name': '-----------',
+                    'unit': 1,
+                    'price': 0,
+                    'total_price': 0,
+                },
+                bucket: [],
+                payments: [],
+                pending_payment: {
+                    'id':{{ banks.0.id }},
+                    'amount': 0,
+                    'note': ''
+                },
+                payment_amount: 11,
+            }, methods: {
+                on_unit_change() {
+                    this.pending_product.total_price = (this.pending_product.price * this.pending_product.unit).toFixed(2)
+                },
+
+                submit() {
+                    var purchase_form = document.getElementById('purchase_form');
+                    var vendorr = document.getElementById('vendor_select').value;
+
+                    if (this.bucket.length === 0) {
+                        alert('Please add at least an product');
+                        return;
+                    }
+                    document.getElementById('pwu_input').value = JSON.stringify(this.bucket);
+                    document.getElementById('payments_input').value = JSON.stringify(this.payments);
+                    document.getElementById('customer_input').value = vendorr
+                    document.getElementById('note_input').value = document.getElementById('purchase_note').value;
+                    purchase_form.submit();
+                },
+
+                on_price_change(event) {
+                    this.pending_product.price = event.target.value;
+                    this.pending_product.total_price = this.pending_product.unit * this.pending_product.price;
+                },
+                on_total_change(event) {
+                    this.pending_product.total_price = event.target.value;
+                    this.pending_product.price = parseFloat(this.pending_product.total_price / this.pending_product.unit).toFixed(2);
+                },
+                removeFromList(p) {
+                    this.bucket.splice(p, 1);
+                },
+                removePayment(p) {
+                    this.payments.splice(p, 1);
+                },
+                totalAmount() {
+                    var total = 0.0;
+                    for (var i = 0; i < this.bucket.length; i++) {
+                        total += parseFloat(this.bucket[i].total_price);
+                    }
+                    return total;
+                },
+
+                calculateWithTax() {
+                    var t = this.totalAmount();
+                    this.pending_payment = {
+                        'id':{{ banks.0.id }},
+                        'amount': t,
+                        'note': '',
+                    };
+
+                    return t;
+
+                },
+
+                add_payment() {
+                    var name = "";
+                    var selct_value = document.getElementById('select_payment').value;
+                    if (parseFloat(this.pending_payment.amount) <= 0) {
+                        alert("Payment can not be smaller than 0");
+                        return;
+                    }
+                    for (var i = 0; i < methods.length; i++) {
+                        if (selct_value.toString() === methods[i].id.toString()) {
+                            name = methods[i].name;
+                        }
+                    }
+                    this.pending_payment.id = selct_value;
+                    this.pending_payment.name = name;
+                    this.payments.push(this.pending_payment);
+                    this.pending_payment = {
+                        'id':{{ banks.0.id }},
+                        'amount': 0,
+                        'note': '',
+                    };
+                },
+                addNewAddColumn() {
+                    if (this.pending_product.id.toString() === '-1') {
+                        alert('Please select an product');
+                        return;
+                    }
+                    var index = 0;
+                    for (var i = 0; i < products.length; i++) {
+                        if (products[i].id.toString() === this.pending_product.id.toString()) {
+                            index = i;
+                            break;
+                        }
+                    }
+
+                    this.bucket.push(this.pending_product);
+                    this.pending_product = {
+                        'id': -1,
+                        'name': '-----------',
+                        'unit': 1,
+                        'price': 0,
+                        'total_price': 0,
+                    };
+                    document.getElementById('select_product').value = '-1';
+                },
+                on_select_change(event) {
+                    var id = event.target.value.toString();
+                    if (id !== '-1') {
+                        for (var i = 0; i < products.length; i++) {
+                            var p = products[i];
+                            if (p.id.toString() === id) {
+                                this.pending_product.id = p.id;
+                                this.pending_product.price = p.price;
+                                this.pending_product.name = p.name;
+                                this.pending_product.total_price = this.pending_product.unit * this.pending_product.price;
+                            }
+                        }
+                    }
+                }
+            },
+        });
+
+
+    </script>
+
+    <script src="{% static 'assets/js/jquery-3.6.0.min.js' %}"></script>
+
+    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+    <script src="{% static 'assets/js/jquery.slimscroll.min.js' %}"></script>
+
+    <script src="{% static 'assets/js/select2.min.js' %}"></script>
+
+    <script src="{% static 'assets/js/moment.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap-datetimepicker.min.js' %}"></script>
+
+    <script src="{% static 'assets/js/app.js' %}"></script>
+
+{% endblock %}
+

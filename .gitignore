@@ -1,0 +1,11 @@
+venv/*
+*.pot
+*.log
+.idea/*
+*/__pycache__/*
+*/*__pycache__/*
+db.sqlite3
+*.pyc
+__ pycache __
+*.iws /out/
+media

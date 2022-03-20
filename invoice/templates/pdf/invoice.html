@@ -1,0 +1,158 @@
+{% load invoice %}
+{% load i18n %}
+{% load static %}
+{% load invoice %}
+{% get_current_language_bidi as rtl %}
+<html>
+<head>
+
+    <title>#STK_00{{ stk.id }}</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/line-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/plugins/morris/morris.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/select2.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap-datetimepicker.min.css' %}">
+    <style type="text/css">
+
+
+        .header {
+            font-size: 20px;
+            font-weight: 100;
+            text-align: center;
+            color: #007cae;
+        }
+
+        .title {
+            font-size: 22px;
+            font-weight: 100;
+            /* text-align: right;*/
+            padding: 10px 20px 0px 20px;
+        }
+
+        .title span {
+            color: #007cae;
+        }
+
+        .details {
+            padding: 10px 20px 0px 20px;
+            text-align: right !important;
+            /*margin-left: 40%;*/
+        }
+
+        .hrItem {
+            border: none;
+            height: 1px;
+            /* Set the hr color */
+            color: #333;
+            /* old IE */
+            background-color: #fff;
+            /* Modern Browsers */
+        }
+
+        @font-face {
+            font-family: RTLFont;
+            src: url('/home/uygur/ACCOUNT/static/assets/fonts/ukijekran.ttf')
+        }
+
+        body {
+            font-weight: 200;
+            font-size: 14px;
+            font-family: RTLFont !important;
+
+        }
+
+        {% if rtl %}
+            .rtl {
+                text-align: right;
+                float: right;
+                direction: rtl;
+
+            }
+        {% endif %}
+
+        /* @page {
+        background-image: url('C:\Users\BigBoy\Desktop\MyProjects\ToysSite\static\background.png');
+        } */
+    </style>
+
+</head>
+<body id="body">
+<!-- Content for Static Frame 'header_frame' -->
+<div id="header_content">
+    <h3>Bilimsah company</h3>
+</div>
+
+<!-- Content for Static Frame 'footer_frame' -->
+<div id="footer_content">(c) - page
+    <pdf:pagenumber>
+        of
+        <pdf:pagecount>
+
+
+</div>
+
+<!-- HTML Content -->
+<h1>#INV_00{{ invoice.id }}</h1>
+
+<br><br>
+<h3>Products</h3>
+<hr>
+
+<table>
+    <tr>
+        <td>#</td>
+        <td>{% translate 'Product' as Product %}{{ Product|arabic }}</td>
+
+        <th>{% translate 'Quantity' as Quantity %}{{ Quantity|arabic }}</th>
+        <th>{% translate 'Price' as Price %}{{ Price|arabic }}</th>
+        <th>{% translate 'Total' as Total %}{{ Total|arabic }}</th>
+    </tr>
+    {% for p in pwus %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <th style="text-align: right">{{ p.product.product.name|arabic }}</th>
+            <th>{{ p.unit }} {{ p.product.product.type.name|arabic }}</th>
+            <th>{{ p.price }} SAR</th>
+            <th>{% widthratio p.unit 1 p.price %} SAR</th>
+        </tr>
+    {% endfor %}
+
+
+</table>
+
+
+<br><br>
+<h3>Payments</h3>
+<hr>
+
+
+<table>
+    <tr>
+        <th>Amount</th>
+        <th>Date</th>
+    </tr>
+    {% for p in payments %}
+        <tr>
+            <th>{{ p.amount }} SAR</th>
+            <th>{{ p.date|date:"Y/m/d H:i" }}</th>
+        </tr>
+    {% endfor %}
+
+</table>
+
+
+<br><br>
+<h3>Total</h3>
+<hr>
+
+<p><strong>{% translate 'Grand Total' as grand %}{{ grand|arabic }}:{{ total }} SAR</strong></p>
+<p><strong>Total Payed: {{ payed }} SAR</strong></p>
+<p><strong>Total Debt: {{ debt }} SAR</strong></p>
+
+</body>
+</html>

@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+    <div id="add_tax" class="modal custom-modal fade" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{% translate 'Add Income' %}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="{% url 'income' %}">
+
+                        {% csrf_token %}
+
+                        <div class="form-group">
+                            <label>{% translate 'Amount' %}<span class="text-danger">*</span></label>
+                            <input class="form-control" type="text" name="amount" required>
+                        </div>
+
+                        <div class="form-group form-focus select-focus">
+                            <select class="select floating" name="category" required>
+                                {% for c in income_categories %}
+                                    <option value="{{ c.id }}">{{ c.name }}</option>
+                                {% endfor %}
+                            </select>
+                            <label class="focus-label">{% trans 'Category' %}</label>
+                        </div>
+
+
+                        <div class="form-group form-focus select-focus">
+                            <select class="select floating" name="bank" required>
+                                {% for c in banks %}
+                                    <option value="{{ c.id }}">{{ c.name }}</option>
+                                {% endfor %}
+                            </select>
+                            <label class="focus-label">{% trans 'Bank' %}</label>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>{% translate 'Note' %}: <span class="text-danger"></span></label>
+                            <textarea rows="4" class="form-control" name="note"></textarea>
+                        </div>
+
+                        <div class="submit-section">
+                            <button class="btn btn-primary submit-btn">{% translate 'Add' %}</button>
+                        </div>
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="page-title">{% trans 'Incomes' %}</h3>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}">{% trans 'Dashboard' %}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{% trans 'Incomes' %}</li>
+                    </ol>
+                </nav>
+            </div>
+
+            <div class="col-auto float-right ml-auto">
+                <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_tax"><i
+                        class="fa fa-plus"></i> {% trans 'Add' %}</a>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+    <table class="table table-bordered mb-0">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>{% trans 'Amount' %}</th>
+            <th>{% trans 'Category' %}</th>
+            <th>{% trans 'Datetime' %}</th>
+            <th>{% trans 'User' %}</th>
+            <th>{% trans 'Account' %}</th>
+            <th>{% trans 'Note' %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for o in incomes %}
+            <tr>
+                <td>
+                    #INC 00{{ o.id }}
+                </td>
+                <td>
+                    {{ o.amount }} SAR
+                </td>
+                <td>
+                    {{ o.category.name }}
+                </td>
+
+                <td>
+                    {{ o.datetime|date:"Y/m/d H:i" }}
+                </td>
+                <td>
+                    {{ o.user.username }}
+                </td>
+                <td>
+                    {{ o.bank.name }}
+                </td>
+                <td>
+                    {{ o.note }}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,227 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load transfer %}
+{% load report %}
+{% block content %}
+
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="page-title"><a href="{% url 'single_organization' organization.id %}">
+                    {{ organization.name }}
+                </a></h3>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}">{% trans 'Dashboard' %}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{% trans 'Organization Report' %}</li>
+                    </ol>
+                </nav>
+            </div>
+
+
+        </div>
+    </div>
+
+    {#    <form>#}
+    {#        <div class="row filter-row">#}
+    {#            <div class="col-sm-6 col-md-4">#}
+    {#                <div class="form-group form-focus">#}
+    {#                    <div class="cal-icon">#}
+    {#                        <input class="form-control floating datetimepicker" value="{{ from }}" name="from" type="text">#}
+    {#                    </div>#}
+    {#                    <label class="focus-label">{% trans 'From' %}</label>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#            <div class="col-sm-6 col-md-4">#}
+    {#                <div class="form-group form-focus">#}
+    {#                    <div class="cal-icon">#}
+    {#                        <input class="form-control floating datetimepicker" name="to" value="{{ to }}" type="text">#}
+    {#                    </div>#}
+    {#                    <label class="focus-label">{% trans 'To' %}</label>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#            <div class="col-sm-6 col-md-4">#}
+    {#                <button type="submit" class="btn btn-success btn-block"> {% trans 'Filter' %} </button>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </form>#}
+    <div class="row">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-md-3 col-sm-3 col-lg-3">
+                    <div class="card dash-widget">
+                        <div class="card-body">
+
+                            <div class="dash-widget-info">
+                                <h3 class="text-center"><i
+                                        style="font-size: 1rem">{{ organization|abs_sum }} SAR</i></h3>
+                                <div style="color: orange" class="text-center">
+                                    <span>{% trans 'Total product price' %}</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-3 col-lg-3">
+                    <div class="card dash-widget">
+                        <div class="card-body">
+
+                            <div class="dash-widget-info">
+                                <h3 class="text-center"><i
+                                        style="font-size: 1rem"> SAR</i></h3>
+                                <div style="color: orange" class="text-center">
+                                    <span>{% trans 'Total Balance' %}</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-3 col-lg-3">
+                    <div class="card dash-widget">
+                        <div class="card-body">
+
+                            <div class="dash-widget-info">
+                                <h3 class="text-center"><i
+                                        style="font-size: 1rem"> SAR</i></h3>
+                                <div style="color: orange" class="text-center">
+                                    <span>{% trans 'Total Balance' %}</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-3 col-lg-3">
+                    <div class="card dash-widget">
+                        <div class="card-body">
+
+                            <div class="dash-widget-info">
+                                <h3 class="text-center"><i
+                                        style="font-size: 1rem"> SAR</i></h3>
+                                <div style="color: orange" class="text-center">
+                                    <span>{% trans 'Total Balance' %}</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title mb-0">{% trans 'Balance Report' %}</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered mb-0">
+                            <thead>
+                            <tr>
+                                <th>{% trans 'Account' %}</th>
+                                <th>{% trans 'Income' %}</th>
+                                <th>{% trans 'Outcome' %}</th>
+                                <th>{% trans 'Balance' %}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {{ organization|balance|safe }}
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <a href="{% url 'single_organization' organization.id %}">
+                            {{ organization.name }}
+                        </a>
+                    </h4>
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title mb-0">{% trans 'Product Report' %}</h4>
+                        </div>
+
+
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered mb-0">
+                                    <thead>
+                                    <tr>
+                                        <th>{% trans 'Product' %}</th>
+                                        <th>{% trans 'Unit' %}</th>
+                                        <th>{% trans 'Single Buy Price' %}</th>
+                                        <th>{% trans 'Single Sell Price' %}</th>
+                                        <th>{% trans 'Total Price' %}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {{ result|safe }}
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td style="color: orange">{% trans 'Total' %}</td>
+                                        <td style="color: orange">{{ organization|abs_sum }} SAR</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-sm-4 col-md-4">
+                                </div>
+                                <div class="col-sm-8 col-md-8">
+                                    <div class="dataTables_paginate paging_simple_numbers">
+
+                                        <ul class="pagination">
+                                            <div class="row">
+
+                                                <li class="paginate_button page-item"><a class="page-link text-danger"
+                                                                                         href="?page=1">1</a>
+                                                    {% for i in page_range %}
+
+
+                                                        {% if page_obj.number == i %}
+                                                            <li class="paginate_button page-item active"><span
+                                                                    class="page-link">{{ i }} <span class="sr-only">(current)</span></span>
+                                                            </li>
+                                                        {% else %}
+                                                            <li class="paginate_button page-item"><a class="page-link"
+                                                                                                     href="?page={{ i }}">{{ i }}</a>
+                                                            </li>
+                                                        {% endif %}
+
+
+                                                    {% endfor %}
+                                                <li class="paginate_button page-item"><a class="page-link text-danger"
+                                                                                         href="?page={{ total_pages }}">{{ total_pages }}</a>
+
+                                                    {% if page_obj.has_next %} {# whether the next page exists #}
+
+                                                        <li class="paginate_button page-item next active"><a
+                                                                href="?page={{ page_obj.next_page_number }}"
+                                                                class="page-link">Next</a>
+                                                        </li>
+                                                    {% endif %}
+
+                                            </div>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+{% endblock %}

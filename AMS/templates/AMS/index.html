@@ -1,0 +1,540 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load dashboard %}
+
+{% block content %}
+
+
+
+    <div class="content container-fluid">
+        <div class="page-header text-center">
+            <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12">
+            </div>
+            <br>
+
+        </div>
+
+
+    </div>
+
+    <br>
+
+
+    <div class="col-sm-12">
+
+        <div class="row">
+
+            <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12">
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <h3 class="card-title mb-0">&nbsp;&nbsp; {% trans 'Daily Report' %}</h3>
+                        </div>
+                    </div>
+
+
+                    <div class="card-body">
+
+
+                        <div class="row">
+
+
+                            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                                <div class="card dash-widget">
+                                    <a href="{% url 'products' %}">
+                                        <div class="card-body"
+                                             style="background:linear-gradient(to right,#00c5fb 0%,#0253cc 100%)">
+                                            <img src="{% static 'assets/imgs/gelis.png' %}" height="70px" width="70px">
+                                            <div class="dash-widget-info">
+                                                <span style="color: white">{% trans 'product' %}</span>
+                                            </div>
+                                        </div>
+
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                                <div class="card dash-widget">
+                                    <a href="{% url 'banks' %}">
+                                        <div class="card-body"
+                                             style="background:linear-gradient(to right,#00c5fb 0%,#0253cc 100%)">
+                                            <img src="{% static 'assets/imgs/icons8-bank-64 (1).png' %}" height="70px" width="70px">
+                                            <div class="dash-widget-info">
+                                                <span style="color: white">{% trans 'Account' %}</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-2">
+                                <div class="card dash-widget">
+                                    <a href="{% url 'tax' %}">
+                                        <div class="card-body"
+                                             style="background:linear-gradient(to right,#00c5fb 0%,#0253cc 100%)">
+                                            <img src="{% static 'assets/imgs/icons8-tax-100.png' %}" height="70px" width="70px">
+                                            <div class="dash-widget-info">
+                                                <span style="color: white">{% trans 'tax' %}</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-2">
+                                <div class="card dash-widget">
+                                    <a href="{% url 'unit_type' %}">
+                                        <div class="card-body"
+                                             style="background:linear-gradient(to right,#00c5fb 0%,#0253cc 100%)">
+                                            <img src="{% static 'assets/imgs/icons8-unit-80.png' %}" height="70px" width="70px">
+                                            <div class="dash-widget-info">
+                                                <span style="color: white">{% trans 'unit_type' %}</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-2">
+                                <div class="card dash-widget">
+                                    <a href="{% url 'product_category' %}">
+                                        <div class="card-body"
+                                             style="background:linear-gradient(to right,#00c5fb 0%,#0253cc 100%)">
+                                            <img src="{% static 'assets/imgs/icons8-category-50.png' %}" height="70px" width="70px">
+                                            <div class="dash-widget-info">
+                                                <span style="color: white">{% trans 'product_category' %}</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+
+
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-sm-12">
+
+        <div class="row">
+
+            <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12">
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <h3 class="card-title mb-0">&nbsp;&nbsp; {% trans 'Sales' %}</h3>
+                        </div>
+                    </div>
+
+
+                    <div class="card-body">
+
+
+                        <div class="row">
+
+
+                            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                                <div class="card dash-widget">
+                                    <a href="{% url 'invoices' %}">
+                                        <div class="card-body"
+                                             style="background:linear-gradient(to right,#00c5fb 0%,#0253cc 100%)">
+                                            <img src="{% static 'assets/imgs/invoices.png' %}" height="70px"
+                                                 width="70px">
+                                            <div class="dash-widget-info">
+                                                <span style="color: white">{% trans 'Invoices' %}</span>
+                                            </div>
+                                        </div>
+
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                                <div class="card dash-widget">
+                                    <a href="{% url 'transfer' %}">
+                                        <div class="card-body"
+                                             style="background:linear-gradient(to right,#00c5fb 0%,#0253cc 100%)">
+                                            <img src="{% static 'assets/imgs/truck.png' %}" height="70px" width="70px">
+                                            <div class="dash-widget-info">
+                                                <span style="color: white">{% trans 'Product Transfer' %}</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                                <div class="card dash-widget">
+                                    <a href="{% url 'return' %}">
+                                        <div class="card-body"
+                                             style="background:linear-gradient(to right,#00c5fb 0%,#0253cc 100%)">
+                                            <img src="{% static 'assets/imgs/Gidis.png' %}" height="70px" width="70px">
+                                            <div class="dash-widget-info">
+                                                <span style="color: white">{% trans 'Return Product' %}</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                                <div class="card dash-widget">
+                                    <a href="{% url 'customers' %}">
+                                        <div class="card-body"
+                                             style="background:linear-gradient(to right,#00c5fb 0%,#0253cc 100%)">
+                                            <img src="{% static 'assets/imgs/Elis.png' %}" height="70px" width="70px">
+                                            <div class="dash-widget-info">
+                                                <span style="color: white">{% trans 'Customers' %}</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-sm-12">
+
+        <div class="row">
+
+            <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12">
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <h3 class="card-title mb-0">&nbsp;&nbsp; {% trans 'Purchases' %}</h3>
+                        </div>
+                    </div>
+
+
+                    <div class="card-body">
+
+
+                        <div class="row">
+
+
+                            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                                <div class="card dash-widget">
+                                    <a href="{% url 'purchase' %}">
+                                        <div class="card-body"
+                                             style="background:linear-gradient(to right,#00c5fb 0%,#0253cc 100%)">
+                                            <img src="{% static 'assets/imgs/cargo.png' %}" height="70px" width="70px">
+                                            <div class="dash-widget-info">
+                                                <span style="color: white">{% trans 'Purchase' %}</span>
+                                            </div>
+                                        </div>
+
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                                <div class="card dash-widget">
+                                    <a href="{% url 'stock' %}">
+                                        <div class="card-body"
+                                             style="background:linear-gradient(to right,#00c5fb 0%,#0253cc 100%)">
+                                            <img src="{% static 'assets/imgs/icons8-create-document-50.png' %}" height="70px"
+                                                 width="70px">
+                                            <div class="dash-widget-info">
+                                                <span style="color: white">{% trans 'From Stock' %}</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                                <div class="card dash-widget">
+                                    <a href="{% url 'vendors' %}">
+                                        <div class="card-body"
+                                             style="background:linear-gradient(to right,#00c5fb 0%,#0253cc 100%)">
+                                            <img src="{% static 'assets/imgs/vendor.png' %}" height="70px" width="70px">
+                                            <div class="dash-widget-info">
+                                                <span style="color: white">{% trans 'Vendors' %}</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                                <div class="card dash-widget">
+                                    <a href="{% url 'cities' %}">
+                                        <div class="card-body"
+                                             style="background:linear-gradient(to right,#00c5fb 0%,#0253cc 100%)">
+                                            <img src="{% static 'assets/imgs/icons8-city-buildings-50.png' %}"
+                                                 height="70px" width="70px">
+                                            <div class="dash-widget-info">
+                                                <span style="color: white">{% trans 'cities' %}</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-sm-12">
+
+        <div class="row">
+
+            <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12">
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <h3 class="card-title mb-0">&nbsp;&nbsp; {% trans 'Cost' %}</h3>
+                        </div>
+                    </div>
+
+
+                    <div class="card-body">
+
+
+                        <div class="row">
+
+
+                            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                                <div class="card dash-widget">
+                                    <a href="{% url 'outcome_category' %}">
+                                        <div class="card-body"
+                                             style="background:linear-gradient(to right,#00c5fb 0%,#0253cc 100%)">
+                                            <img src="{% static 'assets/imgs/icons8-output-80.png' %}" height="70px"
+                                                 width="70px">
+                                            <div class="dash-widget-info">
+                                                <span style="color: white">{% trans 'outcome category' %}</span>
+                                            </div>
+                                        </div>
+
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                                <div class="card dash-widget">
+                                    <a href="{% url 'outcome' %}">
+                                        <div class="card-body"
+                                             style="background:linear-gradient(to right,#00c5fb 0%,#0253cc 100%)">
+                                            <img src="{% static 'assets/imgs/icons8-output-50.png' %}" height="70px"
+                                                 width="70px">
+                                            <div class="dash-widget-info">
+                                                <span style="color: white">{% trans 'outcome' %}</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                                <div class="card dash-widget">
+                                    <a href="{% url 'transfer_money' %}">
+                                        <div class="card-body"
+                                             style="background:linear-gradient(to right,#00c5fb 0%,#0253cc 100%)">
+                                            <img src="{% static 'assets/imgs/serf.png' %}" height="70px" width="70px">
+                                            <div class="dash-widget-info">
+                                                <span style="color: white">{% trans 'transfer_money' %}</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                                <div class="card dash-widget">
+                                    <a href="{% url 'customusers' %}">
+                                        <div class="card-body"
+                                             style="background:linear-gradient(to right,#00c5fb 0%,#0253cc 100%)">
+                                            <img src="{% static 'assets/imgs/users.png' %}"
+                                                 height="70px" width="70px">
+                                            <div class="dash-widget-info">
+                                                <span style="color: white">{% trans 'Employees' %}</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="col-sm-12">
+
+        <div class="row">
+
+            <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12">
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <h3 class="card-title mb-0">&nbsp;&nbsp; {% trans 'Report' %}</h3>
+                        </div>
+                    </div>
+
+
+                    <div class="card-body">
+
+
+                        <div class="row">
+
+
+                            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                                <div class="card dash-widget">
+                                    <a href="{% url 'product_report' %}">
+                                        <div class="card-body"
+                                             style="background:linear-gradient(to right,#00c5fb 0%,#0253cc 100%)">
+                                            <img src="{% static 'assets/imgs/mehzen.png' %}" height="70px"
+                                                 width="70px">
+                                            <div class="dash-widget-info">
+                                                <span style="color: white">{% trans 'product_report' %}</span>
+                                            </div>
+                                        </div>
+
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                                <div class="card dash-widget">
+                                    <a href="{% url 'general_report' %}">
+                                        <div class="card-body"
+                                             style="background:linear-gradient(to right,#00c5fb 0%,#0253cc 100%)">
+                                            <img src="{% static 'assets/imgs/graf2.png' %}" height="70px"
+                                                 width="70px">
+                                            <div class="dash-widget-info">
+                                                <span style="color: white">{% trans 'general_report' %}</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-2">
+                                <div class="card dash-widget">
+                                    <a href="{% url 'balance_sheet' %}">
+                                        <div class="card-body"
+                                             style="background:linear-gradient(to right,#00c5fb 0%,#0253cc 100%)">
+                                            <img src="{% static 'assets/imgs/graf.png' %}" height="70px" width="70px">
+                                            <div class="dash-widget-info">
+                                                <span style="color: white">{% trans 'balance_sheet' %}</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+                            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-2">
+                                <div class="card dash-widget">
+                                    <a href="{% url 'organizations' %}">
+                                        <div class="card-body"
+                                             style="background:linear-gradient(to right,#00c5fb 0%,#0253cc 100%)">
+                                            <img src="{% static 'assets/imgs/icons8-share-100.png' %}" height="70px"
+                                                 width="70px">
+                                            <div class="dash-widget-info">
+                                                <span style="color: white">{% trans 'Organizations' %}</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-2">
+                                <div class="card dash-widget">
+                                    <a href="{% url 'account_a_day' %}">
+                                        <div class="card-body"
+                                             style="background:linear-gradient(to right,#00c5fb 0%,#0253cc 100%)">
+                                            <img src="{% static 'assets/imgs/gunluk.png' %}" height="70px"
+                                                 width="70px">
+                                            <div class="dash-widget-info">
+                                                <span style="color: white">{% trans 'account_a_day' %}</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    </div>
+
+{% endblock %}

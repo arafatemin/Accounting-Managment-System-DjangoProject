@@ -1,0 +1,1881 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-02-12 01:34+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\AMS\settings.py:141
+msgid "Arabic"
+msgstr ""
+
+#: .\AMS\settings.py:142
+msgid "English"
+msgstr ""
+
+#: .\AMS\settings.py:143 .\AMS\settings.py:162
+msgid "Uighur"
+msgstr ""
+
+#: .\AMS\templates\AMS\index.html:18
+msgid "Welcome"
+msgstr "خۇش كەپسىز"
+
+#: .\AMS\templates\AMS\index.html:60
+msgid "Daily Report"
+msgstr "كۈندۈلىك دوكلات"
+
+#: .\AMS\templates\AMS\index.html:69 .\AMS\templates\AMS\index.html:96
+#: .\AMS\templates\base.html:168 .\AMS\templates\base2.html:182
+msgid "Sales"
+msgstr "سېتېش"
+
+#: .\AMS\templates\AMS\index.html:82
+#: .\report\templates\report\balance_sheet.html:72
+msgid "Invoices"
+msgstr "مال سېتىش"
+
+#: .\AMS\templates\AMS\index.html:110
+msgid "Not Payed"
+msgstr "تۆلەنمىگەن"
+
+#: .\AMS\templates\AMS\index.html:124
+msgid "Profit"
+msgstr "پايدا"
+
+#: .\AMS\templates\AMS\index.html:138 .\AMS\templates\AMS\index.html:297
+#: .\AMS\templates\base.html:182 .\AMS\templates\base2.html:196
+#: .\customuser\templates\customuser\single_customuser.html:176
+msgid "Transfer"
+msgstr "مال يۆتكەش"
+
+#: .\AMS\templates\AMS\index.html:152
+#: .\product\templates\product\single_product.html:246
+#: .\returnproduct\templates\return\single_return.html:81
+msgid "Returned"
+msgstr "قايتۇرۇلغان مال"
+
+#: .\AMS\templates\AMS\index.html:165
+msgid "Expenses"
+msgstr "چىقىملار"
+
+#: .\AMS\templates\AMS\index.html:260 .\bank\templates\bank\single_bank.html:43
+#: .\bank\templates\bank\single_bank.html:127
+#: .\bank\templates\outcomes\additional_outcome.html:67
+#: .\customer\templates\customer\single_customer.html:88
+#: .\fromstock\templates\fromstock\single_stock.html:83
+#: .\fromstock\templates\pdf\stock_pdf.html:119
+#: .\invoice\templates\invoice\add_invoice.html:221
+#: .\invoice\templates\pdf\invoice.html:105
+#: .\organization\templates\organizations\single_organization.html:176
+#: .\product_transfer\templates\pdf\transfer_pdf.html:119
+#: .\product_transfer\templates\product_transfer\add_transfer.html:223
+#: .\purchase\templates\purchase\add_purchase.html:196
+#: .\report\templates\report\balance_sheet.html:190
+#: .\report\templates\report\single_org_report.html:164
+#: .\returnproduct\templates\pdf\return_pdf.html:125
+#: .\returnproduct\templates\return\add_return.html:200
+#: .\returnproduct\templates\return\single_return.html:206
+#: .\vendor\templates\vendors\single_vendor.html:159
+msgid "Total"
+msgstr "ئومۇمىي"
+
+#: .\AMS\templates\AMS\index.html:273
+msgid "Purchases"
+msgstr "سېتىۋېلىش"
+
+#: .\AMS\templates\AMS\index.html:284 .\AMS\templates\base.html:194
+#: .\AMS\templates\base.html:199 .\AMS\templates\base2.html:208
+#: .\AMS\templates\base2.html:213
+#: .\customer\templates\customer\single_customer.html:167
+#: .\purchase\templates\purchase\purchase.html:10
+#: .\purchase\templates\purchase\purchase.html:14
+#: .\purchase\templates\purchase\purchase_section.html:15
+#: .\purchase\templates\purchase\single_purchase.html:10
+#: .\purchase\templates\purchase\single_purchase.html:14
+#: .\purchase\templates\purchase\single_purchase.html:38
+msgid "Purchase"
+msgstr "مال سېتىۋېلىش"
+
+#: .\AMS\templates\AMS\index.html:311 .\AMS\templates\base.html:219
+#: .\AMS\templates\base2.html:233
+#: .\bank\templates\incomes\money_transfer_in.html:10
+#: .\bank\templates\incomes\money_transfer_in.html:14
+#: .\bank\templates\incomes\money_transfer_in.html:58
+#: .\bank\templates\outcomes\money_transfer_in.html:10
+#: .\bank\templates\outcomes\money_transfer_in.html:14
+#: .\bank\templates\outcomes\money_transfer_in.html:58
+#: .\bank\templates\transfer_money.html:67
+#: .\bank\templates\transfer_money.html:71
+msgid "Money Transfer"
+msgstr "پۇل يۆتكەش"
+
+#: .\AMS\templates\AMS\index.html:331
+msgid "In"
+msgstr "كىرگەن پۇل"
+
+#: .\AMS\templates\AMS\index.html:346
+msgid "Out"
+msgstr "چىققان پۇل"
+
+#: .\AMS\templates\base.html:51 .\AMS\templates\base2.html:63
+#: .\customuser\templates\customuser\login.html:11
+msgid "Bilimsah Accounting System"
+msgstr "بىلىمشاھ ھىسابات باشقۇرۇش سىستېمى"
+
+#: .\AMS\templates\base.html:98 .\AMS\templates\base2.html:110
+msgid "My Profile"
+msgstr "ھىسابىم"
+
+#: .\AMS\templates\base.html:99 .\AMS\templates\base.html:112
+#: .\AMS\templates\base2.html:111 .\AMS\templates\base2.html:125
+msgid "Logout"
+msgstr "چىكىنىش"
+
+#: .\AMS\templates\base.html:125 .\AMS\templates\base2.html:139
+msgid "Main"
+msgstr "ئاساسىي"
+
+#: .\AMS\templates\base.html:128 .\AMS\templates\base2.html:142
+#: .\additional\templates\additional\income.html:70
+#: .\additional\templates\additional\income_category.html:52
+#: .\additional\templates\additional\outcome.html:70
+#: .\additional\templates\additional\outcome_category.html:52
+#: .\bank\templates\bank\banks.html:61
+#: .\bank\templates\bank\single_bank.html:16
+#: .\bank\templates\incomes\additional_income.html:13
+#: .\bank\templates\incomes\invoice_payments.html:17
+#: .\bank\templates\incomes\money_transfer_in.html:13
+#: .\bank\templates\incomes\org_debt_payment_in.html:13
+#: .\bank\templates\incomes\product_transfer_payment_in.html:13
+#: .\bank\templates\outcomes\additional_outcome.html:13
+#: .\bank\templates\outcomes\invoice_payments.html:17
+#: .\bank\templates\outcomes\money_transfer_in.html:13
+#: .\bank\templates\outcomes\org_debt_payment_in.html:13
+#: .\bank\templates\outcomes\product_transfer_payment_in.html:13
+#: .\bank\templates\transfer_money.html:70 .\city\templates\city\cities.html:54
+#: .\customer\templates\customer\customers.html:14
+#: .\customer\templates\customer\single_customer.html:59
+#: .\customer\templates\customer\update_customer.html:22
+#: .\customuser\templates\customuser\customusers.html:14
+#: .\customuser\templates\customuser\single_customuser.html:15
+#: .\fromstock\templates\fromstock\add_stock.html:18
+#: .\fromstock\templates\fromstock\single_stock.html:13
+#: .\fromstock\templates\fromstock\stocks.html:13
+#: .\invoice\templates\invoice\add_invoice.html:85
+#: .\invoice\templates\invoice\invoices.html:13
+#: .\invoice\templates\invoice\single_invoice.html:13
+#: .\organization\templates\organizations\add_organization.html:19
+#: .\organization\templates\organizations\organization.html:19
+#: .\organization\templates\organizations\single_organization.html:140
+#: .\product\templates\product\product_category.html:52
+#: .\product\templates\product\products.html:186
+#: .\product\templates\product\single_product.html:25
+#: .\product\templates\product\unit_type.html:52
+#: .\product\templates\product\update_product.html:25
+#: .\product\templates\product\update_products.html:25
+#: .\product_transfer\templates\product_transfer\add_transfer.html:82
+#: .\product_transfer\templates\product_transfer\product_tranfer.html:14
+#: .\product_transfer\templates\product_transfer\single_transfer.html:13
+#: .\purchase\templates\purchase\add_purchase.html:68
+#: .\purchase\templates\purchase\purchase.html:13
+#: .\purchase\templates\purchase\single_purchase.html:13
+#: .\report\templates\report\balance_sheet.html:13
+#: .\report\templates\report\by_income.html:13
+#: .\report\templates\report\by_organization.html:14
+#: .\report\templates\report\by_outcome.html:13
+#: .\report\templates\report\single_org_report.html:16
+#: .\returnproduct\templates\return\add_return.html:78
+#: .\returnproduct\templates\return\returns.html:13
+#: .\returnproduct\templates\return\single_return.html:80
+#: .\tax\templates\tax\tax.html:54
+#: .\vendor\templates\vendors\single_vendor.html:123
+#: .\vendor\templates\vendors\vendors.html:14
+msgid "Dashboard"
+msgstr "كونتىرول تاختىسى"
+
+#: .\AMS\templates\base.html:132 .\AMS\templates\base.html:135
+#: .\AMS\templates\base2.html:146 .\AMS\templates\base2.html:149
+#: .\fromstock\templates\fromstock\single_stock.html:46
+#: .\invoice\templates\invoice\pdf.html:58
+#: .\invoice\templates\invoice\single_invoice.html:68
+#: .\product\templates\product\products.html:183
+#: .\product\templates\product\products.html:187
+#: .\product_transfer\templates\product_transfer\single_transfer.html:67
+#: .\purchase\templates\purchase\single_purchase.html:68
+#: .\returnproduct\templates\return\single_return.html:146
+msgid "Products"
+msgstr "ماللار"
+
+#: .\AMS\templates\base.html:136 .\AMS\templates\base2.html:150
+#: .\invoice\templates\invoice\add_invoice.html:122
+#: .\invoice\templates\invoice\pdf.html:120
+#: .\invoice\templates\invoice\single_invoice.html:132
+#: .\product_transfer\templates\product_transfer\add_transfer.html:122
+#: .\product_transfer\templates\product_transfer\single_transfer.html:131
+#: .\purchase\templates\purchase\add_purchase.html:104
+#: .\purchase\templates\purchase\single_purchase.html:132
+#: .\tax\templates\tax\tax.html:51 .\tax\templates\tax\tax.html:55
+msgid "Tax"
+msgstr "باج"
+
+#: .\AMS\templates\base.html:137 .\AMS\templates\base2.html:151
+#: .\product\templates\product\unit_type.html:22
+#: .\product\templates\product\unit_type.html:53
+#: .\product\templates\product\unit_type.html:72
+msgid "Unit type"
+msgstr "بىرلىك"
+
+#: .\AMS\templates\base.html:138 .\AMS\templates\base2.html:152
+#: .\product\templates\product\product_category.html:22
+#: .\product\templates\product\product_category.html:49
+#: .\product\templates\product\product_category.html:53
+#: .\product\templates\product\product_category.html:72
+#: .\product\templates\product\products.html:112
+#: .\product\templates\product\single_product.html:87
+#: .\product\templates\product\update_product.html:58
+msgid "Product Category"
+msgstr "مال كاتېگورىيسى"
+
+#: .\AMS\templates\base.html:147 .\AMS\templates\base2.html:161
+#: .\customuser\templates\customuser\customusers.html:12
+#: .\customuser\templates\customuser\customusers.html:15
+msgid "Employees"
+msgstr "خىزمەتچىلەر"
+
+#: .\AMS\templates\base.html:152 .\AMS\templates\base2.html:166
+#: .\bank\templates\bank\banks.html:58 .\bank\templates\bank\banks.html:62
+#: .\bank\templates\bank\single_bank.html:13
+#: .\bank\templates\bank\single_bank.html:17
+msgid "Accounts"
+msgstr "ھېسابلار"
+
+#: .\AMS\templates\base.html:159 .\AMS\templates\base2.html:173
+#: .\customuser\templates\customuser\customusers.html:30
+#: .\customuser\templates\customuser\single_customuser.html:39
+#: .\organization\templates\organizations\single_organization.html:138
+#: .\organization\templates\organizations\single_organization.html:141
+#: .\product\templates\product\single_product.html:139
+#: .\report\templates\report\general_report.html:50
+msgid "Organization"
+msgstr "شۆبىلەر"
+
+#: .\AMS\templates\base.html:163 .\AMS\templates\base2.html:177
+msgid "Business"
+msgstr "سودا"
+
+#: .\AMS\templates\base.html:173 .\AMS\templates\base2.html:187
+#: .\customuser\templates\customuser\single_customuser.html:101
+#: .\invoice\templates\invoice\invoices.html:10
+#: .\invoice\templates\invoice\invoices.html:14
+#: .\invoice\templates\invoice\pdf.html:28
+#: .\invoice\templates\invoice\single_invoice.html:10
+#: .\invoice\templates\invoice\single_invoice.html:14
+#: .\invoice\templates\invoice\single_invoice.html:38
+msgid "Invoice"
+msgstr "مال سېتىش"
+
+#: .\AMS\templates\base.html:178 .\AMS\templates\base2.html:192
+#: .\returnproduct\templates\return\returns.html:10
+#: .\returnproduct\templates\return\returns.html:14
+msgid "Return Product"
+msgstr "مال قايتۇرۇش"
+
+#: .\AMS\templates\base.html:186 .\AMS\templates\base2.html:200
+#: .\customer\templates\customer\customers.html:12
+#: .\customer\templates\customer\customers.html:15
+msgid "Customers"
+msgstr "خېرىدارلار"
+
+#: .\AMS\templates\base.html:204 .\AMS\templates\base2.html:218
+#: .\fromstock\templates\fromstock\stocks.html:10
+#: .\fromstock\templates\fromstock\stocks.html:14
+#: .\product\templates\product\single_product.html:244
+#: .\product_transfer\templates\product_transfer\product_tranfer.html:33
+msgid "From Stock"
+msgstr "كونا مال قوشۇش"
+
+#: .\AMS\templates\base.html:209 .\AMS\templates\base2.html:223
+#: .\vendor\templates\vendors\single_vendor.html:124
+#: .\vendor\templates\vendors\vendors.html:12
+#: .\vendor\templates\vendors\vendors.html:15
+msgid "Vendors"
+msgstr "سودىگەرلەر"
+
+#: .\AMS\templates\base.html:224 .\AMS\templates\base2.html:238
+msgid "Extra"
+msgstr "قوشۇمچە"
+
+#: .\AMS\templates\base.html:228 .\AMS\templates\base2.html:242
+#: .\additional\templates\additional\outcome.html:101
+#: .\additional\templates\additional\outcome_category.html:22
+#: .\additional\templates\additional\outcome_category.html:49
+#: .\additional\templates\additional\outcome_category.html:53
+#: .\additional\templates\additional\outcome_category.html:72
+msgid "Outcome Category"
+msgstr "چىقىم كاتېگورىيسى"
+
+#: .\AMS\templates\base.html:232 .\AMS\templates\base2.html:246
+#: .\additional\templates\additional\outcome.html:67
+#: .\additional\templates\additional\outcome.html:71
+#: .\report\templates\report\by_organization.html:158
+#: .\report\templates\report\general_report.html:49
+#: .\report\templates\report\single_org_report.html:120
+msgid "Outcome"
+msgstr "چىقىم"
+
+#: .\AMS\templates\base.html:236 .\AMS\templates\base.html:240
+#: .\AMS\templates\base2.html:250 .\AMS\templates\base2.html:254
+#: .\report\templates\report\by_organization.html:10
+#: .\report\templates\report\by_organization.html:15
+msgid "Report"
+msgstr "دوكلات"
+
+#: .\AMS\templates\base.html:246 .\AMS\templates\base2.html:260
+#: .\report\templates\report\single_org_report.html:142
+msgid "Product Report"
+msgstr "مال دوكلاتى"
+
+#: .\AMS\templates\base.html:252 .\AMS\templates\base2.html:266
+#, fuzzy
+#| msgid "Total Report"
+msgid "General Report"
+msgstr "ئومۇمىي قەرزى"
+
+#: .\AMS\templates\base.html:257 .\AMS\templates\base2.html:271
+#: .\report\templates\report\balance_sheet.html:10
+#: .\report\templates\report\balance_sheet.html:14
+msgid "Balance Sheet"
+msgstr "ھېسابات"
+
+#: .\AMS\templates\base.html:272 .\AMS\templates\base2.html:286
+#: .\report\templates\report\single_org_report.html:17
+msgid "Organization Report"
+msgstr "شۆبە دوكلاتى"
+
+#: .\AMS\templates\base.html:277 .\AMS\templates\base2.html:291
+msgid "Settings"
+msgstr "تەڭشەكلەر"
+
+#: .\AMS\templates\base.html:280 .\AMS\templates\base2.html:294
+#: .\organization\templates\organizations\add_organization.html:61
+#: .\organization\templates\organizations\organization.html:44
+#: .\organization\templates\organizations\single_organization.html:214
+msgid "City"
+msgstr "شەھەر"
+
+#: .\additional\templates\additional\income.html:10
+msgid "Add Income"
+msgstr "كىرىم قوشۇش"
+
+#: .\additional\templates\additional\income.html:21
+#: .\additional\templates\additional\income.html:92
+#: .\additional\templates\additional\outcome.html:21
+#: .\additional\templates\additional\outcome.html:130
+#: .\bank\templates\incomes\additional_income.html:66
+#: .\bank\templates\incomes\invoice_payments.html:71
+#: .\bank\templates\incomes\money_transfer_in.html:66
+#: .\bank\templates\incomes\org_debt_payment_in.html:66
+#: .\bank\templates\incomes\product_transfer_payment_in.html:66
+#: .\bank\templates\outcomes\invoice_payments.html:71
+#: .\bank\templates\outcomes\money_transfer_in.html:66
+#: .\bank\templates\outcomes\org_debt_payment_in.html:66
+#: .\bank\templates\outcomes\product_transfer_payment_in.html:66
+#: .\bank\templates\transfer_money.html:40
+#: .\bank\templates\transfer_money.html:94
+#: .\customer\templates\customer\single_customer.html:26
+#: .\invoice\templates\invoice\add_invoice.html:189
+#: .\invoice\templates\invoice\pdf.html:89
+#: .\invoice\templates\invoice\single_invoice.html:99
+#: .\organization\templates\organizations\single_organization.html:34
+#: .\organization\templates\organizations\single_organization.html:109
+#: .\organization\templates\organizations\single_organization.html:259
+#: .\organization\templates\organizations\single_organization.html:324
+#: .\product_transfer\templates\product_transfer\add_transfer.html:55
+#: .\product_transfer\templates\product_transfer\add_transfer.html:191
+#: .\product_transfer\templates\product_transfer\single_transfer.html:98
+#: .\purchase\templates\purchase\add_purchase.html:42
+#: .\purchase\templates\purchase\add_purchase.html:164
+#: .\purchase\templates\purchase\single_purchase.html:99
+#: .\report\templates\report\by_income.html:53
+#: .\report\templates\report\by_outcome.html:72
+#: .\returnproduct\templates\return\add_return.html:165
+#: .\returnproduct\templates\return\single_return.html:177
+#: .\vendor\templates\vendors\single_vendor.html:27
+#: .\vendor\templates\vendors\single_vendor.html:91
+#: .\vendor\templates\vendors\single_vendor.html:248
+#: .\vendor\templates\vendors\single_vendor.html:312
+msgid "Amount"
+msgstr "سوممىسى"
+
+#: .\additional\templates\additional\income.html:31
+#: .\additional\templates\additional\income.html:93
+#: .\additional\templates\additional\outcome.html:41
+#: .\additional\templates\additional\outcome.html:131
+#: .\product\templates\product\products.html:239
+#: .\product\templates\product\products.html:262
+#: .\report\templates\report\by_outcome.html:38
+#: .\report\templates\report\by_outcome.html:70
+msgid "Category"
+msgstr "كاتېگورىيە"
+
+#: .\additional\templates\additional\income.html:41
+#: .\additional\templates\additional\outcome.html:31
+msgid "Bank"
+msgstr "بانكا"
+
+#: .\additional\templates\additional\income.html:46
+#: .\additional\templates\additional\income.html:97
+#: .\additional\templates\additional\income_category.html:28
+#: .\additional\templates\additional\income_category.html:73
+#: .\additional\templates\additional\outcome.html:46
+#: .\additional\templates\additional\outcome.html:135
+#: .\additional\templates\additional\outcome_category.html:28
+#: .\additional\templates\additional\outcome_category.html:73
+#: .\bank\templates\bank\banks.html:37 .\bank\templates\bank\banks.html:83
+#: .\bank\templates\incomes\additional_income.html:68
+#: .\bank\templates\incomes\invoice_payments.html:74
+#: .\bank\templates\incomes\money_transfer_in.html:68
+#: .\bank\templates\incomes\org_debt_payment_in.html:68
+#: .\bank\templates\incomes\product_transfer_payment_in.html:68
+#: .\bank\templates\outcomes\invoice_payments.html:74
+#: .\bank\templates\outcomes\money_transfer_in.html:68
+#: .\bank\templates\outcomes\org_debt_payment_in.html:68
+#: .\bank\templates\outcomes\product_transfer_payment_in.html:68
+#: .\bank\templates\transfer_money.html:46
+#: .\bank\templates\transfer_money.html:96 .\city\templates\city\cities.html:30
+#: .\city\templates\city\cities.html:75
+#: .\customer\templates\customer\customers.html:87
+#: .\customer\templates\customer\single_customer.html:139
+#: .\customer\templates\customer\update_customer.html:58
+#: .\customuser\templates\customuser\single_customuser.html:105
+#: .\customuser\templates\customuser\single_customuser.html:180
+#: .\customuser\templates\customuser\single_customuser.html:235
+#: .\fromstock\templates\fromstock\add_stock.html:90
+#: .\fromstock\templates\fromstock\stocks.html:55
+#: .\invoice\templates\invoice\add_invoice.html:64
+#: .\invoice\templates\invoice\add_invoice.html:190
+#: .\invoice\templates\invoice\add_invoice.html:253
+#: .\invoice\templates\invoice\single_invoice.html:102
+#: .\organization\templates\organizations\add_organization.html:71
+#: .\organization\templates\organizations\organization.html:46
+#: .\organization\templates\organizations\single_organization.html:70
+#: .\organization\templates\organizations\single_organization.html:116
+#: .\organization\templates\organizations\single_organization.html:233
+#: .\organization\templates\organizations\single_organization.html:264
+#: .\organization\templates\organizations\single_organization.html:327
+#: .\product\templates\product\product_category.html:28
+#: .\product\templates\product\product_category.html:73
+#: .\product\templates\product\products.html:154
+#: .\product\templates\product\single_product.html:120
+#: .\product\templates\product\unit_type.html:28
+#: .\product\templates\product\unit_type.html:73
+#: .\product\templates\product\update_product.html:93
+#: .\product_transfer\templates\product_transfer\add_transfer.html:61
+#: .\product_transfer\templates\product_transfer\add_transfer.html:192
+#: .\product_transfer\templates\product_transfer\add_transfer.html:255
+#: .\product_transfer\templates\product_transfer\product_tranfer.html:75
+#: .\product_transfer\templates\product_transfer\single_transfer.html:101
+#: .\purchase\templates\purchase\add_purchase.html:47
+#: .\purchase\templates\purchase\add_purchase.html:165
+#: .\purchase\templates\purchase\add_purchase.html:228
+#: .\purchase\templates\purchase\purchase_section.html:19
+#: .\purchase\templates\purchase\single_purchase.html:102
+#: .\report\templates\report\by_income.html:55
+#: .\report\templates\report\by_outcome.html:74
+#: .\returnproduct\templates\return\add_return.html:57
+#: .\returnproduct\templates\return\add_return.html:166
+#: .\returnproduct\templates\return\add_return.html:214
+#: .\returnproduct\templates\return\returns.html:74
+#: .\returnproduct\templates\return\single_return.html:57
+#: .\returnproduct\templates\return\single_return.html:180
+#: .\tax\templates\tax\tax.html:30 .\tax\templates\tax\tax.html:75
+#: .\vendor\templates\vendors\single_vendor.html:51
+#: .\vendor\templates\vendors\single_vendor.html:98
+#: .\vendor\templates\vendors\single_vendor.html:213
+#: .\vendor\templates\vendors\single_vendor.html:253
+#: .\vendor\templates\vendors\single_vendor.html:315
+#: .\vendor\templates\vendors\vendors.html:81
+msgid "Note"
+msgstr "ئىزاھات"
+
+#: .\additional\templates\additional\income.html:51
+#: .\additional\templates\additional\income.html:78
+#: .\additional\templates\additional\income_category.html:33
+#: .\additional\templates\additional\income_category.html:60
+#: .\additional\templates\additional\outcome.html:51
+#: .\additional\templates\additional\outcome.html:78
+#: .\additional\templates\additional\outcome_category.html:33
+#: .\additional\templates\additional\outcome_category.html:60
+#: .\bank\templates\bank\banks.html:42 .\bank\templates\bank\banks.html:69
+#: .\bank\templates\transfer_money.html:51
+#: .\bank\templates\transfer_money.html:78 .\city\templates\city\cities.html:35
+#: .\city\templates\city\cities.html:62
+#: .\fromstock\templates\fromstock\stocks.html:21
+#: .\invoice\templates\invoice\add_invoice.html:71
+#: .\invoice\templates\invoice\invoices.html:21
+#: .\product\templates\product\product_category.html:33
+#: .\product\templates\product\product_category.html:60
+#: .\product\templates\product\unit_type.html:33
+#: .\product\templates\product\unit_type.html:60
+#: .\product_transfer\templates\product_transfer\add_transfer.html:68
+#: .\product_transfer\templates\product_transfer\product_tranfer.html:22
+#: .\purchase\templates\purchase\add_purchase.html:54
+#: .\purchase\templates\purchase\purchase.html:21
+#: .\returnproduct\templates\return\add_return.html:64
+#: .\returnproduct\templates\return\returns.html:21
+#: .\returnproduct\templates\return\single_return.html:63
+#: .\tax\templates\tax\tax.html:35 .\tax\templates\tax\tax.html:62
+msgid "Add"
+msgstr "قوشۇش"
+
+#: .\additional\templates\additional\income.html:67
+#: .\additional\templates\additional\income.html:71
+#: .\bank\templates\bank\single_bank.html:35
+msgid "Incomes"
+msgstr "كىرىملەر"
+
+#: .\additional\templates\additional\income.html:94
+#: .\additional\templates\additional\outcome.html:132
+#: .\bank\templates\transfer_money.html:95
+#: .\fromstock\templates\fromstock\stocks.html:54
+#: .\invoice\templates\invoice\invoices.html:71
+#: .\purchase\templates\purchase\purchase.html:70
+#: .\returnproduct\templates\return\returns.html:70
+msgid "Datetime"
+msgstr "ۋاقتى"
+
+#: .\additional\templates\additional\income.html:95
+#: .\additional\templates\additional\outcome.html:133
+#: .\product\templates\product\single_product.html:183
+#: .\report\templates\report\by_income.html:54
+#: .\report\templates\report\by_outcome.html:73
+msgid "User"
+msgstr "خىزمەتچى"
+
+#: .\additional\templates\additional\income.html:96
+#: .\additional\templates\additional\outcome.html:134
+#: .\bank\templates\bank\banks.html:108
+#: .\customer\templates\customer\single_customer.html:32
+#: .\invoice\templates\invoice\pdf.html:90
+#: .\invoice\templates\invoice\single_invoice.html:100
+#: .\product_transfer\templates\product_transfer\single_transfer.html:99
+#: .\purchase\templates\purchase\single_purchase.html:100
+#: .\report\templates\report\by_income.html:52
+#: .\report\templates\report\by_organization.html:156
+#: .\report\templates\report\by_outcome.html:71
+#: .\report\templates\report\general_report.html:36
+#: .\report\templates\report\single_org_report.html:118
+#: .\returnproduct\templates\return\single_return.html:178
+#: .\vendor\templates\vendors\single_vendor.html:42
+msgid "Account"
+msgstr "ھېساب"
+
+#: .\additional\templates\additional\income_category.html:10
+#, fuzzy
+#| msgid "Add Outcome Category"
+msgid "Add Income Category"
+msgstr "چىقىم كاتېگورىيسى قوشۇش"
+
+#: .\additional\templates\additional\income_category.html:22
+#: .\additional\templates\additional\income_category.html:49
+#, fuzzy
+#| msgid "Outcome Category"
+msgid "Income Category"
+msgstr "چىقىم كاتېگورىيسى"
+
+#: .\additional\templates\additional\income_category.html:53
+#: .\additional\templates\additional\income_category.html:72
+#, fuzzy
+#| msgid "Outcome Category"
+msgid "income Category"
+msgstr "چىقىم كاتېگورىيسى"
+
+#: .\additional\templates\additional\outcome.html:10
+#: .\bank\templates\transfer_money.html:10
+msgid "Add Outcome"
+msgstr "چىقىم قوشۇش"
+
+#: .\additional\templates\additional\outcome.html:109
+#: .\bank\templates\incomes\additional_income.html:29
+#: .\bank\templates\incomes\invoice_payments.html:34
+#: .\bank\templates\incomes\money_transfer_in.html:29
+#: .\bank\templates\incomes\org_debt_payment_in.html:29
+#: .\bank\templates\incomes\product_transfer_payment_in.html:29
+#: .\bank\templates\outcomes\additional_outcome.html:29
+#: .\bank\templates\outcomes\invoice_payments.html:34
+#: .\bank\templates\outcomes\money_transfer_in.html:29
+#: .\bank\templates\outcomes\org_debt_payment_in.html:29
+#: .\bank\templates\outcomes\product_transfer_payment_in.html:29
+#: .\bank\templates\transfer_money.html:92
+#: .\customuser\templates\customuser\single_customuser.html:177
+#: .\fromstock\templates\fromstock\stocks.html:34
+#: .\invoice\templates\invoice\invoices.html:49
+#: .\product_transfer\templates\product_transfer\product_tranfer.html:52
+#: .\purchase\templates\purchase\purchase.html:49
+#: .\report\templates\report\balance_sheet.html:31
+#: .\report\templates\report\by_income.html:30
+#: .\report\templates\report\by_outcome.html:48
+#: .\report\templates\report\general_report.html:93
+#: .\returnproduct\templates\return\returns.html:49
+msgid "From"
+msgstr "دىن"
+
+#: .\additional\templates\additional\outcome.html:117
+#: .\bank\templates\incomes\additional_income.html:37
+#: .\bank\templates\incomes\invoice_payments.html:42
+#: .\bank\templates\incomes\money_transfer_in.html:37
+#: .\bank\templates\incomes\org_debt_payment_in.html:37
+#: .\bank\templates\incomes\product_transfer_payment_in.html:37
+#: .\bank\templates\outcomes\additional_outcome.html:37
+#: .\bank\templates\outcomes\invoice_payments.html:42
+#: .\bank\templates\outcomes\money_transfer_in.html:37
+#: .\bank\templates\outcomes\org_debt_payment_in.html:37
+#: .\bank\templates\outcomes\product_transfer_payment_in.html:37
+#: .\bank\templates\transfer_money.html:93
+#: .\customuser\templates\customuser\single_customuser.html:178
+#: .\fromstock\templates\fromstock\stocks.html:42
+#: .\invoice\templates\invoice\invoices.html:57
+#: .\product_transfer\templates\product_transfer\product_tranfer.html:60
+#: .\purchase\templates\purchase\purchase.html:57
+#: .\report\templates\report\balance_sheet.html:39
+#: .\report\templates\report\by_income.html:38
+#: .\report\templates\report\by_outcome.html:56
+#: .\report\templates\report\general_report.html:104
+#: .\returnproduct\templates\return\returns.html:57
+msgid "To"
+msgstr "غا"
+
+#: .\additional\templates\additional\outcome.html:121
+#: .\bank\templates\incomes\additional_income.html:41
+#: .\bank\templates\incomes\invoice_payments.html:46
+#: .\bank\templates\incomes\money_transfer_in.html:41
+#: .\bank\templates\incomes\org_debt_payment_in.html:41
+#: .\bank\templates\incomes\product_transfer_payment_in.html:41
+#: .\bank\templates\outcomes\additional_outcome.html:41
+#: .\bank\templates\outcomes\invoice_payments.html:46
+#: .\bank\templates\outcomes\money_transfer_in.html:41
+#: .\bank\templates\outcomes\org_debt_payment_in.html:41
+#: .\bank\templates\outcomes\product_transfer_payment_in.html:41
+#: .\fromstock\templates\fromstock\stocks.html:46
+#: .\invoice\templates\invoice\invoices.html:61
+#: .\product_transfer\templates\product_transfer\product_tranfer.html:64
+#: .\purchase\templates\purchase\purchase.html:61
+#: .\report\templates\report\balance_sheet.html:44
+#: .\report\templates\report\by_income.html:42
+#: .\report\templates\report\by_outcome.html:60
+#: .\report\templates\report\general_report.html:108
+#: .\returnproduct\templates\return\returns.html:61
+msgid "Filter"
+msgstr "فېلتىرلەش"
+
+#: .\additional\templates\additional\outcome_category.html:10
+msgid "Add Outcome Category"
+msgstr "چىقىم كاتېگورىيسى قوشۇش"
+
+#: .\bank\templates\bank\banks.html:12
+
+msgid "Add Account"
+msgstr "ھېساب قوشۇش"
+
+#: .\bank\templates\bank\banks.html:26 .\bank\templates\bank\banks.html:81
+#: .\city\templates\city\cities.html:24 .\city\templates\city\cities.html:74
+#: .\customer\templates\customer\customers.html:42
+#: .\customer\templates\customer\customers.html:83
+#: .\customer\templates\customer\customers.html:126
+#: .\customer\templates\customer\single_customer.html:120
+#: .\customer\templates\customer\update_customer.html:41
+#: .\customuser\templates\customuser\customusers.html:28
+#: .\invoice\templates\invoice\pdf.html:40
+#: .\invoice\templates\invoice\single_invoice.html:50
+#: .\organization\templates\organizations\add_organization.html:42
+#: .\organization\templates\organizations\organization.html:43
+#: .\organization\templates\organizations\single_organization.html:210
+#: .\product\templates\product\products.html:103
+#: .\product\templates\product\products.html:260
+#: .\product\templates\product\single_product.html:83
+#: .\product\templates\product\update_product.html:50
+#: .\product_transfer\templates\product_transfer\single_transfer.html:49
+#: .\purchase\templates\purchase\single_purchase.html:50
+#: .\returnproduct\templates\return\single_return.html:127
+#: .\vendor\templates\vendors\single_vendor.html:194
+#: .\vendor\templates\vendors\vendors.html:42
+#: .\vendor\templates\vendors\vendors.html:77
+msgid "Name"
+msgstr "ئىسىم"
+
+#: .\bank\templates\bank\banks.html:31 .\bank\templates\bank\banks.html:82
+msgid "IBAN"
+msgstr ""
+
+#: .\bank\templates\bank\banks.html:101
+#: .\report\templates\report\single_org_report.html:111
+msgid "Balance Report"
+msgstr "ھېسابات سوكلاتى"
+
+#: .\bank\templates\bank\banks.html:109
+msgid "Total Income"
+msgstr "ئومۇمىي كىرىم"
+
+#: .\bank\templates\bank\banks.html:110
+msgid "Total Outcome"
+msgstr "ئومۇمىي چىقىم"
+
+#: .\bank\templates\bank\banks.html:111
+#: .\customer\templates\customer\single_customer.html:83
+#: .\organization\templates\organizations\single_organization.html:171
+#: .\report\templates\report\by_organization.html:159
+#: .\report\templates\report\single_org_report.html:121
+#: .\vendor\templates\vendors\single_vendor.html:154
+msgid "Balance"
+msgstr "قېلىپ قالغان پۇلى"
+
+#: .\bank\templates\bank\single_bank.html:42
+#: .\bank\templates\bank\single_bank.html:126
+#: .\report\templates\report\general_report.html:54
+msgid "Type"
+msgstr "تۈرى"
+
+#: .\bank\templates\bank\single_bank.html:50
+msgid "Invoice Payment"
+msgstr "مال سېتسىش"
+
+#: .\bank\templates\bank\single_bank.html:58
+#, fuzzy
+#| msgid "Money Transfer In"
+msgid "Mony Transfer In"
+msgstr "يۆتكەلگەن پۇل"
+
+#: .\bank\templates\bank\single_bank.html:65
+msgid "Orgnization Debt Payment"
+msgstr "شۆبىلەرنىڭ تۆلىگەن قەرزى"
+
+#: .\bank\templates\bank\single_bank.html:73
+#: .\bank\templates\bank\single_bank.html:158
+#: .\bank\templates\incomes\product_transfer_payment_in.html:10
+#: .\bank\templates\incomes\product_transfer_payment_in.html:14
+#: .\bank\templates\incomes\product_transfer_payment_in.html:58
+#: .\bank\templates\outcomes\product_transfer_payment_in.html:10
+#: .\bank\templates\outcomes\product_transfer_payment_in.html:14
+#: .\bank\templates\outcomes\product_transfer_payment_in.html:58
+msgid "Product Transfer Payment"
+msgstr "مال يۆتكەش"
+
+#: .\bank\templates\bank\single_bank.html:82
+#: .\bank\templates\incomes\additional_income.html:10
+#: .\bank\templates\incomes\additional_income.html:14
+#: .\bank\templates\incomes\additional_income.html:58
+msgid "Additional Income"
+msgstr "قوشۇمچە كىرىم"
+
+#: .\bank\templates\bank\single_bank.html:119
+msgid "Outcomes"
+msgstr "چىقىملار"
+
+#: .\bank\templates\bank\single_bank.html:134
+#: .\bank\templates\outcomes\additional_outcome.html:10
+#: .\bank\templates\outcomes\additional_outcome.html:14
+#: .\bank\templates\outcomes\additional_outcome.html:58
+msgid "Additional Outcome"
+msgstr "قوشۇمچە چىقىملار"
+
+#: .\bank\templates\bank\single_bank.html:141
+msgid "Purchase Payment"
+msgstr "مال سېتىۋېلىش"
+
+#: .\bank\templates\bank\single_bank.html:147
+msgid "Mony Transfer Out"
+msgstr "پۆل يۆتكەش"
+
+#: .\bank\templates\bank\single_bank.html:152
+msgid "Debt Payment For Organization"
+msgstr "شۆبىلەرگە تۆلىگەن قەرز"
+
+#: .\bank\templates\bank\single_bank.html:164
+msgid "Return Product Payment"
+msgstr "مال قايتۇرىۋېلىش"
+
+#: .\bank\templates\bank\single_bank.html:170
+msgid "Vendor Debt Payment"
+msgstr "سودىگەرنىڭ قەرزى"
+
+#: .\bank\templates\incomes\additional_income.html:45
+#: .\bank\templates\incomes\invoice_payments.html:50
+#: .\bank\templates\incomes\money_transfer_in.html:45
+#: .\bank\templates\incomes\org_debt_payment_in.html:45
+#: .\bank\templates\incomes\product_transfer_payment_in.html:45
+#: .\bank\templates\outcomes\additional_outcome.html:45
+#: .\bank\templates\outcomes\invoice_payments.html:50
+#: .\bank\templates\outcomes\money_transfer_in.html:45
+#: .\bank\templates\outcomes\org_debt_payment_in.html:45
+#: .\bank\templates\outcomes\product_transfer_payment_in.html:45
+msgid "Clear"
+msgstr "تازىلاش"
+
+#: .\bank\templates\incomes\additional_income.html:65
+#: .\bank\templates\incomes\invoice_payments.html:70
+#: .\bank\templates\incomes\money_transfer_in.html:65
+#: .\bank\templates\incomes\org_debt_payment_in.html:65
+#: .\bank\templates\incomes\product_transfer_payment_in.html:65
+#: .\bank\templates\outcomes\additional_outcome.html:65
+#: .\bank\templates\outcomes\invoice_payments.html:70
+#: .\bank\templates\outcomes\money_transfer_in.html:65
+#: .\bank\templates\outcomes\org_debt_payment_in.html:65
+#: .\bank\templates\outcomes\product_transfer_payment_in.html:65
+msgid "#"
+msgstr ""
+
+#: .\bank\templates\incomes\additional_income.html:67
+#: .\bank\templates\incomes\invoice_payments.html:73
+#: .\bank\templates\incomes\money_transfer_in.html:67
+#: .\bank\templates\incomes\org_debt_payment_in.html:67
+#: .\bank\templates\incomes\product_transfer_payment_in.html:67
+#: .\bank\templates\outcomes\invoice_payments.html:73
+#: .\bank\templates\outcomes\money_transfer_in.html:67
+#: .\bank\templates\outcomes\org_debt_payment_in.html:67
+#: .\bank\templates\outcomes\product_transfer_payment_in.html:67
+#: .\customuser\templates\customuser\single_customuser.html:102
+#: .\customuser\templates\customuser\single_customuser.html:179
+#: .\customuser\templates\customuser\single_customuser.html:234
+#: .\fromstock\templates\fromstock\single_stock.html:40
+#: .\fromstock\templates\pdf\stock_pdf.html:100
+#: .\invoice\templates\invoice\pdf.html:30
+#: .\invoice\templates\invoice\single_invoice.html:40
+#: .\product\templates\product\single_product.html:185
+#: .\product_transfer\templates\pdf\transfer_pdf.html:100
+#: .\product_transfer\templates\product_transfer\single_transfer.html:39
+#: .\purchase\templates\purchase\purchase_section.html:16
+#: .\purchase\templates\purchase\single_purchase.html:40
+#: .\returnproduct\templates\pdf\return_pdf.html:106
+#: .\returnproduct\templates\return\single_return.html:116
+msgid "Date"
+msgstr "ۋاقىت"
+
+#: .\bank\templates\incomes\invoice_payments.html:14
+#: .\bank\templates\incomes\invoice_payments.html:18
+#: .\bank\templates\incomes\invoice_payments.html:63
+#: .\bank\templates\outcomes\invoice_payments.html:14
+#: .\bank\templates\outcomes\invoice_payments.html:18
+#: .\bank\templates\outcomes\invoice_payments.html:63
+msgid "Invoice Payments"
+msgstr "مال سېتىش فاتۇرالىرى"
+
+#: .\bank\templates\incomes\invoice_payments.html:72
+#: .\bank\templates\outcomes\invoice_payments.html:72
+msgid "Reference"
+msgstr "فاتۇرا"
+
+#: .\bank\templates\incomes\org_debt_payment_in.html:10
+#: .\bank\templates\incomes\org_debt_payment_in.html:14
+#: .\bank\templates\incomes\org_debt_payment_in.html:58
+#: .\bank\templates\outcomes\org_debt_payment_in.html:10
+#: .\bank\templates\outcomes\org_debt_payment_in.html:14
+#: .\bank\templates\outcomes\org_debt_payment_in.html:58
+msgid "Organization Debt Payment"
+msgstr "شۆبىلەرنىڭ تۆلىگەن قەرزى"
+
+#: .\bank\templates\outcomes\additional_outcome.html:66
+msgid "name"
+msgstr "ئىسىم"
+
+#: .\bank\templates\transfer_money.html:27
+#: .\organization\templates\organizations\single_organization.html:60
+msgid "From Account"
+msgstr "ھېسابتىن"
+
+#: .\bank\templates\transfer_money.html:36
+#: .\organization\templates\organizations\single_organization.html:50
+msgid "To Account"
+msgstr "ھېسابقا"
+
+#: .\city\templates\city\cities.html:10
+msgid "Add City"
+msgstr "شەھەر قوشۇش"
+
+#: .\city\templates\city\cities.html:51 .\city\templates\city\cities.html:55
+msgid "Cities"
+msgstr "شەھەرلەر"
+
+#: .\customer\templates\customer\customers.html:20
+#: .\customer\templates\customer\customers.html:28
+msgid "Add Customer"
+msgstr "خېرىدار قوشۇش"
+
+#: .\customer\templates\customer\customers.html:47
+#: .\customer\templates\customer\customers.html:84
+#: .\customer\templates\customer\customers.html:131
+#: .\customer\templates\customer\single_customer.html:125
+#: .\customer\templates\customer\update_customer.html:47
+#: .\invoice\templates\invoice\pdf.html:42
+#: .\invoice\templates\invoice\single_invoice.html:52
+#: .\organization\templates\organizations\add_organization.html:52
+#: .\product_transfer\templates\product_transfer\single_transfer.html:51
+#: .\purchase\templates\purchase\single_purchase.html:52
+#: .\returnproduct\templates\return\single_return.html:129
+#: .\vendor\templates\vendors\single_vendor.html:199
+#: .\vendor\templates\vendors\vendors.html:47
+#: .\vendor\templates\vendors\vendors.html:78
+msgid "Phone Number"
+msgstr "تېلفون نۇمۇرى"
+
+#: .\customer\templates\customer\customers.html:52
+#: .\customer\templates\customer\customers.html:85
+#: .\customer\templates\customer\customers.html:136
+#: .\customer\templates\customer\single_customer.html:131
+#: .\customer\templates\customer\single_customer.html:157
+#: .\customer\templates\customer\update_customer.html:53
+#: .\customuser\templates\customuser\customusers.html:29
+#: .\customuser\templates\customuser\single_customuser.html:51
+#: .\invoice\templates\invoice\pdf.html:41
+#: .\invoice\templates\invoice\single_invoice.html:22
+#: .\invoice\templates\invoice\single_invoice.html:51
+#: .\organization\templates\organizations\add_organization.html:47
+#: .\organization\templates\organizations\single_organization.html:219
+#: .\product_transfer\templates\product_transfer\single_transfer.html:50
+#: .\purchase\templates\purchase\single_purchase.html:22
+#: .\purchase\templates\purchase\single_purchase.html:51
+#: .\returnproduct\templates\return\single_return.html:128
+#: .\vendor\templates\vendors\single_vendor.html:205
+#: .\vendor\templates\vendors\single_vendor.html:231
+#: .\vendor\templates\vendors\vendors.html:52
+#: .\vendor\templates\vendors\vendors.html:79
+msgid "Email"
+msgstr "ئېلخەت"
+
+#: .\customer\templates\customer\customers.html:57
+#: .\customer\templates\customer\customers.html:141
+#: .\vendor\templates\vendors\vendors.html:57
+msgid "Description"
+msgstr "ئىزاھات"
+
+#: .\customer\templates\customer\customers.html:61
+#: .\customer\templates\customer\customers.html:86
+#: .\customer\templates\customer\customers.html:145
+#: .\customer\templates\customer\single_customer.html:135
+#: .\customer\templates\customer\update_customer.html:62
+#: .\invoice\templates\invoice\pdf.html:44
+#: .\invoice\templates\invoice\single_invoice.html:54
+#: .\organization\templates\organizations\add_organization.html:64
+#: .\organization\templates\organizations\organization.html:45
+#: .\organization\templates\organizations\single_organization.html:228
+#: .\product_transfer\templates\product_transfer\single_transfer.html:53
+#: .\purchase\templates\purchase\single_purchase.html:54
+#: .\returnproduct\templates\return\single_return.html:131
+#: .\vendor\templates\vendors\single_vendor.html:209
+#: .\vendor\templates\vendors\vendors.html:61
+#: .\vendor\templates\vendors\vendors.html:80
+msgid "Address"
+msgstr "ئادرېس"
+
+#: .\customer\templates\customer\customers.html:65
+#: .\customer\templates\customer\customers.html:149
+#: .\customer\templates\customer\single_customer.html:44
+#: .\organization\templates\organizations\add_organization.html:79
+#: .\organization\templates\organizations\single_organization.html:79
+#: .\organization\templates\organizations\single_organization.html:124
+#: .\product\templates\product\products.html:68
+#: .\product\templates\product\products.html:169
+#: .\vendor\templates\vendors\single_vendor.html:60
+#: .\vendor\templates\vendors\single_vendor.html:106
+#: .\vendor\templates\vendors\vendors.html:65
+msgid "Submit"
+msgstr "مۇقىملاش"
+
+#: .\customer\templates\customer\customers.html:88
+msgid "Action"
+msgstr "ھەرىكەتلەر"
+
+#: .\customer\templates\customer\customers.html:103
+#: .\product\templates\product\single_product.html:71
+#: .\product\templates\product\single_product.html:106
+msgid "Edit"
+msgstr "تەھرىرلەش"
+
+#: .\customer\templates\customer\customers.html:112
+msgid "Edit Customer"
+msgstr "خېرىدار تەھرىرلەش"
+
+#: .\customer\templates\customer\single_customer.html:11
+#: .\invoice\templates\invoice\add_invoice.html:15
+#: .\invoice\templates\invoice\add_invoice.html:263
+#: .\organization\templates\organizations\single_organization.html:19
+#: .\product_transfer\templates\product_transfer\add_transfer.html:28
+#: .\purchase\templates\purchase\add_purchase.html:15
+#: .\purchase\templates\purchase\add_purchase.html:76
+#: .\returnproduct\templates\return\add_return.html:15
+#: .\returnproduct\templates\return\add_return.html:224
+#: .\returnproduct\templates\return\single_return.html:12
+#: .\returnproduct\templates\return\single_return.html:90
+#: .\vendor\templates\vendors\single_vendor.html:12
+msgid "Make payment"
+msgstr "پۇل تۆلەش"
+
+#: .\customer\templates\customer\single_customer.html:26
+#: .\organization\templates\organizations\single_organization.html:34
+#: .\vendor\templates\vendors\single_vendor.html:27
+msgid "max"
+msgstr "ئەڭ كۆپ بولغاندا"
+
+#: .\customer\templates\customer\single_customer.html:57
+#: .\customer\templates\customer\single_customer.html:60
+#: .\invoice\templates\invoice\add_invoice.html:110
+#: .\invoice\templates\invoice\invoices.html:41
+#: .\invoice\templates\invoice\invoices.html:69
+#: .\report\templates\report\by_income.html:50
+#: .\report\templates\report\general_report.html:47
+#: .\returnproduct\templates\return\add_return.html:103
+#: .\returnproduct\templates\return\returns.html:41
+#: .\returnproduct\templates\return\returns.html:69
+msgid "Customer"
+msgstr "خېرىدار"
+
+#: .\customer\templates\customer\single_customer.html:64
+#: .\organization\templates\organizations\single_organization.html:146
+#: .\vendor\templates\vendors\single_vendor.html:128
+msgid "Make Payment"
+msgstr "پۇل تۆلەش"
+
+#: .\customer\templates\customer\single_customer.html:93
+#: .\invoice\templates\invoice\pdf.html:125
+#: .\invoice\templates\invoice\single_invoice.html:137
+#: .\organization\templates\organizations\single_organization.html:181
+#: .\product_transfer\templates\product_transfer\single_transfer.html:135
+#: .\purchase\templates\purchase\single_purchase.html:136
+#: .\report\templates\report\balance_sheet.html:83
+#: .\returnproduct\templates\return\single_return.html:211
+#: .\vendor\templates\vendors\single_vendor.html:164
+msgid "Paid"
+msgstr "تۆلەنگەن"
+
+#: .\customer\templates\customer\single_customer.html:98
+#: .\organization\templates\organizations\single_organization.html:186
+#: .\vendor\templates\vendors\single_vendor.html:169
+msgid "Total Debt"
+msgstr "ئومۇمىي قەرزى"
+
+#: .\customer\templates\customer\single_customer.html:115
+#: .\invoice\templates\invoice\pdf.html:38
+#: .\invoice\templates\invoice\single_invoice.html:48
+#: .\product_transfer\templates\product_transfer\single_transfer.html:47
+#: .\purchase\templates\purchase\single_purchase.html:48
+#: .\returnproduct\templates\return\single_return.html:125
+msgid "Customer Detail"
+msgstr "خېرىدار تەپسىلاتى"
+
+#: .\customer\templates\customer\single_customer.html:154
+#: .\vendor\templates\vendors\single_vendor.html:228
+msgid "Excel"
+msgstr ""
+
+#: .\customer\templates\customer\single_customer.html:156
+#: .\fromstock\templates\fromstock\single_stock.html:21
+#: .\invoice\templates\invoice\single_invoice.html:21
+#: .\product_transfer\templates\product_transfer\single_transfer.html:21
+#: .\purchase\templates\purchase\single_purchase.html:21
+#: .\returnproduct\templates\return\single_return.html:97
+#: .\vendor\templates\vendors\single_vendor.html:230
+msgid "PDF"
+msgstr ""
+
+#: .\customer\templates\customer\single_customer.html:160
+#: .\vendor\templates\vendors\single_vendor.html:234
+msgid "Print"
+msgstr ""
+
+#: .\customer\templates\customer\single_customer.html:172
+#: .\fromstock\templates\fromstock\stocks.html:53
+#: .\invoice\templates\invoice\invoices.html:68
+#: .\organization\templates\organizations\single_organization.html:257
+#: .\organization\templates\organizations\single_organization.html:321
+#: .\product_transfer\templates\product_transfer\product_tranfer.html:71
+#: .\purchase\templates\purchase\purchase.html:68
+#: .\report\templates\report\by_income.html:49
+#: .\report\templates\report\by_outcome.html:67
+#: .\returnproduct\templates\return\returns.html:68
+#: .\vendor\templates\vendors\single_vendor.html:246
+#: .\vendor\templates\vendors\single_vendor.html:309
+msgid "ID"
+msgstr ""
+
+#: .\customer\templates\customer\single_customer.html:173
+#: .\organization\templates\organizations\single_organization.html:258
+#: .\organization\templates\organizations\single_organization.html:323
+#: .\vendor\templates\vendors\single_vendor.html:247
+#: .\vendor\templates\vendors\single_vendor.html:311
+msgid "Date Time"
+msgstr "ۋاقىت"
+
+#: .\customer\templates\customer\single_customer.html:174
+#: .\customuser\templates\customuser\single_customuser.html:103
+#: .\invoice\templates\invoice\invoices.html:72
+#: .\organization\templates\organizations\single_organization.html:263
+#: .\organization\templates\organizations\single_organization.html:326
+#: .\product_transfer\templates\product_transfer\product_tranfer.html:77
+#: .\purchase\templates\purchase\purchase.html:71
+#: .\purchase\templates\purchase\purchase_section.html:17
+#: .\returnproduct\templates\return\returns.html:71
+#: .\vendor\templates\vendors\single_vendor.html:252
+#: .\vendor\templates\vendors\single_vendor.html:314
+msgid "Status"
+msgstr "ھالىتى"
+
+#: .\customer\templates\customer\single_customer.html:175
+#: .\customuser\templates\customuser\single_customuser.html:104
+#: .\invoice\templates\invoice\invoices.html:74
+#: .\organization\templates\organizations\single_organization.html:262
+#: .\organization\templates\organizations\single_organization.html:325
+#: .\product_transfer\templates\product_transfer\product_tranfer.html:78
+#: .\purchase\templates\purchase\purchase.html:72
+#: .\purchase\templates\purchase\purchase_section.html:18
+#: .\returnproduct\templates\return\returns.html:72
+#: .\vendor\templates\vendors\single_vendor.html:251
+#: .\vendor\templates\vendors\single_vendor.html:313
+msgid "Debt"
+msgstr "قەرزى"
+
+#: .\customer\templates\customer\single_customer.html:194
+#: .\fromstock\templates\fromstock\add_stock.html:34
+#: .\fromstock\templates\fromstock\single_stock.html:52
+#: .\fromstock\templates\pdf\stock_pdf.html:115
+#: .\invoice\templates\invoice\add_invoice.html:129
+#: .\invoice\templates\invoice\pdf.html:63
+#: .\invoice\templates\invoice\single_invoice.html:73
+#: .\invoice\templates\pdf\invoice.html:101
+#: .\product\templates\product\products.html:45
+#: .\product\templates\product\single_product.html:23
+#: .\product\templates\product\single_product.html:26
+#: .\product_transfer\templates\pdf\transfer_pdf.html:115
+#: .\product_transfer\templates\product_transfer\add_transfer.html:129
+#: .\product_transfer\templates\product_transfer\single_transfer.html:72
+#: .\purchase\templates\purchase\add_purchase.html:111
+#: .\purchase\templates\purchase\single_purchase.html:73
+#: .\report\templates\report\single_org_report.html:151
+#: .\returnproduct\templates\pdf\return_pdf.html:121
+#: .\returnproduct\templates\return\add_return.html:110
+#: .\returnproduct\templates\return\single_return.html:151
+msgid "Product"
+msgstr "مال"
+
+#: .\customer\templates\customer\single_customer.html:195
+#: .\fromstock\templates\fromstock\add_stock.html:36
+#: .\fromstock\templates\fromstock\single_stock.html:54
+#: .\invoice\templates\invoice\add_invoice.html:131
+#: .\invoice\templates\invoice\pdf.html:64
+#: .\invoice\templates\invoice\single_invoice.html:74
+#: .\product\templates\product\single_product.html:186
+#: .\product_transfer\templates\product_transfer\add_transfer.html:131
+#: .\product_transfer\templates\product_transfer\single_transfer.html:73
+#: .\purchase\templates\purchase\add_purchase.html:112
+#: .\purchase\templates\purchase\single_purchase.html:74
+#: .\report\templates\report\single_org_report.html:152
+#: .\returnproduct\templates\return\add_return.html:111
+#: .\returnproduct\templates\return\single_return.html:152
+msgid "Unit"
+msgstr "سانى"
+
+#: .\customer\templates\customer\update_customer.html:20
+#: .\product\templates\product\update_product.html:23
+#: .\product\templates\product\update_products.html:23
+msgid "Edit Product"
+msgstr "مال تەھرىرلەش"
+
+#: .\customer\templates\customer\update_customer.html:23
+#: .\product\templates\product\update_product.html:26
+#: .\product\templates\product\update_products.html:26
+msgid "product"
+msgstr "مال"
+
+#: .\customer\templates\customer\update_customer.html:66
+#: .\product\templates\product\update_product.html:109
+#: .\product\templates\product\update_products.html:60
+msgid "Update"
+msgstr "يېڭىلاش"
+
+#: .\customer\templates\customer\update_customer.html:73
+#: .\product\templates\product\update_product.html:111
+#: .\product\templates\product\update_products.html:62
+msgid "Back"
+msgstr "قايتىش"
+
+#: .\customuser\templates\customuser\customusers.html:20
+msgid "Add Employees"
+msgstr "خىزمەتچى قوشۇش"
+
+#: .\customuser\templates\customuser\login.html:11
+#: .\customuser\templates\customuser\login.html:58
+#: .\customuser\templates\customuser\login.html:78
+msgid "Login"
+msgstr "كىرىش"
+
+#: .\customuser\templates\customuser\login.html:49
+msgid "Close"
+msgstr "تاقاش"
+
+#: .\customuser\templates\customuser\login.html:59
+msgid "Access to dashboard"
+msgstr "باشبەتكە كىرىڭ"
+
+#: .\customuser\templates\customuser\login.html:65
+msgid "User Name"
+msgstr "نامى"
+
+#: .\customuser\templates\customuser\login.html:71
+msgid "Password"
+msgstr "مەخپى نۇمۇرى"
+
+#: .\customuser\templates\customuser\single_customuser.html:13
+#: .\customuser\templates\customuser\single_customuser.html:16
+msgid "Employee"
+msgstr "خىزمەتچى"
+
+#: .\customuser\templates\customuser\single_customuser.html:41
+msgid "Date of Join"
+msgstr "تىزىملاتقان ۋاقتى"
+
+#: .\customuser\templates\customuser\single_customuser.html:43
+msgid "Last Login"
+msgstr "ئاخىرقى كىرىش ۋاقتى"
+
+#: .\customuser\templates\customuser\single_customuser.html:72
+#: .\customuser\templates\customuser\single_customuser.html:95
+msgid "Sold"
+msgstr "سېتىلدى"
+
+#: .\customuser\templates\customuser\single_customuser.html:75
+#: .\customuser\templates\customuser\single_customuser.html:170
+msgid "Transfered"
+msgstr "يۆتكەلگەن"
+
+#: .\customuser\templates\customuser\single_customuser.html:78
+#: .\purchase\templates\purchase\purchase_section.html:9
+msgid "Bought"
+msgstr "ساتقان"
+
+#: .\customuser\templates\customuser\single_customuser.html:81
+#: .\customuser\templates\customuser\single_customuser.html:227
+#: .\customuser\templates\customuser\single_customuser.html:233
+#: .\fromstock\templates\fromstock\single_stock.html:10
+#: .\fromstock\templates\fromstock\single_stock.html:14
+#: .\fromstock\templates\fromstock\single_stock.html:38
+#: .\invoice\templates\invoice\add_invoice.html:130
+#: .\product\templates\product\single_product.html:140
+#: .\product_transfer\templates\product_transfer\add_transfer.html:130
+msgid "Stock"
+msgstr "قالدۇق"
+
+#: .\fromstock\templates\fromstock\add_stock.html:15
+#: .\fromstock\templates\fromstock\add_stock.html:20
+msgid "Add stock"
+msgstr "كونا مال قوشۇش"
+
+#: .\fromstock\templates\fromstock\add_stock.html:35
+#: .\fromstock\templates\fromstock\single_stock.html:53
+#: .\fromstock\templates\pdf\stock_pdf.html:118
+#: .\invoice\templates\invoice\add_invoice.html:132
+#: .\invoice\templates\invoice\pdf.html:65
+#: .\invoice\templates\invoice\single_invoice.html:75
+#: .\invoice\templates\pdf\invoice.html:104
+#: .\product\templates\product\products.html:28
+#: .\product\templates\product\update_products.html:44
+#: .\product_transfer\templates\pdf\transfer_pdf.html:118
+#: .\product_transfer\templates\product_transfer\add_transfer.html:132
+#: .\product_transfer\templates\product_transfer\single_transfer.html:74
+#: .\purchase\templates\purchase\add_purchase.html:113
+#: .\purchase\templates\purchase\single_purchase.html:75
+#: .\returnproduct\templates\pdf\return_pdf.html:124
+#: .\returnproduct\templates\return\add_return.html:112
+#: .\returnproduct\templates\return\single_return.html:153
+msgid "Price"
+msgstr "باھاسى"
+
+#: .\fromstock\templates\fromstock\add_stock.html:98
+#: .\invoice\templates\invoice\add_invoice.html:268
+#: .\invoice\templates\invoice\add_invoice.html:283
+#: .\product_transfer\templates\product_transfer\add_transfer.html:263
+#: .\purchase\templates\purchase\add_purchase.html:236
+#: .\returnproduct\templates\return\add_return.html:229
+#: .\returnproduct\templates\return\add_return.html:244
+msgid "Save"
+msgstr "ساقلاش"
+
+#: .\fromstock\templates\fromstock\single_stock.html:51
+#: .\product\templates\product\products.html:218
+#: .\product\templates\product\products.html:259
+msgid "SKU"
+msgstr ""
+
+#: .\fromstock\templates\fromstock\single_stock.html:55
+#: .\invoice\templates\invoice\add_invoice.html:133
+#: .\invoice\templates\invoice\pdf.html:66
+#: .\invoice\templates\invoice\single_invoice.html:76
+#: .\product\templates\product\single_product.html:188
+#: .\product_transfer\templates\product_transfer\add_transfer.html:133
+#: .\product_transfer\templates\product_transfer\single_transfer.html:75
+#: .\purchase\templates\purchase\add_purchase.html:114
+#: .\purchase\templates\purchase\single_purchase.html:76
+#: .\report\templates\report\single_org_report.html:155
+#: .\returnproduct\templates\return\add_return.html:113
+#: .\returnproduct\templates\return\single_return.html:154
+msgid "Total Price"
+msgstr "ئومۇمىي باھاسى"
+
+#: .\fromstock\templates\pdf\stock_pdf.html:108
+msgid "Products From Stcok"
+msgstr "كونا ماللار "
+
+#: .\fromstock\templates\pdf\stock_pdf.html:117
+#: .\invoice\templates\pdf\invoice.html:103
+#: .\product_transfer\templates\pdf\transfer_pdf.html:117
+#: .\returnproduct\templates\pdf\return_pdf.html:123
+msgid "Quantity"
+msgstr ""
+
+#: .\fromstock\templates\pdf\stock_pdf.html:138
+#: .\invoice\templates\invoice\add_invoice.html:239
+#: .\invoice\templates\pdf\invoice.html:148
+#: .\product_transfer\templates\pdf\transfer_pdf.html:138
+#: .\product_transfer\templates\product_transfer\add_transfer.html:241
+#: .\purchase\templates\purchase\add_purchase.html:214
+#: .\returnproduct\templates\pdf\return_pdf.html:146
+msgid "Grand Total"
+msgstr "جەمئىي باھاسى"
+
+#: .\invoice\templates\invoice\add_invoice.html:36
+#: .\product_transfer\templates\product_transfer\add_transfer.html:49
+#: .\purchase\templates\purchase\add_purchase.html:36
+#: .\returnproduct\templates\return\add_return.html:36
+#: .\returnproduct\templates\return\single_return.html:37
+msgid "Payment method"
+msgstr "تۆلەش تۈرى"
+
+#: .\invoice\templates\invoice\add_invoice.html:82
+#: .\invoice\templates\invoice\add_invoice.html:88
+msgid "Add invoice"
+msgstr "تالون قوشۇش"
+
+#: .\invoice\templates\invoice\add_invoice.html:188
+#: .\product_transfer\templates\product_transfer\add_transfer.html:190
+#: .\purchase\templates\purchase\add_purchase.html:163
+#: .\returnproduct\templates\return\add_return.html:164
+msgid "Payment Method"
+msgstr "تۆلەش تۈرى"
+
+#: .\invoice\templates\invoice\add_invoice.html:230
+#: .\product_transfer\templates\product_transfer\add_transfer.html:232
+#: .\purchase\templates\purchase\add_purchase.html:205
+msgid "Tax Fee"
+msgstr "باج ھەققى"
+
+#: .\invoice\templates\invoice\add_invoice.html:276
+msgid "Save invoice"
+msgstr "تالون ساقلاش"
+
+#: .\invoice\templates\invoice\add_invoice.html:277
+#: .\returnproduct\templates\return\add_return.html:238
+msgid "Are you sure want to Save?"
+msgstr "ساقلاشنى مۇقىملاشتۇرامسىز؟"
+
+#: .\invoice\templates\invoice\add_invoice.html:288
+#: .\returnproduct\templates\return\add_return.html:249
+msgid "Cancel"
+msgstr " بىكار قىلىش"
+
+#: .\invoice\templates\invoice\invoices.html:70
+msgid "Seller"
+msgstr "ساتقۇچى"
+
+#: .\invoice\templates\invoice\invoices.html:75
+msgid "payed"
+msgstr "تۆلەنگەن"
+
+#: .\invoice\templates\invoice\invoices.html:93
+msgid "Ananymous Customer"
+msgstr "نامەلۇم خېرىدار"
+
+#: .\invoice\templates\invoice\pdf.html:49
+#: .\invoice\templates\invoice\single_invoice.html:59
+#: .\product_transfer\templates\product_transfer\single_transfer.html:58
+#: .\purchase\templates\purchase\single_purchase.html:59
+#: .\returnproduct\templates\return\single_return.html:136
+msgid "Organization Detail"
+msgstr "شۆبە تەپسىلاتى"
+
+#: .\invoice\templates\invoice\pdf.html:51
+#: .\invoice\templates\invoice\single_invoice.html:61
+#: .\product_transfer\templates\product_transfer\single_transfer.html:60
+#: .\purchase\templates\purchase\single_purchase.html:61
+#: .\returnproduct\templates\return\single_return.html:138
+msgid "Organization Name"
+msgstr "شۆبە ئىسمى"
+
+#: .\invoice\templates\invoice\pdf.html:52
+#: .\invoice\templates\invoice\single_invoice.html:62
+#: .\product_transfer\templates\product_transfer\single_transfer.html:61
+#: .\purchase\templates\purchase\single_purchase.html:62
+#: .\returnproduct\templates\return\single_return.html:139
+msgid "Organization Email"
+msgstr "شۆبە ئېلخەت"
+
+#: .\invoice\templates\invoice\pdf.html:53
+#: .\invoice\templates\invoice\single_invoice.html:63
+#: .\product_transfer\templates\product_transfer\single_transfer.html:62
+#: .\purchase\templates\purchase\single_purchase.html:63
+#: .\returnproduct\templates\return\single_return.html:140
+msgid "Organization Phone number"
+msgstr "شۆبە تېفۇن نۇمۇرى"
+
+#: .\invoice\templates\invoice\pdf.html:84
+#: .\invoice\templates\invoice\single_invoice.html:94
+#: .\organization\templates\organizations\single_organization.html:317
+#: .\product_transfer\templates\product_transfer\single_transfer.html:93
+#: .\purchase\templates\purchase\single_purchase.html:94
+#: .\returnproduct\templates\return\single_return.html:172
+#: .\vendor\templates\vendors\single_vendor.html:305
+msgid "Payments"
+msgstr "تۆلەنگەنلەر"
+
+#: .\invoice\templates\invoice\pdf.html:91
+#: .\invoice\templates\invoice\single_invoice.html:101
+#: .\product_transfer\templates\product_transfer\product_tranfer.html:74
+#: .\product_transfer\templates\product_transfer\single_transfer.html:100
+#: .\purchase\templates\purchase\single_purchase.html:101
+#: .\report\templates\report\by_income.html:51
+#: .\report\templates\report\by_outcome.html:69
+#: .\returnproduct\templates\return\single_return.html:179
+msgid "DateTime"
+msgstr "ۋاقىت"
+
+#: .\invoice\templates\invoice\pdf.html:116
+#: .\invoice\templates\invoice\single_invoice.html:128
+#: .\product_transfer\templates\product_transfer\single_transfer.html:127
+#: .\purchase\templates\purchase\single_purchase.html:128
+msgid "Subtotal"
+msgstr "جەمى"
+
+#: .\invoice\templates\invoice\single_invoice.html:153
+#: .\product_transfer\templates\product_transfer\single_transfer.html:150
+#: .\purchase\templates\purchase\single_purchase.html:151
+msgid "Other information"
+msgstr "باشقا مەلۇماتلار"
+
+#: .\organization\templates\organizations\add_organization.html:16
+#: .\organization\templates\organizations\add_organization.html:20
+msgid "Add Organization"
+msgstr "شۆبە قوشۇش"
+
+#: .\organization\templates\organizations\add_organization.html:34
+msgid "New Organization Informations"
+msgstr "يېڭى شۆبە مەلۇماتى"
+
+#: .\organization\templates\organizations\organization.html:16
+#: .\organization\templates\organizations\organization.html:20
+#: .\product_transfer\templates\product_transfer\product_tranfer.html:44
+msgid "Organizations"
+msgstr "شۆبىلەر"
+
+#: .\organization\templates\organizations\organization.html:30
+msgid "Add New Organization"
+msgstr "يېڭى شۆبە قوشۇش"
+
+#: .\organization\templates\organizations\single_organization.html:94
+#: .\vendor\templates\vendors\single_vendor.html:76
+msgid "Add Debt"
+msgstr "قەرزى قوشۇن"
+
+#: .\organization\templates\organizations\single_organization.html:154
+#: .\vendor\templates\vendors\single_vendor.html:136
+msgid "Add debt"
+msgstr "قەرز قوشۇش"
+
+#: .\organization\templates\organizations\single_organization.html:224
+msgid "Phone number"
+msgstr "تېلفۇن"
+
+#: .\organization\templates\organizations\single_organization.html:253
+#: .\product\templates\product\single_product.html:171
+#: .\vendor\templates\vendors\single_vendor.html:242
+msgid "Actions"
+msgstr "ھەرىكەتلەر"
+
+#: .\organization\templates\organizations\single_organization.html:322
+#: .\vendor\templates\vendors\single_vendor.html:310
+msgid "For"
+msgstr ""
+
+#: .\product\templates\product\product_category.html:10
+msgid "Add Product Category"
+msgstr "مال كاتېگورىيسى قوشۇش"
+
+#: .\product\templates\product\products.html:15
+msgid "Import Product"
+msgstr "مال كىرگۈزۈش"
+
+#: .\product\templates\product\products.html:35
+#: .\product\templates\product\products.html:266
+msgid "Sell price"
+msgstr "سېتىش باھاسى"
+
+#: .\product\templates\product\products.html:82
+msgid "Add Product"
+msgstr "مال قوشۇش"
+
+#: .\product\templates\product\products.html:133
+#: .\product\templates\product\unit_type.html:49
+#: .\product\templates\product\update_product.html:72
+msgid "Unit Type"
+msgstr "بىرلىكى"
+
+#: .\product\templates\product\products.html:146
+#: .\product\templates\product\single_product.html:114
+#: .\product\templates\product\update_product.html:87
+msgid "Barcode"
+msgstr "باركود نۇمۇرى"
+
+#: .\product\templates\product\products.html:160
+#: .\product\templates\product\update_product.html:101
+msgid "Image"
+msgstr "رەسىم"
+
+#: .\product\templates\product\products.html:194
+msgid "Add a new Product"
+msgstr "يېڭى مال قوشۇش"
+
+#: .\product\templates\product\products.html:197
+msgid "Import existing product"
+msgstr "بار ماللارنى كىرگۈزۈش"
+
+#: .\product\templates\product\products.html:249
+msgid "clean"
+msgstr "تازىلاش"
+
+#: .\product\templates\product\products.html:264
+msgid "Buy price"
+msgstr "ئېلىش باھاسى"
+
+#: .\product\templates\product\products.html:268
+msgid "Qty"
+msgstr "سانى"
+
+#: .\product\templates\product\single_product.html:69
+msgid "Product detail"
+msgstr "مال تەپسىلاتى"
+
+#: .\product\templates\product\single_product.html:92
+msgid "Created"
+msgstr "قوشۇلغان"
+
+#: .\product\templates\product\single_product.html:98
+msgid "Current Stock"
+msgstr "ھازىرقى سانى"
+
+#: .\product\templates\product\single_product.html:102
+msgid "Buy Price"
+msgstr "ئېلىش باھاسى"
+
+#: .\product\templates\product\single_product.html:109
+#: .\product\templates\product\update_products.html:51
+msgid "Sell Price"
+msgstr "سېتىش باھاسى"
+
+#: .\product\templates\product\single_product.html:135
+msgid "Product in organizations"
+msgstr "شۆبىدىكى ماللار"
+
+#: .\product\templates\product\single_product.html:184
+msgid "Source"
+msgstr "مەنبە"
+
+#: .\product\templates\product\single_product.html:187
+msgid "Unit Price"
+msgstr "يەككە باھاسى"
+
+#: .\product\templates\product\single_product.html:226
+msgid "Transfered to"
+msgstr "غا يۆتكەلگەن"
+
+#: .\product\templates\product\single_product.html:231
+msgid "Bought From"
+msgstr "دىن ئېلىنغان"
+
+#: .\product\templates\product\single_product.html:236
+msgid "Sold to"
+msgstr "غا سېتىلغان"
+
+#: .\product\templates\product\single_product.html:249
+msgid "Anonymous User"
+msgstr "نامەلۇم ئىشلەتكۈچى"
+
+#: .\product\templates\product\unit_type.html:10
+msgid "Add unit type"
+msgstr "بىرلىك قوشۇش"
+
+#: .\product_transfer\templates\pdf\transfer_pdf.html:108
+#, fuzzy
+#| msgid "Product Transfer"
+msgid "Product Transfer From"
+msgstr "مال يۆتكەش"
+
+#: .\product_transfer\templates\product_transfer\add_transfer.html:79
+#: .\product_transfer\templates\product_transfer\add_transfer.html:85
+#: .\product_transfer\templates\product_transfer\single_transfer.html:10
+#: .\product_transfer\templates\product_transfer\single_transfer.html:14
+#: .\product_transfer\templates\product_transfer\single_transfer.html:37
+msgid "Transfer Product"
+msgstr "مال يۆتكەش"
+
+#: .\product_transfer\templates\product_transfer\add_transfer.html:111
+msgid "Transfer To"
+msgstr "غا يۆتكەش"
+
+#: .\product_transfer\templates\product_transfer\product_tranfer.html:11
+#: .\product_transfer\templates\product_transfer\product_tranfer.html:15
+msgid "Product Transfer"
+msgstr "مال يۆتكەش"
+
+#: .\product_transfer\templates\product_transfer\product_tranfer.html:72
+msgid "Transfered From"
+msgstr "دىن يۆتكەلگەن"
+
+#: .\product_transfer\templates\product_transfer\product_tranfer.html:73
+msgid "Transfered To"
+msgstr "غا يۆتكەلگەن"
+
+#: .\purchase\templates\purchase\add_purchase.html:65
+#: .\purchase\templates\purchase\add_purchase.html:69
+msgid "Add purchase"
+msgstr "مال ئېلىش"
+
+#: .\purchase\templates\purchase\add_purchase.html:92
+msgid "Purchased From"
+msgstr "دىن ئېلىنغان"
+
+#: .\purchase\templates\purchase\purchase.html:41
+#: .\purchase\templates\purchase\purchase.html:69
+#: .\report\templates\report\by_outcome.html:68
+#: .\report\templates\report\general_report.html:48
+#: .\vendor\templates\vendors\single_vendor.html:121
+msgid "Vendor"
+msgstr "سودىگەر"
+
+#: .\report\templates\report\balance_sheet.html:48
+msgid "Reset"
+msgstr "يېڭىلاش"
+
+#: .\report\templates\report\balance_sheet.html:61
+
+msgid "Invoice Report"
+msgstr "مال سېتىش دوكلاتى"
+
+#: .\report\templates\report\balance_sheet.html:94
+msgid "Unpaid"
+msgstr "تۆلەنمىگەن"
+
+#: .\report\templates\report\balance_sheet.html:115
+msgid "Products Buy Price"
+msgstr "ئەسلى مال باھاسى"
+
+#: .\report\templates\report\balance_sheet.html:124
+msgid "Total Profit"
+msgstr "ئومۇمىي پايدا"
+
+#: .\report\templates\report\balance_sheet.html:148
+
+msgid "Expense Report"
+msgstr "چىقىم دوكلاتى"
+
+#: .\report\templates\report\by_income.html:10
+#: .\report\templates\report\by_income.html:14
+msgid "Income Report"
+msgstr "كىرىم دوكلاتى"
+
+#: .\report\templates\report\by_income.html:84
+#: .\report\templates\report\by_income.html:91
+#: .\report\templates\report\by_outcome.html:96
+#: .\report\templates\report\by_outcome.html:101
+msgid "None"
+msgstr "يوق"
+
+#: .\report\templates\report\by_organization.html:26
+msgid "Total Report"
+msgstr "ئومۇمىي قەرزى"
+
+#: .\report\templates\report\by_organization.html:42
+#: .\report\templates\report\by_organization.html:58
+#: .\report\templates\report\by_organization.html:74
+#: .\report\templates\report\single_org_report.html:73
+#: .\report\templates\report\single_org_report.html:86
+#: .\report\templates\report\single_org_report.html:99
+msgid "Total Balance"
+msgstr "ئومۇمىي ھېسابات"
+
+#: .\report\templates\report\by_organization.html:90
+msgid "Organizations Report"
+msgstr "شۆبە دوكلاتى"
+
+#: .\report\templates\report\by_organization.html:149
+msgid "Total Balance Report"
+msgstr "ھېسابات سوكلاتى"
+
+#: .\report\templates\report\by_organization.html:157
+#: .\report\templates\report\single_org_report.html:119
+msgid "Income"
+msgstr "كىرىم"
+
+#: .\report\templates\report\by_outcome.html:10
+#: .\report\templates\report\by_outcome.html:14
+msgid "Outcome Report"
+msgstr "چىقىم دوكلاتى"
+
+#: .\report\templates\report\by_outcome.html:155
+msgid "Previous"
+msgstr ""
+
+#: .\report\templates\report\general_report.html:74
+#, fuzzy
+#| msgid "Filter"
+msgid "Filter Query"
+msgstr "فېلتىرلەش"
+
+#: .\report\templates\report\single_org_report.html:60
+msgid "Total product price"
+msgstr "ئومۇمىي مال باھاسى"
+
+#: .\report\templates\report\single_org_report.html:153
+msgid "Single Buy Price"
+msgstr "يەككە ئېلىش باھاسى"
+
+#: .\report\templates\report\single_org_report.html:154
+msgid "Single Sell Price"
+msgstr "يەككە سېتىش باھاسى"
+
+#: .\returnproduct\templates\pdf\return_pdf.html:114
+msgid "Returned Products"
+msgstr "قايتۇرۇلغان ماللار"
+
+#: .\returnproduct\templates\return\add_return.html:75
+#: .\returnproduct\templates\return\add_return.html:81
+#, fuzzy
+#| msgid "Returned Products"
+msgid "Add Returned Product"
+msgstr "قايتۇرۇلغان ماللار"
+
+#: .\returnproduct\templates\return\add_return.html:237
+#, fuzzy
+#| msgid "Returned Products"
+msgid "Save Returned Product"
+msgstr "قايتۇرۇلغان ماللار"
+
+#: .\returnproduct\templates\return\returns.html:73
+#, fuzzy
+#| msgid "payed"
+msgid "Payed"
+msgstr "تۆلەنگەن"
+
+#: .\returnproduct\templates\return\returns.html:92
+#, fuzzy
+#| msgid "Ananymous Customer"
+msgid "Anonymous Customer"
+msgstr "نامەلۇم خېرىدار"
+
+#: .\returnproduct\templates\return\single_return.html:77
+#: .\returnproduct\templates\return\single_return.html:113
+#, fuzzy
+#| msgid "Returned Products"
+msgid "Returned Product"
+msgstr "قايتۇرۇلغان ماللار"
+
+#: .\returnproduct\templates\return\single_return.html:222
+#, fuzzy
+#| msgid "Other information"
+msgid "Other Information"
+msgstr "باشقا مەلۇماتلار"
+
+#: .\tax\templates\tax\tax.html:10
+msgid "Add Tax"
+msgstr "باج قوشۇش"
+
+#: .\tax\templates\tax\tax.html:24 .\tax\templates\tax\tax.html:74
+msgid "Percent"
+msgstr "پىرسەنت"
+
+#: .\vendor\templates\vendors\single_vendor.html:189
+msgid "Vendor Detail"
+msgstr "سودىگەر تەپسىلاتى"
+
+#: .\vendor\templates\vendors\vendors.html:20
+#: .\vendor\templates\vendors\vendors.html:28
+msgid "Add Vendor"
+msgstr "سودىگەر قوشۇش"
+
+#~ msgid "Mony Transfer"
+#~ msgstr "پۇل يۆتكەش"
+
+#~ msgid "Total Revenue"
+#~ msgstr "ئومۇمىي كىرىم"
+
+#~ msgid "By Outcome"
+#~ msgstr "چىقىم بويىچە"
+
+#~ msgid "By Income"
+#~ msgstr "كىرىم بويىچە"
+
+#~ msgid "Grand total"
+#~ msgstr "جەمئىي"
+
+#~ msgid "Banks"
+#~ msgstr "بانكىلار"
+
+#~ msgid "Add Bank"
+#~ msgstr "بانكا قوشۇش"
+
+#~ msgid "Employyes"
+#~ msgstr "خىزمەتچىلەر"
+
+#~ msgid "Employee name"
+#~ msgstr "خىزمەتچى ئىسمى"
+
+#~ msgid "Date Employeed"
+#~ msgstr "قېتىلغان ۋاقتى"
+
+#~ msgid "Manager"
+#~ msgstr "باشقۇۇرغۇچى"
+
+#~ msgid "Yes"
+#~ msgstr "ھەئە"
+
+#~ msgid "No"
+#~ msgstr "ياق"
+
+#~ msgid "Staff"
+#~ msgstr "خىزمەتچېى"
+
+#~ msgid "Messages"
+#~ msgstr "ئۇچۇرلار"
+
+#, fuzzy
+#~| msgid "Organizations"
+#~ msgid "translations"
+#~ msgstr "شۆبىلەر"
+
+#, fuzzy
+#~| msgid "Unit type"
+#~ msgid "content type"
+#~ msgstr "بىرلىك"
+
+#, fuzzy
+#~| msgid "Organization"
+#~ msgid "translation"
+#~ msgstr "شۆبىلەر"

@@ -1,0 +1,244 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load invoice %}
+{% block content %}
+
+
+    <div id="add_tax" class="modal custom-modal fade" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{% translate 'Make payment' %}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+
+                <div class="modal-body">
+                    <form action="{% url 'single_return' invoice.id %}" method="post">
+                        {% csrf_token %}
+                        <div class="row filter-row">
+                            <div class="form-group form-focus select-focus" style="width: 100%">
+                                <div class="col-12">
+                                    <select id="select_payment" class="select floating" required
+                                            name="bank">
+                                        {% for b in banks %}
+                                            {% if forloop.counter == 1 %}
+                                                <option selected value="{{ b.id }}">{{ b.name }}</option>
+
+                                            {% else %}
+                                                <option value="{{ b.id }}">{{ b.name }}</option>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <label class="focus-label">{% trans 'Payment method' %}</label>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label class="col-form-label col-lg-2">Amount</label>
+                            <div class="col-lg-10">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+
+                                    </div>
+                                    <input type="number" step="0.01" class="form-control"
+                                           name="amount" value="{{ payable }}"/>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>{% translate 'Note' %}: <span class="text-danger"></span></label>
+                            <textarea rows="4" class="form-control"
+                                      name="note"></textarea>
+                        </div>
+
+                        <div class="submit-section">
+                            <button class="btn btn-primary submit-btn" type="submit">{% translate 'Add' %}</button>
+                        </div>
+
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="page-title">{% trans 'Returned Product' %}</h3>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}">{% trans 'Dashboard' %}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{% trans 'Returned' %}</li>
+                    </ol>
+                </nav>
+            </div>
+
+
+            <div class=" col-auto float-right ml-auto">
+
+                <a href="#" class="btn btn-primary submit-btn" data-toggle="modal" data-target="#add_tax"><i
+                        class="fa fa-plus"></i> {% trans 'Make payment' %}</a>
+
+            </div>
+
+
+            <div class="col-auto float-right ml-auto">
+                <div class="btn-group btn-group-sm">
+                    <a class="btn btn-white" href="{% url 'return_pdf' invoice.id %}">{% trans 'PDF' %}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card" id="content">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-6 m-b-20">
+                            <img src="{% static 'assets/img/logo.png' %}" class="inv-logo" alt="">
+                        </div>
+                        <div class="col-sm-6 m-b-20">
+                            <div class="invoice-details">
+                                <h3 class="text-uppercase">{% trans 'Returned Product' %}
+                                    #RTB-00{{ invoice.id }}</h3>
+                                <ul class="list-unstyled">
+                                    <li>{% trans 'Date' %}: <span>{{ invoice.datetime|date:"Y/m/d H:i" }}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="display: flex;justify-content: space-between">
+                        {% if invoice.customer %}
+                            <div class="col-sm-6 col-lg-5 col-xl-4 m-b-20">
+                                <span class="text-muted">{% trans 'Customer Detail' %}:</span>
+                                <ul class="list-unstyled invoice-payment-details">
+                                    <li>{% trans 'Name' %}: <span>{{ invoice.customer.name }}</span></li>
+                                    <li>{% trans 'Email' %}: <span>{{ invoice.customer.email }}</span></li>
+                                    <li>{% trans 'Phone Number' %}: <span>{{ invoice.customer.phone_number }}</span>
+                                    </li>
+                                    <li>{% trans 'Address' %}: <span>{{ invoice.customer.address }}</span></li>
+                                </ul>
+                            </div>
+                        {% endif %}
+                        <div class="col-sm-6 col-lg-5 col-xl-4 m-b-20">
+                            <span class="text-muted">{% trans 'Organization Detail' %}:</span>
+                            <ul class="list-unstyled invoice-payment-details">
+                                <li>{% trans 'Organization Name' %}: <span>{{ org.name }}</span></li>
+                                <li>{% trans 'Organization Email' %}: <span>{{ org.email }}</span></li>
+                                <li>{% trans 'Organization Phone number' %}: <span>{{ org.phone_number }}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <h3>{% trans 'Products' %}</h3>
+                        <table class="table table-striped table-hover">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>{% trans 'Product' %}</th>
+                                <th>{% trans 'Unit' %}</th>
+                                <th>{% trans 'Price' %}</th>
+                                <th>{% trans 'Total Price' %}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for p in pwus %}
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ p.product.product.name }}</td>
+                                    <td>{{ p.unit }} {{ p.product.product.type }}</td>
+                                    <td>{{ p.price|divide:p.unit }} SAR</td>
+                                    <td>{{ p.price }} SAR</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <br><br>
+                    <div class="table-responsive">
+                        <h3>{% trans 'Payments' %}</h3>
+                        <table class="table table-striped table-hover">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>{% trans 'Amount' %}</th>
+                                <th>{% trans 'Account' %}</th>
+                                <th>{% trans 'DateTime' %}</th>
+                                <th>{% trans 'Note' %}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for p in payments %}
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ p.amount }} SAR</td>
+                                    <td>{{ p.bank.name }}</td>
+                                    <td>{{ p.date|date:"Y/m/d H:i" }}</td>
+                                    <td>{{ p.note }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <div class="row invoice-payment">
+                            <div class="col-sm-7">
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="m-b-20">
+                                    <div class="table-responsive no-border">
+                                        <table class="table mb-0">
+                                            <tbody>
+                                            <tr>
+                                                <th>{% trans 'Total' %}:</th>
+                                                <td class="text-right">{{ total }} SAR</td>
+                                            </tr>
+
+                                            <tr>
+                                                <th>{% trans 'Paid' %}: <span class="text-regular"></span></th>
+                                                <td class="text-right">{{ payed }} SAR</td>
+                                            </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="invoice-info">
+                            <h5>{% trans 'Other Information' %}</h5>
+                            <p class="text-muted">{{ invoice.note }}</p>
+                        </div>
+
+                        <br><br> <br><br>
+                        {% comment %}<form action="">
+                            <div class="col-sm-12 col-md-4">
+                                <a href="" class="btn btn-danger"><i class="fa fa-close"> </i> Return</a>
+                            </div>
+                        </form>
+                        <br>
+                        <form action="">
+                            <div class="col-sm-12 col-md-7">
+                                <a href="{% url 'edit_invoice' invoice.id %}" class="btn btn-danger"><i class="fa fa-pencil"> </i> Edit </a>
+                            </div>
+                        </form>{% endcomment %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}

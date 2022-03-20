@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="page-title">{% trans 'Product Transfer Payment' %}</h3>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">{% trans 'Dashboard' %}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{% trans 'Product Transfer Payment' %}</li>
+                    </ol>
+                </nav>
+            </div>
+
+        </div>
+    </div>
+
+    <form>
+        <div class="row filter-row">
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group form-focus">
+                    <div class="cal-icon">
+                        <input class="form-control floating datetimepicker" value="{{ from }}" name="from" type="text">
+                    </div>
+                    <label class="focus-label">{% trans 'From' %}</label>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group form-focus">
+                    <div class="cal-icon">
+                        <input class="form-control floating datetimepicker" name="to" value="{{ to }}" type="text">
+                    </div>
+                    <label class="focus-label">{% trans 'To' %}</label>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <button type="submit" class="btn btn-success btn-block"> {% trans 'Filter' %} </button>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <a href="{% url 'product_transfer_payment_in' account.id %}"
+                   class="btn btn-success btn-block"> {% trans 'Clear' %} </a>
+            </div>
+        </div>
+    </form>
+
+
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title mb-0">{{ account.name }}</h4>
+        </div>
+
+        <br><br>
+        <div class="card-header">
+            <h4 class="card-title mb-0">{% trans 'Product Transfer Payment' %}</h4>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered mb-0">
+                    <thead>
+                    <tr>
+                        <th>{% trans '#' %}</th>
+                        <th>{% trans 'Amount' %}</th>
+                        <th>{% trans 'Date' %}</th>
+                        <th>{% trans 'Note' %}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for pay in page_obj.object_list %}
+
+
+
+                        <tr>
+                            <td>{{ pay.id }}</td>
+
+                            <td>{{ pay.amount }} SAR</td>
+                            <td> {{ pay.date|date:"Y/m/d H:i" }}</td>
+                            <td> {{ pay.note }}</td>
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+
+                <br>
+
+            </div>
+        {% if page_obj.object_list.count > 29 %}
+            <div class="row">
+                <div class="col-sm-4 col-md-4">
+                </div>
+                <div class="col-sm-8 col-md-8">
+                    <div class="dataTables_paginate paging_simple_numbers">
+
+                        <ul class="pagination">
+                            <div class="row">
+
+                                <li class="paginate_button page-item"><a class="page-link text-danger"
+                                                                         href="?page=1">1</a>
+                                    {% for i in page_range %}
+
+
+                                        {% if page_obj.number == i %}
+                                            <li class="paginate_button page-item active"><span
+                                                    class="page-link">{{ i }} <span
+                                                    class="sr-only">(current)</span></span>
+                                            </li>
+                                        {% else %}
+                                            <li class="paginate_button page-item"><a class="page-link"
+                                                                                     href="?page={{ i }}">{{ i }}</a>
+                                            </li>
+                                        {% endif %}
+
+
+                                    {% endfor %}
+                                <li class="paginate_button page-item"><a class="page-link text-danger"
+                                                                         href="?page={{ total_pages }}">{{ total_pages }}</a>
+
+                                    {% if page_obj.has_next %} {# whether the next page exists #}
+
+                                        <li class="paginate_button page-item next active"><a
+                                                href="?page={{ page_obj.next_page_number }}"
+                                                class="page-link">Next</a>
+                                        </li>
+                                    {% endif %}
+
+                            </div>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+            <div class="row invoice-payment">
+                <div class="col-sm-7">
+                </div>
+                <div class="col-sm-5">
+                    <div class="m-b-20">
+                        <div class="table-responsive no-border">
+                            <table class="table mb-0">
+                                <tbody>
+                                <br><br>
+                                <tr>
+                                    <th>Total :</th>
+                                    <td class="text-right text-primary">
+                                        <h3>{{ total }} SAR</h3>
+                                    </td>
+                                </tr>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

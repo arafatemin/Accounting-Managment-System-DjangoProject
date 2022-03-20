@@ -1,0 +1,403 @@
+{% extends 'base.html' %} {% load static %}
+{% load vendor %}
+{% load i18n %}
+{% load purchase %}
+{% load account %}
+{% block content %}
+
+    <div id="make_payment" class="modal custom-modal fade" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{% translate 'Make payment' %}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+
+                    <form method="post" id="add_organization"
+                          action="{% url 'vendor_payment' object.id %}">
+
+                        {% csrf_token %}
+
+
+                        <div class="form-group">
+                            <label>{% translate 'Amount' %} ({% translate 'max' %} {{ max }} SAR) <span
+                                    class="text-danger">*</span></label>
+                            <input class="form-control" id="amount" type="number" name="amount" required="">
+                        </div>
+
+                        <div class="form-group form-focus select-focus">
+                            <select name="type" class="select floating" required>
+                                <option> ---------</option>
+                                <option value="debt"> Debt</option>
+                                <option value="purchase"> Purchase</option>
+                            </select>
+                            <label class="focus-label">Type</label>
+                        </div>
+
+                        <div class="form-group">
+                            <label>{% translate 'Account' %} <span class="text-danger">*</span></label>
+                            <select required name="bank" class="form-control">
+                                {% for m in methods %}
+                                    <option value="{{ m.id }}">{{ m.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>{% translate 'Note' %}<span
+                                    class="text-danger"></span></label>
+                            <textarea class="form-control" id="note" rows="3" name="note"></textarea>
+                        </div>
+
+
+                        <div class="submit-section">
+                            <button type="button" class="btn btn-primary submit-btn"
+                                    onclick="makePayment();">
+                                {% translate 'Submit' %}
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="add_debt" class="modal custom-modal fade" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{% translate 'Add Debt' %}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+
+                    <form method="post" id="add_organization"
+                          action="{% url 'add_debt' object.id %}">
+
+                        {% csrf_token %}
+
+
+                        <div class="form-group">
+                            <label>{% translate 'Amount' %}<span
+                                    class="text-danger">*</span></label>
+                            <input class="form-control" id="amount" type="number" name="amount" required="">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>{% translate 'Note' %}<span
+                                    class="text-danger"></span></label>
+                            <textarea class="form-control" id="note" type="number" rows="3" name="note"></textarea>
+                        </div>
+
+
+                        <div class="submit-section">
+                            <button type="submit" class="btn btn-primary submit-btn">
+                                {% translate 'Submit' %}
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="page-title">{% translate 'Vendor' %}</h3>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'index' %}">{% translate 'Dashboard' %}</a></li>
+                    <li class="breadcrumb-item active">{% translate 'Vendors' %}</li>
+                </ul>
+                <div class="col-auto float-right ml-auto">
+                    <a href="#" class="btn add-btn" data-toggle="modal" data-target="#make_payment"><i
+                            class="fa fa-plus"></i> {% translate 'Make Payment' %} </a>
+
+
+                </div>
+
+                <div class="col-auto float-right ml-auto">
+
+                    <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_debt"><i
+                            class="fa fa-plus"></i> {% translate 'Add debt' %} </a>
+
+                </div>
+
+
+                <div class="col-auto float-right ml-auto">
+                    {#                        <a href="{% url 'vendor_bill' object.id %}" class="btn add-btn" > {% translate 'Bills' %} </a>#}
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- /Page Header -->
+    <div class="row">
+        <div class="col-lg-12 col-xl-12">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title m-b-15">{% translate 'Balance' %}</h6>
+                    <table class="table table-striped table-border">
+                        <tbody>
+
+                        <tr>
+                            <td>{% translate 'Total' %}:</td>
+                            <td class="text-right">{{ total }} SAR</td>
+                        </tr>
+
+                        <tr>
+                            <td>{% translate 'Paid' %}:</td>
+                            <td class="text-right">{{ paid }} SAR</td>
+                        </tr>
+
+                        <tr>
+                            <td>{% translate 'Total Debt' %}:</td>
+                            <td class="text-right">{{ total|minus:paid }} SAR</td>
+                        </tr>
+
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="row">
+
+
+        <div class="col-lg-12 col-xl-12">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title m-b-15">{% translate 'Vendor Detail' %}</h6>
+                    <table class="table table-striped table-border">
+                        <tbody>
+
+                        <tr>
+                            <td>{% translate 'Name' %}:</td>
+                            <td class="text-right">{{ object.name }}</td>
+                        </tr>
+
+                        <tr>
+                            <td>{% translate 'Phone Number' %}:</td>
+                            <td class="text-right">{{ object.phone_number }}
+                        </tr>
+
+
+                        <tr>
+                            <td>{% translate 'Email' %}:</td>
+                            <td class="text-right">{{ object.email }}</td>
+                        </tr>
+                        <tr>
+                            <td>{% translate 'Address' %}:</td>
+                            <td class="text-right">{{ object.address }}</td>
+                        </tr>
+                        <tr>
+                            <td>{% translate 'Note' %}:</td>
+                            <td class="text-right">{{ object.note }}</td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="col-auto float-right ml-auto" style="margin-bottom: 5px;">
+            <div class="btn-group btn-group-sm">
+                <button class="btn btn-white">{% trans 'Excel' %}</button>
+                <button class="btn btn-white"
+                        onclick="var pdf = new jsPDF('p', 'pt', 'a4');  pdf.setFillColor(255, 255,255,1);pdf.addHTML($('#content'), function () {pdf.save('#INV 00{{ invoice.id }}.pdf');});">{% trans 'PDF' %}</button>
+                <button class="btn btn-white"> {% trans 'Email' %}</button>
+                <button class="btn btn-white"
+                        onclick="var pdf = new jsPDF('p', 'pt', 'a4');  pdf.setFillColor(255, 255,255,1);pdf.addHTML($('#content'), function () {var fileURL = window.URL.createObjectURL(pdf.output('blob'));var a = document.createElement('a');a.href = fileURL;a.target = '_blank'; document.body.appendChild(a);a.click();});">
+                    <i class="fa fa-print fa-lg"></i> {% trans 'Print' %}</button>
+            </div>
+        </div>
+
+
+        <div class="col-lg-12 col-xl-12">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title m-b-15">{% translate 'Actions' %}</h6>
+                    <table class="table table-bordered mb-0">
+                        <thead>
+                        <tr>
+                            <th>{% translate 'ID' %}</th>
+                            <th>{% translate 'Date Time' %}</th>
+                            <th>{% translate 'Amount' %}</th>
+
+
+                            <th>{% translate 'Debt' %}</th>
+                            <th>{% translate 'Status' %}</th>
+                                                    <th>{% translate 'Note' %}</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% for p in debts %}
+                            <tr>
+                                <td>#DBT 00{{ p.id }}</td>
+                                <td>{{ p.date|date:"Y/m/d H:i" }}</td>
+
+                                <td>{{ p.amount }} SAR</td>
+                                <td> SAR</td>
+                                <td></td>
+<td> {% if p.note %}{{ p.note }} {% endif %}</td>
+
+                            </tr>
+                        {% endfor %}
+
+                        {% for p in purchases %}
+                            <tr>
+                                <td>
+                                    <a href="{% url 'single_purchase' p.id %}">
+                                        #PUR 00{{ p.id }}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{ p.datetime|date:"Y/m/d H:i" }}
+                                </td>
+                                <td>
+                                    {{ p|total }} SAR
+                                </td>
+                                {{ p|debt|safe }}
+                                   <td>
+                                {{ p.note }}
+                            </td>
+                            </tr>
+                        {% endfor %}
+
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="col-lg-12 col-xl-12">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title m-b-15">{% translate 'Payments' %}</h6>
+                    <table class="table table-bordered mb-0">
+                        <thead>
+                        <tr>
+                            <th>{% translate 'ID' %}</th>
+                            <th>{% translate 'For' %}</th>
+                            <th>{% translate 'Date Time' %}</th>
+                            <th>{% translate 'Amount' %}</th>
+                            <th>{% translate 'Debt' %}</th>
+                            <th>{% translate 'Status' %}</th>
+                                                    <th>{% translate 'Note' %}</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% for p in p_payments %}
+                            <tr>
+                                <td>#PYT 0{{ p.id }}</td>
+                                <td><a href="{% url 'single_purchase' p.purchase.id %}">#PUR 0{{ p.purchase.id }}</a>
+                                </td>
+                                <td>{{ p.date|date:"Y/m/d H:i" }}</td>
+
+                                <td>{{ p.amount }} SAR</td>
+
+                                {% for pp in purchases %}
+
+                                    {% if p.purchase == pp %}
+
+                                        {% with t=p.purchase|total payed=p.purchase|purchase_payed %}
+
+                                            <td style='color: red;'>{{ t|minus:payed }} SAR</td>
+                                        {% endwith %}
+
+                                    {% endif %}
+                                {% endfor %}
+                                <td></td>
+                                       <td>{{ p.note }}</td>
+
+
+                            </tr>
+                        {% endfor %}
+
+
+                        {% for d in d_payments %}
+                            <tr>
+                                <td>Debt Payment {{ d.id }}</td>
+                                <td>#DBT 00{{ d.debt.id }}</td>
+                                <td>{{ d.date|date:"Y/m/d H:i" }}</td>
+
+                                <td>{{ d.amount }} SAR</td>
+                                {% if forloop.last %}
+                                    <td>{{ d|pwu_debtpayment_debt|subtract:total_payed_debt }} SAR</td>
+                                {% else %}
+                                    <td>
+
+                                    </td>
+                                {% endif %}
+
+                                <td> {% if d|pwu_debtpayment_debt|subtract:total_payed_debt == 0 %}
+                                    <h5 class="text-success">Paid</h5>
+
+                                {% else %}
+
+                                {% endif %}</td>
+    <td>
+                                {{ d.note }}
+                            </td>
+
+                            </tr>
+                        {% endfor %}
+
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+    <script>
+        function makePayment() {
+            var amount = parseFloat(document.getElementById('amount').value);
+            if (amount > 0) {
+                if (amount <= parseFloat({{ max }})) {
+                    document.getElementById('add_organization').submit();
+                } else {
+                    alert('Amount can not be more then {{ max }}');
+                }
+            } else {
+                alert('Amount can not be less than 0');
+            }
+        }
+    </script>
+
+{% endblock %}
